@@ -1,0 +1,4 @@
+.l__main {
+  padding-block: var(--space-container-block);
+  padding-inline: var(--space-container-inline);
+}

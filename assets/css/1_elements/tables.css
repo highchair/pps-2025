@@ -1,0 +1,31 @@
+table {
+  border-collapse: collapse;
+  text-align: start;
+
+  caption,
+  th,
+  td {
+    text-align: start;
+  }
+
+  caption {
+    font-family: var(--ff-accent);
+    font-size: var(--fts-h3);
+    font-variation-settings: "wght" var(--fw-accent-bold);
+  }
+
+  th {
+    border-bottom: 2px solid var(--fc-border-default);
+    padding-block: 0.25em;
+  }
+
+  td {
+    border-bottom: 1px solid var(--fc-border-light);
+    padding-block: 0.25em;
+  }
+
+  th + th,
+  td + td {
+    padding-inline-start: 1em;
+  }
+}

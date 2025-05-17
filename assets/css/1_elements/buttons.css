@@ -1,0 +1,39 @@
+button[class] {
+  -webkit-appearance: none;
+  border: 0;
+}
+
+.btn,
+.btn__primary,
+.btn__secondary {
+  background-color: var(--fc-button-bg);
+  border-radius: 2em;
+  color: var(--fc-button-fg);
+  display: inline-block;
+  font-family: var(--ff-accent);
+  font-size: 1.125em;
+  font-variation-settings: "wght" var(--fw-accent-bold);
+  padding: 0.75em 2em;
+  text-decoration: none;
+  transition: var(--transition-default);
+  
+  @supports (text-box-trim: trim-both;) {
+    text-box-trim: trim-both;
+  }
+  @supports not (text-box-trim: trim-both;) {
+    line-height: var(--lh-tight);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--fc-button-hover-bg);
+    color: var(--fc-button-hover-fg);
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+.btn__secondary {
+  background-color: var(--fc-button-second-bg);
+  color: var(--fc-button-second-fg);
+}

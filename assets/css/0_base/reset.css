@@ -1,0 +1,63 @@
+/* Andy Bell’s modern CSS reset. */
+/* Pieces moved into the appropriate element files */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default spacing */
+body, h1, h2, h3, h4, h5, h6, p,
+figure, blockquote, ul, ol, dl, dd,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  margin-inline-start: 0;
+  padding-inline-start: 0;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* Apply the browser default accent color to elements that accept it */
+input,
+progress {
+  accent-color: var(--fc-accent);
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 8em;
+}
+
+/* Remove some default browser styles we don’t want */
+address {
+  font-style: normal;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}

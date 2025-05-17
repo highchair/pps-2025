@@ -1,0 +1,125 @@
+:root {
+  
+  /* All CSS variable definitions for PPS theme */
+  
+  /* Project named colors with HSL */
+  --c-rich-black: #242D2E;      /* 186, 12%, 16% */
+  --c-dark-jewel: #003239;      /* 187, 100%, 11% */
+  --c-blue-jewel: #016979;      /* 188, 98%, 24% */
+  --c-blue-jewel-tint: #D7F5FA; /* 189, 78%, 91% */
+  --c-blue-jewel-tint-light: hsl(189, 82%, 96%); /* About 50% of blue jewel tint */
+  --c-yellow: #EABA6B;          /*  37, 75%, 67% */
+  --c-yellow-tint: #FBF7F1;     /*  36, 56%, 96% */
+  --c-white: #fff;
+  
+  /* Using the new color functions to adjust colors
+     https://ishadeed.com/article/css-relative-colors/
+     Looks like this: 
+     color-function(from origin channel1 channel2 channel3 / alpha)
+     rgb (from #000 r g b) / 0.10)
+     
+     Example: Make the color darker by 10% on the lightness channel:
+     hsl(from #9333ea h s calc(l - 10));
+     
+     Apply opacity to a color:
+     rgba(from var(--color) r g b / 0.5);
+  */
+  
+  /* Fluid type sizes with clamp */
+  /* @link https://utopia.fyi/type/calculator?c=480,16,1.125,1280,18,1.18,8,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  --fts-small: clamp(0.8889rem, 0.8502rem + 0.129vw, 0.9534rem); /* Step -1: 14.2222px → 15.2542px */
+  --fts-base: clamp(1rem, 0.925rem + 0.25vw, 1.125rem);          /* Step 0: 16px → 18px */
+  --fts-h6: clamp(1.125rem, 1.0035rem + 0.405vw, 1.3275rem);     /* Step 1: 18px → 21.24px */
+  --fts-h5: clamp(1.2656rem, 1.0851rem + 0.6017vw, 1.5665rem);   /* Step 2: 20.25px → 25.0632px */
+  --fts-h4: clamp(1.4238rem, 1.1691rem + 0.8492vw, 1.8484rem);   /* Step 3: 22.7813px → 29.5746px */
+  --fts-h3: clamp(1.6018rem, 1.2542rem + 1.1586vw, 2.1811rem);   /* Step 4: 25.6289px → 34.898px */
+  --fts-h2: clamp(1.802rem, 1.339rem + 1.5434vw, 2.5737rem);     /* Step 5: 28.8325px → 41.1796px */
+  --fts-h1: clamp(2.0273rem, 1.4215rem + 2.0194vw, 3.037rem);    /* Step 6: 32.4366px → 48.592px */
+  --fts-xl: clamp(2.2807rem, 1.4989rem + 2.6059vw, 3.5837rem);   /* Step 7: 36.4912px → 57.3385px */
+  --fts-xxl: clamp(2.5658rem, 1.568rem + 3.3259vw, 4.2287rem);   /* Step 8: 41.0526px → 67.6595px */
+  
+  /* Fluid spacing — Custom pairs based on design needs */
+  /* Created with the same link as the typography, but using custom clamp values */
+  /* Normal jumps */
+  --space-8-12: clamp(0.5rem, 0.35rem + 0.5vw, 0.75rem);
+  --space-16-24: clamp(1rem, 0.7rem + 1vw, 1.5rem);
+  --space-24-32: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  --space-32-48: clamp(2rem, 1.4rem + 2vw, 3rem);
+  --space-48-64: clamp(3rem, 2.4rem + 2vw, 4rem);
+  --space-64-80: clamp(4rem, 3.4rem + 2vw, 5rem);
+  
+  /* Bigger jumps */
+  --space-16-32: clamp(1rem, 0.4rem + 2vw, 2rem);
+  --space-24-64: clamp(1.5rem, 0rem + 5vw, 4rem);
+  --space-48-80: clamp(3rem, 1.8rem + 4vw, 5rem);
+  
+  /* Fonts */
+  --ff-serif: "loretta-variable", sans-serif;
+  /* Allowed weights from 300 to 800. Needs to always use 'font-variation-settings: "wght" 300;' */
+  --fw-serif-light: 300;
+  --fw-serif-regular: 450;
+  --fw-serif-semi: 550;
+  --fw-serif-bold: 700;
+  
+  --ff-sans: "poppins", sans-serif;
+  --fw-sans-regular: 400;
+  --fw-sans-bold: 700;
+  
+  /* - - - - - - - - – */
+  /* Semantic variables */
+
+  --focus-style: 2px dashed;
+
+  /* Semantic Colors */
+  --fc-default-bg: var(--c-white);
+  --fc-default-fg: var(--c-rich-black);
+  --fc-accent: var(--c-blue-jewel);
+  --fc-link-fg: var(--c-blue-jewel);
+  --fc-link-hover-fg: var(--c-dark-jewel);
+
+  --fc-button-bg: var(--fc-link-fg);
+  --fc-button-fg: var(--c-white);
+  --fc-button-hover-bg: var(--fc-link-hover-fg);
+  --fc-button-hover-fg: var(--c-yellow);
+  --fc-button-second-bg: var(--c-yellow);
+  --fc-button-second-fg: var(--fc-link-hover-fg);
+  
+  --fc-footer-bg: var(--c-blue-jewel);
+  --fc-footer-fg: var(--c-white);
+  --fc-footer-accent: var(--c-yellow);
+  
+  --fc-border-light: rgba(from var(--c-rich-black) r g b / 0.1);
+  --fc-border-default: rgba(from var(--c-rich-black) r g b / 0.2);
+  
+  --fc-grad-primary: linear-gradient(45deg,rgba(from var(--c-blue-jewel-tint) r g b / 0.5) 5%, rgba(from var(--c-blue-jewel-tint) r g b / 1) 95%);
+  
+  /* Semantic typography */
+  --ff-default: var(--ff-sans);
+  --fw-default-normal: var(--fw-sans-regular);
+  --fw-default-bold: var(--fw-sans-bold);
+  --ff-accent: var(--ff-serif);
+  --fw-accent-light: var(--fw-serif-light);
+  --fw-accent-normal: var(--fw-serif-regular);
+  --fw-accent-semi: var(--fw-serif-semi);
+  --fw-accent-bold: var(--fw-serif-bold);
+
+  --lh-tight: 1.25;
+  --lh-normal: 1.6;
+
+  --ls-normal: 0.0625em;
+
+  /* Spacing */
+  --space-container-inline: var(--space-16-32);
+  --space-container-block: var(--space-24-64);
+
+  /* Others */
+  --b-color-default: var(--fc-border-default);
+  --b-style-default: solid;
+  --b-size-default: 0.5px; 
+  --brad-sm: 4px;
+
+  --transition-default-property: all;
+  --transition-default-timing: 250ms;
+  --transition-default-function: ease;
+  --transition-default: var(--transition-default-property) var(--transition-default-timing) var(--transition-default-function);
+}

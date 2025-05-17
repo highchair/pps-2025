@@ -1,0 +1,285 @@
+/*
+  The header needs to do a lot responsively.
+  We break this file down into global styles, 
+  those that happen for small screens,
+  and then those that happen for larger screens,
+  grouping them together by media query
+*/
+
+/* Global styles */
+.header {
+  backdrop-filter: blur(0.5em);
+  background-color: rgba(from var(--fc-default-bg) r g b / 0.92);
+  /* We prefer to always use sticky as its "ghost" will still leave space behind
+     and scrolling will be much smoother (no elements will jump around) */
+  position: sticky;
+  top: 0;
+  transition: box-shadow 500ms ease;
+
+  .not-scrolled & {
+    box-shadow: 0 0 1rem rgba(0,0,0,0);
+  }
+  .scrolled & {
+    box-shadow: 0 0 1rem rgba(0,0,0,0.15);
+  }
+}
+
+.header__wrap {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.5em;
+  padding-inline: var(--space-container-inline);
+}
+
+.header__wrap__start {}
+
+.header__wrap__end {
+
+  .search {
+    padding: 0.75rem 1rem 0;
+
+    input {
+      border: 1px solid var(--fc-border-default);
+      border-radius: var(--brad-sm);
+      display: block;
+      line-height: 1;
+      padding: 0.5em 1em 0.25em;
+      width: 100%;
+    }
+  }
+}
+
+.brand {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: var(--space-8-12);
+}
+
+.brand__logo {
+  height: 4em;
+  width: 4em;
+}
+
+.brand__wordmark {
+  fill: currentColor;
+  height: 3.125em;
+}
+
+.nav {
+  background-color: var(--fc-default-bg);
+  width: 100%;
+}
+
+.nav__inner {
+  display: flex;
+  flex-flow: column;
+  gap: 0.75em;
+  overflow-x: scroll;
+}
+
+/*ul*/.nav__main {
+
+  .nav__link {
+    font-family: var(--ff-accent);
+    font-size: var(--fts-h6);
+
+    &[role="button"] .nav__more:before {
+      content: '+';
+    }
+  }
+}
+
+/*ul*/.nav__utility {}
+
+/*both uls*/.nav__list {}
+
+.nav__item {
+  position: relative;
+
+  &.social {
+    display: inline-block;
+  }
+}
+
+.nav__link {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.75rem;
+  padding-inline: 1rem 1.5rem;
+
+  .nav__more {
+    font-weight: var(--fw-accent-bold);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: rgba(from var(--c-blue-jewel-tint) r g b / 0.5);
+  }
+}
+
+.nav__sub-item {
+  
+  a {
+    background-color: rgba(from var(--c-blue-jewel-tint) r g b / 0.5);
+    display: block;
+    padding-block: 0.5rem 0.375rem;
+    padding-inline: 1rem;
+
+    &:hover,
+    &:focus {
+      background-color: var(--c-white);
+    }
+  }
+}
+
+/* button */
+.nav__trigger {
+  background-color: transparent;
+  font-family: var(--ff-accent);
+  line-height: 1;
+  margin-inline-end: -1em;
+  padding: 0.75em 1em;
+
+  span {
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .menu {
+    width: 1em;
+  }
+
+  .close {
+    width: 0;
+  }
+}
+
+/*
+  Nav-switch: Max width, for smaller screens - - - - - - - - -
+*/
+@media (max-width: 50em) {
+  .nav {
+    .nav__trigger[aria-expanded] + & {
+      position: absolute;
+      left: 0;
+      height: calc(100vh - 5.375em);
+    }
+
+    .nav__trigger[aria-expanded="false"] + & {
+      top: -999em;
+      opacity: 0;
+      transition: opacity 500ms ease 0ms, top 250ms linear 500ms, visibility 250ms linear 500ms;
+      visibility: hidden;
+    }
+
+    .nav__trigger[aria-expanded="true"] + & {
+      top: 100%;
+      opacity: 1;
+      transition: opacity 500ms ease 0ms, top 0ms linear 0ms, visibility 0ms linear 0ms;
+      visibility: visible;
+    }
+  }
+
+  /* Show/hide the menu when JS toggles the aria-expanded value */
+  .nav__link[aria-expanded="false"] + ul {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 250ms ease 0ms, max-height 500ms ease 0ms;
+  }
+
+  .nav__link[aria-expanded="true"] {
+    background-color: var(--c-blue-jewel-tint);
+  }
+
+  .nav__link[role="button"][aria-expanded="true"] .nav__more:before {
+    content: '-';
+  }
+
+  .nav__link[aria-expanded="true"] + ul {
+    max-height: 25rem;
+    opacity: 1;
+    transition: opacity 250ms ease 250ms, max-height 500ms ease 0ms;
+  }
+}
+
+/*
+  Nav-switch: Min width, for larger screens - - - - - - - - -
+*/
+@media (min-width: 50em) {
+  .header__wrap {
+    padding-block-end: 0;
+  }
+
+  .nav__trigger {
+    display: none;
+  }
+
+  .brand__logo {
+    margin-block-start: -0.5em;
+    margin-inline-start: -0.5em;
+    height: 6em;
+    width: 6em;
+  }
+  
+  .brand__wordmark {
+    height: 5em;
+  }
+
+  /* The search form */
+  .header__wrap__end .search {
+    display: none;
+  }
+
+  .nav__inner {
+    flex-flow: column-reverse;
+    align-items: end;
+    gap: 0;
+    overflow: visible;
+  }
+
+  /*ul*/.nav__main,
+  .nav__utility {
+    display: flex;
+    flex-flow: row nowrap;
+
+    ul {
+      background-color: rgba(from var(--fc-default-bg) r g b / 0.92);
+    }
+  }
+
+  /*li*/.nav__item {
+    .nav__link[aria-expanded] + ul {
+      position: absolute;
+      right: 0;
+      width: auto;
+      white-space: nowrap;
+    }
+
+    .nav__link[aria-expanded="false"] + ul {
+      top: -999em;
+      opacity: 0;
+      transition: opacity 500ms ease 0ms, top 250ms linear 500ms, visibility 250ms linear 500ms;
+      visibility: hidden;
+    }
+
+    .nav__link[aria-expanded="true"] + ul {
+      top: 100%;
+      opacity: 1;
+      transition: opacity 500ms ease 0ms, top 0ms linear 0ms, visibility 0ms linear 0ms;
+      visibility: visible;
+    }
+  }
+
+  .nav__utility {
+
+    .nav__item:not(.social) {
+      font-size: var(--fts-small);
+    }
+  }
+}

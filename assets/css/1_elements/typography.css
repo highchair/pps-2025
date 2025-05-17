@@ -1,0 +1,119 @@
+.ts-gigantic,
+.ts-huge,
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  line-height: var(--lh-tight);
+}
+
+/* We declare these style specifically so that we can apply an override — i.e. <h2 class="h3"> */
+.ts-gigantic {
+  font-family: var(--ff-accent);
+  font-size: var(--fts-xxl);
+  font-variation-settings: "wght" var(--fw-accent-light);
+}
+
+.ts-huge {
+  font-family: var(--ff-accent);
+  font-size: var(--fts-xl);
+  font-variation-settings: "wght" var(--fw-accent-normal);
+}
+
+h1, .h1 {
+  font-family: var(--ff-accent);
+  font-size: var(--fts-h1);
+  font-variation-settings: "wght" var(--fw-accent-semi);
+}
+
+h2, .h2 {
+  font-family: var(--ff-accent);
+  font-size: var(--fts-h2);
+  font-variation-settings: "wght" var(--fw-accent-bold);
+}
+
+h3, .h3 {
+  font-family: var(--ff-accent);
+  font-size: var(--fts-h3);
+  font-variation-settings: "wght" var(--fw-accent-bold);
+}
+
+h4, .h4, blockquote, legend {
+  font-family: var(--ff-accent);
+  font-size: var(--fts-h4);
+  font-variation-settings: "wght" var(--fw-accent-semi);
+}
+
+h5, .h5 {
+  font-family: var(--ff-default);
+  font-size: var(--fts-h5);
+  font-weight: var(--fw-default-bold);
+}
+
+h6, .h6 {
+  font-family: var(--ff-default);
+  font-size: var(--fts-h6);
+  font-weight: var(--fw-default-bold);
+  letter-spacing: var(--ls-normal);
+  text-transform: uppercase;
+}
+
+/* Vertical Rhythm
+:is(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, figure, table, hr, pre) +
+:is(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, figure, table, hr, pre) { */
+.v__rhythm > * + * {
+  @supports (margin-block-start: 1lh) {
+    margin-block-start: 1lh;
+  }
+  @supports not (margin-block-start: 1lh) {
+    margin-block-start: calc(var(--lh-normal) * 1rem);
+  }
+}
+
+p {}
+
+ul,
+ol {
+  @supports (margin-inline-start: 1lh) {
+    margin-inline-start: 1lh;
+  }
+  @supports not (margin-inline-start: 1lh) {
+    margin-inline-start: calc(var(--lh-normal) * 1rem);
+  }
+}
+
+blockquote {
+  color: var(--fc-accent);
+  overflow: hidden;
+  padding-block: var(--space-16-24);
+  padding-inline-start: var(--space-32-48);
+  position: relative;
+  
+  &::after {
+    background: center repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
+    content: '';
+    display: block;
+    height: 0.75rem;
+    position: absolute;
+    left: calc(-50% + 0.75rem);
+    transform: rotate(90deg);
+    width: 100%;
+  }
+}
+
+figure:has(blockquote) figcaption {
+  padding-inline-start: var(--space-32-48);
+}
+
+figure figcaption,
+small {
+  font-size: var(--fts-small);
+}
+
+hr {
+  background: left center repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
+  border: none;
+  height: 0.75em;
+}

@@ -1,0 +1,58 @@
+html {
+  /* Sets the color of the overscroll area in some browsers */
+  background-color: var(--fc-footer-bg:);
+
+  /* Prevent font size inflation */
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  
+  /* Resets */
+  font-size: 100%;
+
+  /* Newer browsers want this on the html element */
+  scroll-behavior: smooth;
+  scroll-padding-top: 3rem;
+}
+
+body {
+  /* Slightly older want it on the body element */
+  scroll-behavior: smooth;
+  scroll-padding-top: 3rem;
+
+  /* Supply fallback values for the most basic variable declarations */
+  background-color: var(--fc-default-bg, #fff);
+  color: var(--fc-default-fg, ##242D2E);
+  font-family: var(--ff-default);
+  font-size: var(--fts-base, 100%);
+  font-optical-sizing: auto;
+  font-weight: var(--fw-default-normal);
+  line-height: var(--lh-normal);
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Zoom the page when the screen is very large */
+  /* 1920px */
+  @media (min-width: 120rem) {
+    zoom: 1.125;
+  }
+  /* 2496px */
+  @media (min-width: 156rem) {
+    zoom: 1.25;
+  }
+
+  /* Lock scroll when large modals/navs are open */
+  @media (max-width: 50em) {
+    &:has([aria-controls='navContent'][aria-expanded='true']) {
+      overflow: hidden;
+    }
+  }
+}
+
+/* When a visitor selects text to copy */
+::selection {
+  background-color: var(--fc-default-fg);
+  color: var(--fc-default-bg);
+}

@@ -1,0 +1,46 @@
+.form {}
+
+fieldset {
+  border-color: var(--fc-border-light);
+}
+
+legend {
+  /* typography settings in elements/typography.css */
+}
+
+label {
+  font-size: var(--fts-small);
+  font-weight: var(--fw-default-bold);
+  
+  + input {
+    margin-block-start: 0.5em;
+  }
+
+  &:has( + textarea) {
+    display: block;
+  }
+}
+
+input:not([type='checkbox']):not([type="radio"]):not([type="button"]):not([type="submit"]):not([type="reset"]) {
+  border: 1px solid var(--fc-border-light);
+  border-radius: var(--brad-sm);
+  color: var(--fc-default-fg);
+  display: block;
+  padding: 0.75em 1em 0.625em;
+
+  @supports (text-box-trim: trim-both;) {
+    text-box-trim: trim-both;
+  }
+  @supports not (text-box-trim: trim-both;) {
+    line-height: var(--lh-tight);
+  }
+
+  ::placeholder {
+    font-style: italic;
+  }
+
+  &:focus {
+    border-color: var(--fc-link-fg);
+    outline: 0;
+  }
+}

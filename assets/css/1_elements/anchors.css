@@ -1,0 +1,24 @@
+a {
+  color: var(--fc-link-fg);
+  text-decoration: underline;
+  text-decoration-skip-ink: auto; /* Reset */
+  transition: var(--transition-default);
+
+  &:hover,
+  &:focus {
+    color: var(--fc-link-hover-fg);
+    text-decoration: none;
+  }
+
+  nav & {
+    display: block;
+    text-decoration: none;
+  }
+}
+
+a:focus ,
+button:focus,
+input:focus {
+  outline: var(--focus-style) var(--fc-link-fg);
+  outline-offset: 2px;
+}
