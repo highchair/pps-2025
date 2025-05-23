@@ -15,49 +15,50 @@ h6, .h6 {
 }
 
 /* We declare these style specifically so that we can apply an override — i.e. <h2 class="h3"> */
-.ts-gigantic {
+/* Sizes for WP classes like ".has-h-6-font-size" are handled by inline styles  
+ coming from the theme.json set up */
+/*.ts-gigantic {
   font-family: var(--ff-accent);
   font-size: var(--fts-xxl);
   font-variation-settings: "wght" var(--fw-accent-light);
 }
-
-.ts-huge {
+*.ts-huge {
   font-family: var(--ff-accent);
   font-size: var(--fts-xl);
   font-variation-settings: "wght" var(--fw-accent-normal);
-}
+}*/
 
-h1, .h1 {
+h1, .h1, h1.wp-block-heading {
   font-family: var(--ff-accent);
   font-size: var(--fts-h1);
   font-variation-settings: "wght" var(--fw-accent-semi);
 }
 
-h2, .h2 {
+h2, .h2, h2.wp-block-heading{
   font-family: var(--ff-accent);
   font-size: var(--fts-h2);
   font-variation-settings: "wght" var(--fw-accent-bold);
 }
 
-h3, .h3 {
+h3, .h3, h3.wp-block-heading {
   font-family: var(--ff-accent);
   font-size: var(--fts-h3);
   font-variation-settings: "wght" var(--fw-accent-bold);
 }
 
-h4, .h4, blockquote, legend {
+h4, .h4, h4.wp-block-heading, blockquote:not(.is-style-plain) p, legend {
   font-family: var(--ff-accent);
   font-size: var(--fts-h4);
   font-variation-settings: "wght" var(--fw-accent-semi);
 }
 
-h5, .h5 {
+h5, .h5, h5.wp-block-heading {
   font-family: var(--ff-default);
   font-size: var(--fts-h5);
   font-weight: var(--fw-default-bold);
 }
 
-h6, .h6 {
+h6, .h6, h6.wp-block-heading {
   font-family: var(--ff-default);
   font-size: var(--fts-h6);
   font-weight: var(--fw-default-bold);
@@ -77,7 +78,9 @@ h6, .h6 {
   }
 }
 
-p {}
+/*p*/ .has-base-font-size {
+  font-size: var(--fts-base, 100%);
+}
 
 ul,
 ol {
@@ -89,13 +92,14 @@ ol {
   }
 }
 
-blockquote {
+blockquote,
+.wp-block-quote {
   color: var(--fc-accent);
   overflow: hidden;
   padding-block: var(--space-16-24);
   padding-inline-start: var(--space-32-48);
   position: relative;
-  
+
   &::after {
     background: center repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
     content: '';
@@ -107,6 +111,12 @@ blockquote {
     width: 100%;
   }
 }
+
+blockquote.is-style-plain,
+.wp-block-quote.is-style-plain {
+  /* The plain style allows the author to set the text color and the font size */
+}
+
 
 figure:has(blockquote) figcaption {
   padding-inline-start: var(--space-32-48);

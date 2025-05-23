@@ -39,7 +39,7 @@
   --fts-h1: clamp(2.0273rem, 1.4215rem + 2.0194vw, 3.037rem);    /* Step 6: 32.4366px → 48.592px */
   --fts-xl: clamp(2.2807rem, 1.4989rem + 2.6059vw, 3.5837rem);   /* Step 7: 36.4912px → 57.3385px */
   --fts-xxl: clamp(2.5658rem, 1.568rem + 3.3259vw, 4.2287rem);   /* Step 8: 41.0526px → 67.6595px */
-  
+
   /* Fluid spacing — Custom pairs based on design needs */
   /* Created with the same link as the typography, but using custom clamp values */
   /* Normal jumps */
@@ -49,12 +49,17 @@
   --space-32-48: clamp(2rem, 1.4rem + 2vw, 3rem);
   --space-48-64: clamp(3rem, 2.4rem + 2vw, 4rem);
   --space-64-80: clamp(4rem, 3.4rem + 2vw, 5rem);
-  
+
   /* Bigger jumps */
   --space-16-32: clamp(1rem, 0.4rem + 2vw, 2rem);
   --space-24-64: clamp(1.5rem, 0rem + 5vw, 4rem);
   --space-48-80: clamp(3rem, 1.8rem + 4vw, 5rem);
-  
+
+  /* Max-width containers values */
+  --content-size: 48rem; /* 768px */
+  --wide-size: 75rem;    /* 1200px */
+  --full-size: 100rem;   /* 1600px */
+
   /* Fonts */
   --ff-serif: "loretta-variable", sans-serif;
   /* Allowed weights from 300 to 800. Needs to always use 'font-variation-settings: "wght" 300;' */
@@ -62,11 +67,11 @@
   --fw-serif-regular: 450;
   --fw-serif-semi: 550;
   --fw-serif-bold: 700;
-  
+
   --ff-sans: "poppins", sans-serif;
   --fw-sans-regular: 400;
   --fw-sans-bold: 700;
-  
+
   /* - - - - - - - - – */
   /* Semantic variables */
 

@@ -14,6 +14,7 @@
 
 @import '3_components/navs.css';
 
+@import '4_wordpress/blocks.css';
 @import '4_wordpress/helpers.css';
 
 @import '5_utilities/a11y.css';

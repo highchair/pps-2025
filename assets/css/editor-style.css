@@ -1,0 +1,638 @@
+/* Global root variables */
+:root :where(.editor-styles-wrapper) {
+  
+  /* All CSS variable definitions for PPS theme */
+  
+  /* Project named colors with HSL */
+  --c-rich-black: #242D2E;      /* 186, 12%, 16% 13.95 with white */
+  --c-medium-gray: #485b5b;     /* 186, 14%, 32% 7.18 with white */
+  --c-light-gray: #5c7a7a;      /* 186, 14%, 42% 4.56 with white */
+  --c-dark-jewel: #003239;      /* 187, 100%, 11% */
+  --c-blue-jewel: #016979;      /* 188, 98%, 24% */
+  --c-blue-jewel-tint: #D7F5FA; /* 189, 78%, 91% */
+  --c-blue-jewel-tint-light: hsl(189, 82%, 96%); /* About 50% of blue jewel tint */
+  --c-yellow: #EABA6B;          /*  37, 75%, 67% */
+  --c-yellow-tint: #FBF7F1;     /*  36, 56%, 96% */
+  --c-white: #fff;
+  
+  /* Using the new color functions to adjust colors
+     https://ishadeed.com/article/css-relative-colors/
+     Looks like this: 
+     color-function(from origin channel1 channel2 channel3 / alpha)
+     rgba(from var(--c-rich-black) r g b / 0.10)
+     
+     Example: Make the color darker by 10% on the lightness channel:
+     hsl(from #9333ea h s calc(l - 10));
+     
+     Apply opacity to a color:
+     rgba(from var(--color) r g b / 0.5);
+  */
+  
+  /* Fluid type sizes with clamp */
+  /* @link https://utopia.fyi/type/calculator?c=480,16,1.125,1280,18,1.18,8,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  --fts-small: clamp(0.8889rem, 0.8502rem + 0.129vw, 0.9534rem); /* Step -1: 14.2222px → 15.2542px */
+  --fts-base: clamp(1rem, 0.925rem + 0.25vw, 1.125rem);          /* Step 0: 16px → 18px */
+  --fts-h6: clamp(1.125rem, 1.0035rem + 0.405vw, 1.3275rem);     /* Step 1: 18px → 21.24px */
+  --fts-h5: clamp(1.2656rem, 1.0851rem + 0.6017vw, 1.5665rem);   /* Step 2: 20.25px → 25.0632px */
+  --fts-h4: clamp(1.4238rem, 1.1691rem + 0.8492vw, 1.8484rem);   /* Step 3: 22.7813px → 29.5746px */
+  --fts-h3: clamp(1.6018rem, 1.2542rem + 1.1586vw, 2.1811rem);   /* Step 4: 25.6289px → 34.898px */
+  --fts-h2: clamp(1.802rem, 1.339rem + 1.5434vw, 2.5737rem);     /* Step 5: 28.8325px → 41.1796px */
+  --fts-h1: clamp(2.0273rem, 1.4215rem + 2.0194vw, 3.037rem);    /* Step 6: 32.4366px → 48.592px */
+  --fts-xl: clamp(2.2807rem, 1.4989rem + 2.6059vw, 3.5837rem);   /* Step 7: 36.4912px → 57.3385px */
+  --fts-xxl: clamp(2.5658rem, 1.568rem + 3.3259vw, 4.2287rem);   /* Step 8: 41.0526px → 67.6595px */
+  
+  /* Fluid spacing — Custom pairs based on design needs */
+  /* Created with the same link as the typography, but using custom clamp values */
+  /* Normal jumps */
+  --space-8-12: clamp(0.5rem, 0.35rem + 0.5vw, 0.75rem);
+  --space-16-24: clamp(1rem, 0.7rem + 1vw, 1.5rem);
+  --space-24-32: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  --space-32-48: clamp(2rem, 1.4rem + 2vw, 3rem);
+  --space-48-64: clamp(3rem, 2.4rem + 2vw, 4rem);
+  --space-64-80: clamp(4rem, 3.4rem + 2vw, 5rem);
+  
+  /* Bigger jumps */
+  --space-16-32: clamp(1rem, 0.4rem + 2vw, 2rem);
+  --space-24-64: clamp(1.5rem, 0rem + 5vw, 4rem);
+  --space-48-80: clamp(3rem, 1.8rem + 4vw, 5rem);
+  
+  /* Fonts */
+  --ff-serif: "loretta-variable", sans-serif;
+  /* Allowed weights from 300 to 800. Needs to always use 'font-variation-settings: "wght" 300;' */
+  --fw-serif-light: 300;
+  --fw-serif-regular: 450;
+  --fw-serif-semi: 550;
+  --fw-serif-bold: 700;
+  
+  --ff-sans: "poppins", sans-serif;
+  --fw-sans-regular: 400;
+  --fw-sans-bold: 700;
+  
+  /* - - - - - - - - – */
+  /* Semantic variables */
+
+  --focus-style: 0.125em dashed currentColor;
+
+  /* Semantic Colors */
+  --fc-default-bg: var(--c-white);
+  --fc-default-fg: var(--c-rich-black);
+  --fc-default-md-fg: var(--c-medium-gray);
+  --fc-default-lt-fg: var(--c-light-gray);
+  --fc-accent: var(--c-blue-jewel);
+  --fc-link-fg: var(--c-blue-jewel);
+  --fc-link-hover-fg: var(--c-dark-jewel);
+
+  --fc-button-bg: var(--fc-link-fg);
+  --fc-button-fg: var(--c-white);
+  --fc-button-hover-bg: var(--fc-link-hover-fg);
+  --fc-button-hover-fg: var(--c-yellow);
+  --fc-button-second-bg: var(--c-yellow);
+  --fc-button-second-fg: var(--fc-link-hover-fg);
+  
+  --fc-footer-bg: var(--c-blue-jewel);
+  --fc-footer-fg: var(--c-white);
+  --fc-footer-accent: var(--c-yellow);
+  
+  --fc-border-light: rgba(from var(--c-rich-black) r g b / 0.1);
+  --fc-border-default: rgba(from var(--c-rich-black) r g b / 0.2);
+  
+  --fc-grad-primary: linear-gradient(45deg,rgba(from var(--c-blue-jewel-tint) r g b / 0.5) 5%, rgba(from var(--c-blue-jewel-tint) r g b / 1) 95%);
+  
+  /* Semantic typography */
+  --ff-default: var(--ff-sans);
+  --fw-default-normal: var(--fw-sans-regular);
+  --fw-default-bold: var(--fw-sans-bold);
+  --ff-accent: var(--ff-serif);
+  --fw-accent-light: var(--fw-serif-light);
+  --fw-accent-normal: var(--fw-serif-regular);
+  --fw-accent-semi: var(--fw-serif-semi);
+  --fw-accent-bold: var(--fw-serif-bold);
+
+  --lh-tight: 1.25;
+  --lh-normal: 1.6;
+
+  --ls-normal: 0.0625em;
+
+  /* Spacing */
+  --space-container-inline: var(--space-16-32);
+  --space-container-block: var(--space-24-64);
+
+  /* Others */
+  --b-color-default: var(--fc-border-default);
+  --b-style-default: solid;
+  --b-size-default: 0.5px; 
+  --brad-sm: 4px;
+
+  --transition-default-property: all;
+  --transition-default-timing: 250ms;
+  --transition-default-function: ease;
+  --transition-default: var(--transition-default-property) var(--transition-default-timing) var(--transition-default-function);
+}
+
+
+/* Main typography elements */
+
+/* Try .editor-styles-wrapper instead? */
+.editor-styles-wrapper {
+  .has-xxl-font-size {
+    font-family: var(--ff-accent);
+    font-size: var(--fts-xxl);
+    font-variation-settings: "wght" var(--fw-accent-light);
+  }
+  
+  .has-xl-font-size {
+    font-family: var(--ff-accent);
+    font-size: var(--fts-xl);
+    font-variation-settings: "wght" var(--fw-accent-normal);
+  }
+  
+  h1 {
+    font-family: var(--ff-accent);
+    font-size: var(--fts-h1);
+    font-variation-settings: "wght" var(--fw-accent-semi);
+  }
+  
+  h2 {
+    font-family: var(--ff-accent);
+    font-size: var(--fts-h2);
+    font-variation-settings: "wght" var(--fw-accent-bold);
+  }
+  
+  h3 {
+    font-family: var(--ff-accent);
+    font-size: var(--fts-h3);
+    font-variation-settings: "wght" var(--fw-accent-bold);
+  }
+}
+
+// .block-editor-rich-text__editable.has-xxl-font-size {
+//   font-family: var(--ff-accent);
+//   font-size: var(--fts-xxl);
+//   font-variation-settings: "wght" var(--fw-accent-light);
+// }
+// 
+// .block-editor-rich-text__editable.has-xl-font-size {
+//   font-family: var(--ff-accent);
+//   font-size: var(--fts-xl);
+//   font-variation-settings: "wght" var(--fw-accent-normal);
+// }
+// 
+// .block-editor-block-list__layout h1,
+// h1.block-editor-rich-text__editable {
+//   font-family: var(--ff-accent);
+//   font-size: var(--fts-h1);
+//   font-variation-settings: "wght" var(--fw-accent-semi);
+// }
+// 
+// .block-editor-block-list__layout h2,
+// h2.block-editor-rich-text__editable{
+//   font-family: var(--ff-accent);
+//   font-size: var(--fts-h2);
+//   font-variation-settings: "wght" var(--fw-accent-bold);
+// }
+// 
+// .block-editor-block-list__layout h3,
+// h3.block-editor-rich-text__editable {
+//   font-family: var(--ff-accent);
+//   font-size: var(--fts-h3);
+//   font-variation-settings: "wght" var(--fw-accent-bold);
+// }
+
+.block-editor-block-list__layout h4,
+.block-editor-block-list__layout blockquote p,
+.block-editor-block-list__layout legend,
+h4.block-editor-rich-text__editable,
+blockquote.block-editor-rich-text__editable,
+legend.block-editor-rich-text__editable {
+  font-family: var(--ff-accent);
+  font-size: var(--fts-h4);
+  font-variation-settings: "wght" var(--fw-accent-semi);
+}
+
+.block-editor-block-list__layout h5,
+h5.block-editor-rich-text__editable {
+  font-family: var(--ff-default);
+  font-size: var(--fts-h5);
+  font-weight: var(--fw-default-bold);
+}
+
+.block-editor-block-list__layout h6,
+h6.block-editor-rich-text__editable {
+  font-family: var(--ff-default);
+  font-size: var(--fts-h6);
+  font-weight: var(--fw-default-bold);
+  letter-spacing: var(--ls-normal);
+  text-transform: uppercase;
+}
+
+/* Default styles and paragraphs */
+.block-editor-block-list__layout p,
+p.block-editor-rich-text__editable,
+.block-editor-rich-text__editable.wp-block-paragraph,
+.is-root-container.block-editor-block-list__layout {
+  color: var(--fc-default-fg, #242D2E);
+  font-family: var(--ff-default);
+  font-size: var(--fts-base, 100%);
+  font-optical-sizing: auto;
+  font-weight: var(--fw-default-normal);
+  line-height: var(--lh-normal);
+}
+
+.block-editor-block-list__layout b,
+.block-editor-block-list__layout strong {
+  font-weight: var(--fw-default-bold);
+}
+
+.block-editor-block-list__layout em {
+  font-style: italic;
+}
+
+/* Blockquote styles */
+.block-editor-block-list__layout .wp-block-quote {
+  color: var(--fc-accent);
+  overflow: hidden;
+  padding-block: var(--space-16-24);
+  padding-inline-start: var(--space-32-48);
+  position: relative;
+
+  &::after {
+    background: center repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
+    content: '';
+    display: block;
+    height: 0.75rem;
+    position: absolute;
+    left: calc(-50% + 0.75rem);
+    transform: rotate(90deg);
+    width: 100%;
+  }
+}
+
+
+
+/** Images **/
+// .wp-block-image img {
+// box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+// border-radius: 8px;
+// }
+// 
+// .wp-block-image figcaption,
+// figcaption {
+// margin-top: 0;
+// color: var(--light);
+// font-size: 0.9rem;
+// text-align: center;
+// font-family: "fira", Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+// font-variant-ligatures: no-common-ligatures;
+// }
+
+/* Formats the feature image correctly */
+// .attachment-post-thumbnail {
+//   width: 100%;
+//   margin: 1em 0 1.5em 0;
+//   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+// }
+
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+// h2.rich-text.block-editor-rich-text__editable {
+// margin-top: 2em;
+// font-size: 1.75em;
+// }
+// 
+// h3.rich-text.block-editor-rich-text__editable {
+// margin-top: 2em;
+// font-size: 1.5em;
+// }
+// 
+// h4.rich-text.block-editor-rich-text__editable {
+// font-size: 1.3em;
+// }
+// 
+// h5.rich-text.block-editor-rich-text__editable {
+// font-size: 1.1em;
+// }
+// 
+// h6.rich-text.block-editor-rich-text__editable {
+// font-size: 1em;
+// }
+
+// .has-medium-font-size {
+// font-weight: bold;
+// font-size: 1.3em !important;
+// line-height: 1.3 !important;
+// }
+
+// .la:hover,
+// .la:active,
+// .la:visited,
+// .lab:hover,
+// .lab:active,
+// .lab:visited,
+// .las:hover,
+// .las:active,
+// .las:visited {
+//   color: var(--main);
+//   transition: 0.5s;
+// }
+
+// p.feature-credit {
+// color: var(--light);
+// font-style: italic;
+// font-size: 14px;
+// }
+
+// .wp-block-quote {
+// margin-left: 2em;
+// margin-bottom: 2rem;
+// margin-top: 2rem;
+// padding: .4rem .8rem;
+// border-left: .35rem solid var(--accent);
+// color: var(--light);
+// font-style: italic;
+// font-size: 16px;
+// font-family: "merriweather", Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif !important;
+// }
+
+// dfn, cite, i {
+// font-style: italic;
+// font-size: 0.8em;
+// }
+
+// code, kbd, tt, var {
+// color: var(--bg);
+// background: var(--code);
+// padding: 2px 7px 2px 7px;
+// border-radius: 4px;
+// }
+
+// pre,
+// code,
+// kbd,
+// tt,
+// var {
+// font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace
+// font-size: 1em;
+// }
+
+// pre code:not(.hljs):not([class*="language-"]) {
+//   background: var(--code);
+//   color: var(--bg);
+//   line-height: 1.25;
+//   border-radius: 4px;
+// }
+
+// abbr, acronym {
+// border-bottom: 1px dotted #666;
+// cursor: help;
+// }
+
+// big {
+// font-size: 125%;
+// }
+
+// table {
+// margin: 0 0 1.5em;
+// width: 100%;
+// }
+
+// td {
+// border: 1px dotted;
+// }
+
+/* Format table stripes */
+// .wp-block-table.is-style-stripes tr:nth-child(odd) {
+// background: var(--code) !important;
+// color: var(--bg) !important;
+// }
+// 
+// .wp-block-table.is-style-stripes tr:nth-child(even) {
+// background: var(--bg) !important;
+// color: var(--main) !important;
+// }
+// 
+// .wp-block-table table {
+//   border: 1px solid var(--main) !important;
+//   border-radius: 8px;
+// }
+
+/*--------------------------------------------------------------
+# Links & buttons
+--------------------------------------------------------------*/
+
+// a,
+// a:visited,
+// article a,
+// p.feature-credit a,
+// p.feature-credit a:visited,
+// .menu-items a {
+// text-decoration: none;
+// background:
+//   linear-gradient(
+//     to bottom, var(--accent) 0%,
+//     var(--accent) 100%
+//   );
+//   background-position: 0 100%;
+//   background-repeat: repeat-x;
+//   background-size: 3px 3px;
+// transition: background-size .4s;
+// color: var(--accent);
+// padding: 3px;
+// border-radius: 2px;
+// }
+
+// a:hover,
+// a:focus,
+// a:active,
+// article a:hover,
+// article a:focus,
+// article a:active,
+// p.feature-credit a:hover,
+// p.feature-credit a:active,
+// .menu-items a:hover,
+// .menu-items a:active {
+// text-decoration: none;
+// color: var(--bg);
+// background-size: 4px 50px;
+// }
+
+// a:focus {
+// outline: thin dotted;
+// }
+
+// a:hover, a:active {
+// outline: 0;
+// }
+
+// .button, .button:visited {
+// padding: .8em .8em;
+// margin: 0 .5em 0 0;
+// background: var(--accent);
+// border-radius: 4px;
+// color: #fff;
+// font-weight: bold;
+// transition: 0.4s;
+// line-height: 3rem;
+// white-space: nowrap;
+// }
+
+// .button:hover, .button:active, .button:focus {
+// background: var(--main);
+// color: #fff;
+// }
+// 
+// a.button {
+// font-weight: normal;
+// }
+
+/** Custom colours for Gutenberg editor **/
+
+// .has-background {
+// display: block !important;
+// margin: 0 auto !important;
+// font-family: "fira", Frutiger, "Frutiger Linotype", Univers, Calibri, "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+// font-variant-ligatures: no-common-ligatures;
+// }
+
+// p.has-background {
+// border-radius: 4px;
+// box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+// margin: 2em 0;
+// display: block;
+// margin: 0 auto;
+// }
+
+/** Blue colours **/
+// .has-blue-background-color {
+// background-color: var(--accent) !important;
+// }
+// .has-blue-color {
+// color: var(--accent);
+// }
+// .has-blue-color a {
+// color: var(--accent);
+// border-bottom: 2px solid var(--accent) !important;
+// background: none;
+// border-radius: 0;
+// }
+// .has-blue-color a:hover {
+// color: var(--accent);
+// border-bottom: 2px dotted var(--accent) !important;
+// }
+// .has-blue-color code {
+// color: var(--accent);
+// background: #fafafa;
+// }
+
+/** Green colours **/
+// .has-green-background-color {
+// background-color: #345f41 !important;
+// }
+// .has-green-color {
+// color: #345f41;
+// }
+// .has-green-color a {
+// color: #345f41;
+// border-bottom: 2px solid #345f41 !important;
+// background: none;
+// border-radius: 0;
+// }
+// .has-green-color a:hover {
+// color: #345f41;
+// border-bottom: 2px dotted #345f41 !important;
+// }
+// .has-green-color code {
+// color: #345f41;
+// background: #fafafa;
+// }
+
+/** Orange colours **/
+// .has-orange-background-color {
+// background-color: #ffa800 !important;
+// color: var(--main) !important;
+// }
+// .has-orange-color {
+// color: #ffa800;
+// }
+// .has-orange-color a {
+// color: #ffa800;
+// border-bottom: 2px solid #ffa800 !important;
+// background: none;
+// border-radius: 0;
+// }
+// .has-orange-color a:hover {
+// color: #ffa800;
+// border-bottom: 2px dotted #ffa800 !important;
+// }
+// .has-orange-color code {
+// color: #ffa800;
+// background: #333333;
+// }
+
+/** Red colours **/
+// .has-red-background-color {
+// background-color: #c1392b !important;
+// }
+// .has-red-color {
+// color: #c1392b;
+// }
+// .has-red-color a {
+// color: #c1392b;
+// border-bottom: 2px solid #c1392b !important;
+// background: none;
+// border-radius: 0;
+// }
+// .has-red-color a:hover {
+// color: #c1392b;
+// border-bottom: 2px dotted #c1392b !important;
+// }
+// .has-red-color code {
+// color: #c1392b;
+// background: #fafafa;
+// }
+
+/** Grey colours **/
+// .has-grey-background-color {
+// background-color: #333333 !important;
+// border: 1px solid;
+// }
+// .has-grey-color {
+// color: #333333 !important;
+// }
+// .has-grey-color a, .has-grey-color a:visited {
+// color: #333333;
+// border-bottom: 2px solid #333333 !important;
+// background: none;
+// border-radius: 0;
+// }
+// .has-grey-color a:hover {
+// color: #333333;
+// border-bottom: 2px solid #333333 !important;
+// }
+// .has-grey-color code {
+// color: #333333;
+// background: #fafafa;
+// }
+
+/** White colours **/
+// .has-white-background-color {
+// background-color: #fafafa !important;
+// border: 1px solid --var(main);
+// }
+// .has-white-color {
+// color: #fafafa;
+// }
+// .has-white-color a, .has-white-color a:visited {
+// color: #fafafa;
+// border-bottom: 2px solid #fafafa !important;
+// background: none;
+// border-radius: 0;
+// }
+// .has-white-color a:hover {
+// color: #fafafa;
+// border-bottom: 2px dotted #fafafa !important;
+// }
+// .has-white-color code {
+// color: #333333;
+// background: #f3f3f3;
+// }

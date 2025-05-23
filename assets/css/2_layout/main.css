@@ -1,4 +1,23 @@
-.l__main {
-  padding-block: var(--space-container-block);
-  padding-inline: var(--space-container-inline);
+.l__main {}
+
+/*article*/
+.editor-styles-wrapper {
+
+  > :where(:not(.alignwide):not(.alignfull)) {
+    max-width: var(--content-size);
+    margin-inline: auto !important;
+    padding-inline: var(--space-container-inline);
+  }
+
+  > :where(.alignwide) {
+    max-width: var(--wide-size);
+    margin-inline: auto !important;
+    padding-inline: var(--space-container-inline);
+  }
+
+  > :where(.alignfull) {
+    max-width: var(--full-size);
+    margin-inline: auto !important;
+    padding-inline: var(--space-container-inline);
+  }
 }

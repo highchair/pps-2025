@@ -47,6 +47,8 @@
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
+  margin-inline: auto;
+  max-width: var(--full-size);
   padding-block: 0.5em;
   padding-inline: var(--space-container-inline);
 }

@@ -28,7 +28,7 @@ body {
 
   /* Supply fallback values for the most basic variable declarations */
   background-color: var(--fc-default-bg, #fff);
-  color: var(--fc-default-fg, ##242D2E);
+  color: var(--fc-default-fg, #242D2E);
   font-family: var(--ff-default);
   font-size: var(--fts-base, 100%);
   font-optical-sizing: auto;
