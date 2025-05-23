@@ -17,29 +17,24 @@ add_action( 'after_setup_theme', 'pps_post_format_setup' );
 // Enqueues editor-style.css in the editors.
 if ( ! function_exists( 'pps_editor_style' ) ) :
   function pps_editor_style() {
-    add_editor_style( get_parent_theme_file_uri( 'assets/css/editor-style.css' ) );
+    add_theme_support( 'editor-style' );
+    add_editor_style( 'assets/css/editor-style.css' );
+    add_editor_style( 'https://use.typekit.net/msx3awg.css' );
   }
 endif;
-add_action( 'after_setup_theme', 'pps_editor_style' );
+add_action( 'enqueue_block_editor_assets', 'pps_editor_style' );
 
-// Enqueues style.css on the front.
-if ( ! function_exists( 'pps_enqueue_styles' ) ) :
-  function pps_enqueue_styles() {
+// Enqueues Theme CSS and JS
+if ( ! function_exists( 'pps_enqueue_theme' ) ) :
+  function pps_enqueue_theme() {
     wp_enqueue_style(
       'pps-2025-style',
       get_parent_theme_file_uri( 'style.css' ),
       array(),
       wp_get_theme()->get( 'Version' )
     );
-  }
-endif;
-add_action( 'wp_enqueue_scripts', 'pps_enqueue_styles' );
-
-// Enqueues theme Javascript files
-if ( ! function_exists( 'pps_enqueue_scripts' ) ) :
-  function pps_enqueue_scripts() {
     wp_enqueue_script(
-      'pps-scripts', // Handle (used for dependencies or deregistering)
+      'pps-2025-scripts', // Handle (used for dependencies or deregistering)
       get_template_directory_uri() . '/assets/js/general.js',
       array(), // Dependencies (e.g., array('jquery'))
       filemtime( get_template_directory() . '/assets/js/general.js' ), // Versioning (auto-busts cache)
@@ -47,7 +42,7 @@ if ( ! function_exists( 'pps_enqueue_scripts' ) ) :
     );
   }
 endif;
-add_action( 'wp_enqueue_scripts', 'pps_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'pps_enqueue_theme' );
 
 // Add persistent classes to the body element
 if ( ! function_exists( 'pps_body_classes' ) ) :

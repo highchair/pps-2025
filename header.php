@@ -13,12 +13,11 @@
 <html <?php language_attributes(); ?>>
   <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <link rel="preconnect" href="https://use.typekit.net">
+    <link rel="stylesheet" href="https://use.typekit.net/msx3awg.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <?php wp_head(); ?>
 
-    <link rel="stylesheet" href="https://use.typekit.net/msx3awg.css">
   </head>
   <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
