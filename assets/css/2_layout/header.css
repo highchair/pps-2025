@@ -6,14 +6,22 @@
   grouping them together by media query
 */
 
+.js__observer {
+  height: 1px;
+  margin-block-end: -1px;
+}
+
+.skip-link:focus {
+  /* Overrides for .button__secondary styles */
+  border-radius: 0;
+  display: block;
+  text-align: center;
+}
+
 /* Global styles */
 .header {
   backdrop-filter: blur(0.5em);
   background-color: rgba(from var(--fc-default-bg) r g b / 0.92);
-  /* We prefer to always use sticky as its "ghost" will still leave space behind
-     and scrolling will be much smoother (no elements will jump around) */
-  position: sticky;
-  top: 0;
   transition: box-shadow 500ms ease;
 
   .not-scrolled & {
@@ -21,6 +29,16 @@
   }
   .scrolled & {
     box-shadow: 0 0 1rem rgba(0,0,0,0.15);
+  }
+}
+
+/* If the viewport is tall enough, support a sticky header — 640px */
+@media (min-height: 40em) {
+  .header {
+    /* We prefer to always use sticky as its "ghost" will still leave space behind
+      and scrolling will be much smoother (no elements will jump around) */
+    position: sticky;
+    top: 0;
   }
 }
 
@@ -36,22 +54,27 @@
 .header__wrap__start {}
 
 .header__wrap__end {
+  position: relative;
 
-  .search {
+  .search-form {
+    display: flex;
+    flex-flow: row nowrap;
     padding: 0.75rem 1rem 0;
 
-    input {
-      border: 1px solid var(--fc-border-default);
-      border-radius: var(--brad-sm);
-      display: block;
-      line-height: 1;
-      padding: 0.5em 1em 0.25em;
-      width: 100%;
+   .search-field {
+      margin-inline-end: 0.5em;
+      width: calc(100% - 0.5em);
+    }
+
+    .search-submit {
+      /* See Buttons file for the submit button code */
+      margin-block-start: 0;
     }
   }
 }
 
 .brand {
+  color: var(--fc-default-fg);
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -68,146 +91,6 @@
   height: 3.125em;
 }
 
-.nav {
-  background-color: var(--fc-default-bg);
-  width: 100%;
-}
-
-.nav__inner {
-  display: flex;
-  flex-flow: column;
-  gap: 0.75em;
-  overflow-x: scroll;
-}
-
-/*ul*/.nav__main {
-
-  .nav__link {
-    font-family: var(--ff-accent);
-    font-size: var(--fts-h6);
-
-    &[role="button"] .nav__more:before {
-      content: '+';
-    }
-  }
-}
-
-/*ul*/.nav__utility {}
-
-/*both uls*/.nav__list {}
-
-.nav__item {
-  position: relative;
-
-  &.social {
-    display: inline-block;
-  }
-}
-
-.nav__link {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: 0.75rem;
-  padding-inline: 1rem 1.5rem;
-
-  .nav__more {
-    font-weight: var(--fw-accent-bold);
-  }
-
-  &:hover,
-  &:focus {
-    background-color: rgba(from var(--c-blue-jewel-tint) r g b / 0.5);
-  }
-}
-
-.nav__sub-item {
-  
-  a {
-    background-color: rgba(from var(--c-blue-jewel-tint) r g b / 0.5);
-    display: block;
-    padding-block: 0.5rem 0.375rem;
-    padding-inline: 1rem;
-
-    &:hover,
-    &:focus {
-      background-color: var(--c-white);
-    }
-  }
-}
-
-/* button */
-.nav__trigger {
-  background-color: transparent;
-  font-family: var(--ff-accent);
-  line-height: 1;
-  margin-inline-end: -1em;
-  padding: 0.75em 1em;
-
-  span {
-    display: inline-block;
-    overflow: hidden;
-  }
-
-  .menu {
-    width: 1em;
-  }
-
-  .close {
-    width: 0;
-  }
-}
-
-/*
-  Nav-switch: Max width, for smaller screens - - - - - - - - -
-*/
-@media (max-width: 50em) {
-  .nav {
-    .nav__trigger[aria-expanded] + & {
-      position: absolute;
-      left: 0;
-      height: calc(100vh - 5.375em);
-    }
-
-    .nav__trigger[aria-expanded="false"] + & {
-      top: -999em;
-      opacity: 0;
-      transition: opacity 500ms ease 0ms, top 250ms linear 500ms, visibility 250ms linear 500ms;
-      visibility: hidden;
-    }
-
-    .nav__trigger[aria-expanded="true"] + & {
-      top: 100%;
-      opacity: 1;
-      transition: opacity 500ms ease 0ms, top 0ms linear 0ms, visibility 0ms linear 0ms;
-      visibility: visible;
-    }
-  }
-
-  /* Show/hide the menu when JS toggles the aria-expanded value */
-  .nav__link[aria-expanded="false"] + ul {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: opacity 250ms ease 0ms, max-height 500ms ease 0ms;
-  }
-
-  .nav__link[aria-expanded="true"] {
-    background-color: var(--c-blue-jewel-tint);
-  }
-
-  .nav__link[role="button"][aria-expanded="true"] .nav__more:before {
-    content: '-';
-  }
-
-  .nav__link[aria-expanded="true"] + ul {
-    max-height: 25rem;
-    opacity: 1;
-    transition: opacity 250ms ease 250ms, max-height 500ms ease 0ms;
-  }
-}
-
 /*
   Nav-switch: Min width, for larger screens - - - - - - - - -
 */
@@ -216,12 +99,8 @@
     padding-block-end: 0;
   }
 
-  .nav__trigger {
-    display: none;
-  }
-
   .brand__logo {
-    margin-block-start: -0.5em;
+    margin-block-start: -0.25em;
     margin-inline-start: -0.5em;
     height: 6em;
     width: 6em;
@@ -231,55 +110,12 @@
     height: 5em;
   }
 
-  /* The search form */
-  .header__wrap__end .search {
-    display: none;
-  }
-
-  .nav__inner {
-    flex-flow: column-reverse;
-    align-items: end;
-    gap: 0;
-    overflow: visible;
-  }
-
-  /*ul*/.nav__main,
-  .nav__utility {
-    display: flex;
-    flex-flow: row nowrap;
-
-    ul {
-      background-color: rgba(from var(--fc-default-bg) r g b / 0.92);
-    }
-  }
-
-  /*li*/.nav__item {
-    .nav__link[aria-expanded] + ul {
+  .header__wrap__end {
+    position: relative;
+  
+    .search-form {
       position: absolute;
-      right: 0;
-      width: auto;
-      white-space: nowrap;
-    }
-
-    .nav__link[aria-expanded="false"] + ul {
-      top: -999em;
-      opacity: 0;
-      transition: opacity 500ms ease 0ms, top 250ms linear 500ms, visibility 250ms linear 500ms;
-      visibility: hidden;
-    }
-
-    .nav__link[aria-expanded="true"] + ul {
-      top: 100%;
-      opacity: 1;
-      transition: opacity 500ms ease 0ms, top 0ms linear 0ms, visibility 0ms linear 0ms;
-      visibility: visible;
-    }
-  }
-
-  .nav__utility {
-
-    .nav__item:not(.social) {
-      font-size: var(--fts-small);
+      top: -99em;
     }
   }
 }

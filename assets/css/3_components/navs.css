@@ -1,0 +1,318 @@
+/*
+  The navigation needs to do a lot responsively.
+  We break this file down into global styles, 
+  those that happen for small screens,
+  and then those that happen for larger screens,
+  grouping them together by media query
+*/
+
+.nav {
+  width: 100%;
+}
+
+.nav__inner {
+  display: flex;
+  flex-flow: column;
+  gap: 0.75em;
+  height: 100%;
+  overflow-x: scroll;
+}
+
+/*both uls*/.nav__list {
+
+  > .menu-item {
+    position: relative;
+    
+    > a {
+      background-color: rgba(from var(--c-blue-jewel-tint) r g b / 0);
+      display: block;
+      padding-block: 0.75rem;
+      padding-inline: 1rem;
+      transition: var(--transition-default);
+    }
+
+    > a:hover,
+    > a:focus,
+    &.current-page_item > a,
+    &.current_page_parent > a {
+      background-color: rgba(from var(--c-blue-jewel-tint) r g b / 0.5);
+    }
+
+    /* Items with subnavs */
+    &:has(.sub-menu) > a {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5em;
+
+      &:after {
+        content: '+';
+        font-weight: var(--fw-accent-bold);
+      }
+    }
+  }
+}
+
+/*ul*/.nav__main {
+  > .menu-item {
+    > a {
+      font-family: var(--ff-accent);
+      font-size: var(--fts-h6);
+    }
+  }
+}
+
+/*ul*/.nav__utility {}
+
+/*ul*/.sub-menu {
+
+  .menu-item {
+    a {
+      background-color: rgba(from var(--c-blue-jewel-tint) r g b / 0.5);
+      display: block;
+      padding-block: 0.5rem 0.375rem;
+      padding-inline: 1rem;
+
+      &:hover,
+      &:focus {
+        background-color: var(--c-white);
+      }
+    }
+  }
+}
+
+/* button */
+.nav__trigger {
+  background-color: transparent;
+  font-family: var(--ff-accent);
+  line-height: 1;
+  margin-inline-end: -1em;
+  padding: 0.75em 1em;
+
+  span {
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  &[aria-expanded="false"] {
+    .menu {
+      width: 1em;
+    }
+    .close {
+      width: 0;
+    }
+  }
+
+  &[aria-expanded="true"] {
+    .menu {
+      width: 0;
+    }
+    .close {
+      width: 1em;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--c-blue-jewel-tint);
+    cursor: pointer;
+  }
+}
+
+/* Social links and Search */
+.menu-item.social,
+.menu-item.search {
+  a {
+    display: block;
+
+    &::before {
+      content: '';
+      background-color: currentColor;
+      display: inline-block;
+      height: 1.25em;
+      margin-inline-end: 0.5em;
+      vertical-align: middle;
+      width: 1.25em;
+    }
+
+    &:hover::before,
+    &:focus::before  {
+      background-color: currentColor;
+    }
+  }
+}
+
+.menu-item.search {
+  a::before {
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z'%3E%3C/path%3E%3C/svg%3E%0A") no-repeat;
+  }
+}
+
+.menu-item.instagram {
+  a::before {
+    mask: url("data:image/svg+xml,%3Csvg role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='currentColor' d='M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+  }
+}
+
+.menu-item.facebook {
+  a::before {
+    mask: url("data:image/svg+xml,%3Csvg role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='currentColor' d='M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+  }
+}
+
+/*
+  Nav-switch: Max width, for smaller screens - - - - - - - - -
+*/
+@media (max-width: 50em) {
+  .menu-item.search {
+    display: none;
+  }
+  
+  /* Open/Close menu actions */
+  .nav {
+    background-color: var(--fc-default-bg);
+
+    .nav__trigger[aria-expanded] + & {
+      position: absolute;
+      left: 0;
+      /* Caution: Magic number – subtracting the rendered height of the header */
+      height: calc(100vh - 5em);
+      overflow: hidden;
+    }
+
+    .nav__trigger[aria-expanded="false"] + & {
+      top: -999em;
+      opacity: 0;
+      transition: opacity 500ms ease 0ms, top 250ms linear 500ms, visibility 250ms linear 500ms;
+      visibility: hidden;
+    }
+
+    .nav__trigger[aria-expanded="true"] + & {
+      top: 100%;
+      opacity: 1;
+      transition: opacity 500ms ease 0ms, top 0ms linear 0ms, visibility 0ms linear 0ms;
+      visibility: visible;
+    }
+  }
+
+  /* Show/hide the sub-menu when JS toggles the aria-expanded value */
+  .menu-item a[aria-expanded="false"] + .sub-menu {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 250ms ease 0ms, max-height 500ms ease 0ms, visibility 500ms linear 0ms;
+    visibility: hidden;
+  }
+
+  .menu-item a[aria-expanded="true"] {
+    background-color: var(--c-blue-jewel-tint);
+  }
+
+  .menu-item a[role="button"][aria-expanded="true"]:after {
+    content: '-';
+  }
+
+  .menu-item a[aria-expanded="true"] + .sub-menu {
+    max-height: 25rem;
+    opacity: 1;
+    transition: opacity 250ms ease 250ms, max-height 500ms ease 0ms, visibility 0ms linear 0ms;
+    visibility: visible;
+  }
+}
+
+/*
+  Nav-switch: Min width, for larger screens - - - - - - - - -
+*/
+@media (min-width: 50em) {
+  .header__wrap__end {
+    margin-inline-end: -1rem;
+  }
+
+  .nav__trigger {
+    display: none;
+  }
+
+  .nav__inner {
+    flex-flow: column-reverse;
+    align-items: end;
+    gap: 0.25em;
+    overflow: visible;
+  }
+
+  /*ul*/.nav__list {
+    display: flex;
+    flex-flow: row nowrap;
+
+    ul {
+      background-color: rgba(from var(--fc-default-bg) r g b / 0.92);
+    }
+  }
+
+  /*li*/.menu-item {
+    a[aria-expanded] + .sub-menu {
+      position: absolute;
+      right: 0;
+      width: auto;
+      white-space: nowrap;
+    }
+
+    a[aria-expanded="false"] + .sub-menu {
+      top: -999em;
+      opacity: 0;
+      transition: opacity 500ms ease 0ms, top 250ms linear 500ms, visibility 250ms linear 500ms;
+      visibility: hidden;
+    }
+
+    a[aria-expanded="true"] + .sub-menu {
+      top: 100%;
+      opacity: 1;
+      transition: opacity 500ms ease 0ms, top 0ms linear 0ms, visibility 0ms linear 0ms;
+      visibility: visible;
+    }
+  }
+
+  .nav__utility {
+    .menu-item a {
+      font-size: var(--fts-small);
+      padding-block: 0.25rem;
+      padding-inline: 0.75rem;
+  
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .menu-item.social a,
+  .menu-item.search a {
+    color: var(--fc-default-bg);
+    height: 2em;
+    overflow: hidden;
+    padding: 0;
+    white-space: nowrap;
+    width: 3.25em;
+
+    &::before {
+      color: var(--fc-default-lt-fg);
+      font-size: 150%;
+      margin: 0 0.5em;
+    }
+
+    &:hover::before,
+    &:focus::before {
+      color: var(--fc-link-fg);
+    } 
+  }
+}
+
+.menu-item.search a {
+  padding-block-start: 0.125em;
+
+  &::before {
+    font-size: 133%;
+  }
+}

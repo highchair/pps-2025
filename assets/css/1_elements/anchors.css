@@ -16,9 +16,21 @@ a {
   }
 }
 
-a:focus ,
+/* Remove default focus rings */
+a:focus,
 button:focus,
 input:focus {
-  outline: var(--focus-style) var(--fc-link-fg);
-  outline-offset: 2px;
+  /*outline: none;*/
+  outline: var(--focus-style);
+  outline-offset: 0.125em;
 }
+
+/* Add them back when a keyboard is being used
+:where(
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible
+) {
+  outline: var(--focus-style);
+  outline-offset: 0.125em;
+} */

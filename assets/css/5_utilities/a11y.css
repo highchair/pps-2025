@@ -1,17 +1,5 @@
-/*.skip-link:focus {
-  background-color: $color__body-bg;
-  box-shadow: 0 0 1rem rgba($black, 0.5);
-  color: palette('brand-yellow') !important;
-  padding: 0.625em 1.25em 0.75em;
-  position: absolute !important;
-  top: 0.5rem;
-  left: 50%;
-  text-align: center;
-  transform: translateX(-50%);
-  z-index: z(skip-link);
-}*/
-
-.sr {
+.sr,
+.screen-reader-text {
   position: absolute;
   width: 1px;
   height: 1px;

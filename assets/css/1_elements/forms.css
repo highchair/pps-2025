@@ -22,25 +22,23 @@ label {
 }
 
 input:not([type='checkbox']):not([type="radio"]):not([type="button"]):not([type="submit"]):not([type="reset"]) {
-  border: 1px solid var(--fc-border-light);
+  border: 1.5px solid var(--fc-border-light);
   border-radius: var(--brad-sm);
   color: var(--fc-default-fg);
   display: block;
-  padding: 0.75em 1em 0.625em;
+  line-height: var(--lh-tight);
+  padding: 0.75rem 1rem 0.625rem;
 
-  @supports (text-box-trim: trim-both;) {
-    text-box-trim: trim-both;
-  }
-  @supports not (text-box-trim: trim-both;) {
-    line-height: var(--lh-tight);
-  }
-
-  ::placeholder {
+  &::placeholder {
     font-style: italic;
   }
 
-  &:focus {
+  &:hover {
     border-color: var(--fc-link-fg);
+  }
+
+  &:focus {
+    border-color: var(--fc-link-hover-fg);
     outline: 0;
   }
 }

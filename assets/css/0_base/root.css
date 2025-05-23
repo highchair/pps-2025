@@ -3,7 +3,9 @@
   /* All CSS variable definitions for PPS theme */
   
   /* Project named colors with HSL */
-  --c-rich-black: #242D2E;      /* 186, 12%, 16% */
+  --c-rich-black: #242D2E;      /* 186, 12%, 16% 13.95 with white */
+  --c-medium-gray: #485b5b;     /* 186, 14%, 32% 7.18 with white */
+  --c-light-gray: #5c7a7a;      /* 186, 14%, 42% 4.56 with white */
   --c-dark-jewel: #003239;      /* 187, 100%, 11% */
   --c-blue-jewel: #016979;      /* 188, 98%, 24% */
   --c-blue-jewel-tint: #D7F5FA; /* 189, 78%, 91% */
@@ -16,7 +18,7 @@
      https://ishadeed.com/article/css-relative-colors/
      Looks like this: 
      color-function(from origin channel1 channel2 channel3 / alpha)
-     rgb (from #000 r g b) / 0.10)
+     rgba(from var(--c-rich-black) r g b / 0.10)
      
      Example: Make the color darker by 10% on the lightness channel:
      hsl(from #9333ea h s calc(l - 10));
@@ -68,11 +70,13 @@
   /* - - - - - - - - – */
   /* Semantic variables */
 
-  --focus-style: 2px dashed;
+  --focus-style: 0.125em dashed currentColor;
 
   /* Semantic Colors */
   --fc-default-bg: var(--c-white);
   --fc-default-fg: var(--c-rich-black);
+  --fc-default-md-fg: var(--c-medium-gray);
+  --fc-default-lt-fg: var(--c-light-gray);
   --fc-accent: var(--c-blue-jewel);
   --fc-link-fg: var(--c-blue-jewel);
   --fc-link-hover-fg: var(--c-dark-jewel);

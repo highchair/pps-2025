@@ -1,6 +1,6 @@
 html {
   /* Sets the color of the overscroll area in some browsers */
-  background-color: var(--fc-footer-bg:);
+  background-color: var(--fc-footer-bg);
 
   /* Prevent font size inflation */
   -moz-text-size-adjust: none;
@@ -19,6 +19,12 @@ body {
   /* Slightly older want it on the body element */
   scroll-behavior: smooth;
   scroll-padding-top: 3rem;
+
+  /* Sensible typographic defaults */
+  text-decoration-skip-ink: auto;
+  font-optical-sizing: auto;
+  font-variant-ligatures: common-ligatures no-discretionary-ligatures no-historical-ligatures contextual;
+  font-kerning: normal;
 
   /* Supply fallback values for the most basic variable declarations */
   background-color: var(--fc-default-bg, #fff);

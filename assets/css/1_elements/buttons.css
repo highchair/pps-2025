@@ -1,22 +1,25 @@
-button[class] {
+button[class],
+input[type='submit'][class] {
   -webkit-appearance: none;
   border: 0;
 }
 
 .btn,
 .btn__primary,
-.btn__secondary {
-  background-color: var(--fc-button-bg);
-  border-radius: 2em;
-  color: var(--fc-button-fg);
+.btn__secondary,
+.search-form .search-submit {
+  /* A neutral default color */
+  background-color: rgba(from var(--c-rich-black) r g b / 0.2);
+  border-radius: 2rem;
+  color: var(--c-rich-black);
   display: inline-block;
   font-family: var(--ff-accent);
-  font-size: 1.125em;
+  font-size: 1.125rem;
   font-variation-settings: "wght" var(--fw-accent-bold);
-  padding: 0.75em 2em;
+  padding: 0.75rem 1.75rem;
   text-decoration: none;
   transition: var(--transition-default);
-  
+
   @supports (text-box-trim: trim-both;) {
     text-box-trim: trim-both;
   }
@@ -26,10 +29,21 @@ button[class] {
 
   &:hover,
   &:focus {
-    background-color: var(--fc-button-hover-bg);
-    color: var(--fc-button-hover-fg);
+    background-color: rgba(from var(--c-rich-black) r g b / 0.35);
     cursor: pointer;
     text-decoration: none;
+  }
+}
+
+.btn__primary,
+.btn__secondary {
+  background-color: var(--fc-button-bg);
+  color: var(--fc-button-fg);
+
+  &:hover,
+  &:focus {
+    background-color: var(--fc-button-hover-bg);
+    color: var(--fc-button-hover-fg);
   }
 }
 
