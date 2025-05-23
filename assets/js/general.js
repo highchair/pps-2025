@@ -18,6 +18,28 @@ document.addEventListener("DOMContentLoaded", function() {
   document.body.classList.remove("no-js");
   document.body.classList.add("js");
 
+  // Wordpress menu markup is not what we want. Adding aria attributes to work with our below JS
+  var btns = document.querySelectorAll('.nav__list .menu-item-has-children > a');
+  if (btns) {
+    btns.forEach(function(btn) {
+      btn.setAttribute('role', 'button');
+      btn.setAttribute('aria-haspopup', 'true');
+      btn.setAttribute('aria-expanded', 'false');
+
+      btn.addEventListener('click', function (e) {
+        var expanded = btn.getAttribute('aria-expanded');
+        // Close all
+        btns.forEach(function(btn) {
+          btn.setAttribute('aria-expanded', 'false');
+        });
+        // Other the one that was clicked
+        if (expanded == 'false') {
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+
   // Expand / Collapse utility
   //
   // Minimum expected markup:
