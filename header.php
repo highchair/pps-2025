@@ -23,8 +23,7 @@
   <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
     
-    <div id="header" class="js__observer"></div>
-    <a href="#main" class="sr sr--focusable btn__secondary skip-link ">Skip to Content</a>
+    <a href="#main" class="sr sr--focusable btn__secondary skip-link">Skip to Content</a>
     <header class="l__header header">
       <div class="container header__wrap">
         <div class="header__wrap__start">
@@ -76,3 +75,4 @@
         </nav>
       </div><!-- end .header__wrap -->
     </header>
+    <div id="header" class="js__observer"></div>

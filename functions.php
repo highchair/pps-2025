@@ -6,6 +6,9 @@
 // Adds theme support for post formats.
 if ( ! function_exists( 'pps_post_format_setup' ) ) :
   function pps_post_format_setup() {
+    // Force HTML5 options when present in function output
+    add_theme_support( 'html5', array( 'search-form' ) );
+    
     add_theme_support( 'post-formats', array( 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video' ) );
   }
 endif;
@@ -23,7 +26,7 @@ add_action( 'after_setup_theme', 'pps_editor_style' );
 if ( ! function_exists( 'pps_enqueue_styles' ) ) :
   function pps_enqueue_styles() {
     wp_enqueue_style(
-      'twentytwentyfive-style',
+      'pps-2025-style',
       get_parent_theme_file_uri( 'style.css' ),
       array(),
       wp_get_theme()->get( 'Version' )
@@ -31,6 +34,20 @@ if ( ! function_exists( 'pps_enqueue_styles' ) ) :
   }
 endif;
 add_action( 'wp_enqueue_scripts', 'pps_enqueue_styles' );
+
+// Enqueues theme Javascript files
+if ( ! function_exists( 'pps_enqueue_scripts' ) ) :
+  function pps_enqueue_scripts() {
+    wp_enqueue_script(
+      'pps-scripts', // Handle (used for dependencies or deregistering)
+      get_template_directory_uri() . '/assets/js/general.js',
+      array(), // Dependencies (e.g., array('jquery'))
+      filemtime( get_template_directory() . '/assets/js/general.js' ), // Versioning (auto-busts cache)
+      true // Load in footer
+    );
+  }
+endif;
+add_action( 'wp_enqueue_scripts', 'pps_enqueue_scripts' );
 
 // Add persistent classes to the body element
 if ( ! function_exists( 'pps_body_classes' ) ) :
@@ -58,3 +75,45 @@ function pps_register_menus() {
 }
 endif;
 add_action( 'after_setup_theme', 'pps_register_menus' );
+
+// Register Footer Widgets
+if ( ! function_exists( 'pps_register_footer_widgets' ) ) :
+  function pps_register_footer_widgets() {
+    register_sidebar( array(
+      'name'           => 'Footer Contact',
+      'id'             => 'footer-contact',
+      'description'    => 'Footer Contact widget',
+      'before_widget'  => '',
+      'after_widget'   => '',
+      'before_sidebar' => '<address class="footer__address">',
+      'after_sidebar'  => '</address>',
+      'before_title'   => '<h3 class="sr widget-title">',
+      'after_title'    => '</h3>',
+    ) );
+
+    register_sidebar( array(
+      'name'           => 'Footer Quick Links',
+      'id'             => 'footer-links',
+      'description'    => 'Common links widget',
+      'before_widget'  => '',
+      'after_widget'   => '',
+      'before_sidebar' => '<nav class="footer__nav" aria-label="secondary">',
+      'after_sidebar'  => '</nav>',
+      'before_title'   => '<h3 class="sr widget-title">',
+      'after_title'    => '</h3>',
+    ) );
+
+    register_sidebar( array(
+      'name'           => 'Footer Copyright',
+      'id'             => 'footer-colophon',
+      'description'    => 'Footer copyright information',
+      'before_widget'  => '',
+      'after_widget'   => '',
+      'before_sidebar' => '<div class="footer__legal">',
+      'after_sidebar'  => '</div>',
+      'before_title'   => '<h3 class="sr widget-title">',
+      'after_title'    => '</h3>',
+    ) );
+  }
+endif;
+add_action( 'widgets_init', 'pps_register_footer_widgets' );
