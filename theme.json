@@ -23,17 +23,17 @@
         {
           "color": "var(--c-white)",
           "name": "Default BG",
-          "slug": "defaultBG"
+          "slug": "default-bg"
         },
         {
           "color": "var(--c-rich-black)",
-          "name": "Default BG",
-          "slug": "defaultFG"
+          "name": "Default FG",
+          "slug": "default-fg"
         },
         {
           "color": "var(--c-dark-jewel)",
           "name": "Dark Jewel",
-          "slug": "d-primary"
+          "slug": "primary-dk"
         },
         {
           "color": "var(--c-blue-jewel)",
@@ -48,7 +48,7 @@
         {
           "color": "var(--c-blue-jewel-tint-light)",
           "name": "Blue Jewel Light Tint",
-          "slug": "primary-l-tint"
+          "slug": "primary-lt-tint"
         },
         {
           "color": "var(--c-yellow)",
@@ -68,7 +68,17 @@
         {
           "color": "var(--fc-border-light)",
           "name": "Border Gray Light",
-          "slug": "border-l"
+          "slug": "border-lt"
+        },
+        {
+          "color": "var(--fc-default-lt-fg)",
+          "name": "Gray Light",
+          "slug": "gray-lt"
+        },
+        {
+          "color": "var(--fc-default-md-fg)",
+          "name": "Gray Medium",
+          "slug": "gray-md"
         }
       ],
       "duotone": [
@@ -93,8 +103,8 @@
       "minHeight": false
     },
     "layout": {
-      "contentSize": "40rem",
-      "wideSize": "64rem"
+      "contentSize": "var(--content-size)",
+      "wideSize": "var(--wide-size)"
     },
     "position": {
       "sticky": false
