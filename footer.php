@@ -11,7 +11,7 @@
 ?>
     <footer class="l__footer footer">
       <div class="newsletter">
-        <h2 class="h1">Subscribe</h2>
+        <h2 class="has-h-1-font-size">Subscribe</h2>
         <p>Weekly alerts, news, and updates from PPS</p>
         <form class="newsletter__form">
           <label for="email" class="sr">Email</label>
@@ -38,56 +38,6 @@
       <?php if ( is_active_sidebar( 'footer-colophon' ) ) : ?>
         <?php dynamic_sidebar( 'footer-colophon' ); ?>
       <?php endif; ?>
-      <!--<address class="footer__address">
-        <p class="footer__tel-email">
-          <a href="tel:401-831-7440">(401) 831-7440</a>
-          <span class="divider">/</span>
-          <a href="mailto:info@ppsri.org">info@ppsri.org</a>
-        </p>
-        <p class="footer__location">
-          24 Meeting Street, Providence RI (<a href="https://www.google.com/maps/place/24+Meeting+St,+Providence,+RI+02903/@41.828785,-71.4098777,412m/data=!3m1!1e3!4m6!3m5!1s0x89e445182a40da8f:0xf3273a3b1fcc8cb4!8m2!3d41.828781!4d-71.4088918!16s%2Fg%2F11fd3svwty?entry=ttu&g_ep=EgoyMDI1MDUxNS4xIKXMDSoASAFQAw%3D%3D">Google Map</a>)
-        </p>
-        <p class="footer__a11y">
-          PPS’s second-floor community space meets the standards issued under the Americans with Disabilities Act, making it wheelchair-accessible.
-        </p>
-      </address>
-      <nav class="footer__nav" aria-label="secondary">
-<div class="footer__col">
-  <h3 class="h5">About Us</h3>
-  <ul role="list">
-    <li><a href="#">Mission</a></li>
-    <li><a href="#">Staff & Board</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-</div>
-<div class="footer__col">
-  <h3 class="h5">Recent</h3>
-  <ul role="list">
-    <li><a href="#">News & Reports</a></li>
-    <li><a href="#">Tours & Programs</a></li>
-    <li><a href="#">Press</a></li>
-  </ul>
-</div>
-<div class="footer__col">
-  <h3 class="h5">Join Us</h3>
-  <ul role="list">
-    <li><a href="#">Giving</a></li>
-    <li><a href="#">Membership</a></li>
-    <li><a href="#">Volunteer</a></li>
-  </ul>
-</div>
-<div class="footer__col">
-  <h3 class="h5">Follow</h3>
-  <ul role="list">
-    <li><a href="#">Facebook</a></li>
-    <li><a href="#">Instagram</a></li>
-  </ul>
-</div>
-      </nav>
-      <p class="footer__legal">
-        <a href="#">Privacy Policy</a>. 
-        &copy; 2024 Providence Preservation Society. All rights reserved.
-      </p>-->
     </footer>
     <div hidden>
       <svg role="img" xmlns="http://www.w3.org/2000/svg">

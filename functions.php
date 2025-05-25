@@ -18,7 +18,7 @@ add_action( 'after_setup_theme', 'pps_post_format_setup' );
 if ( ! function_exists( 'pps_editor_style' ) ) :
   function pps_editor_style() {
     add_theme_support( 'editor-style' );
-    add_editor_style( 'assets/css/editor-style.css' );
+    add_editor_style( get_template_directory_uri() . '/assets/css/editor-style.css' );
     add_editor_style( 'https://use.typekit.net/msx3awg.css' );
   }
 endif;
