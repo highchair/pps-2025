@@ -1,12 +1,12 @@
 a {
-  color: var(--fc-link-fg);
+  color: var(--wp--preset--color--primary);
   text-decoration: underline;
   text-decoration-skip-ink: auto; /* Reset */
-  transition: var(--transition-default);
+  transition: var(--tran-default);
 
   &:hover,
   &:focus {
-    color: var(--fc-link-hover-fg);
+    color: var(--wp--preset--color--primary-dk);
     text-decoration: none;
   }
 

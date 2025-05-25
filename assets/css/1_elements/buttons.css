@@ -9,16 +9,16 @@ input[type='submit'][class] {
 .btn__secondary,
 .search-form .search-submit {
   /* A neutral default color */
-  background-color: rgba(from var(--c-rich-black) r g b / 0.2);
+  background-color: rgba(from var(--wp--preset--color--default-fg) r g b / 0.2);
   border-radius: 2rem;
-  color: var(--c-rich-black);
+  color: var(--wp--preset--color--default-fg);
   display: inline-block;
-  font-family: var(--ff-accent);
+  font-family: var(--wp--preset--font-family--accent);
   font-size: 1.125rem;
   font-variation-settings: "wght" var(--fw-accent-bold);
   padding: 0.75rem 1.75rem;
   text-decoration: none;
-  transition: var(--transition-default);
+  transition: var(--tran-default);
 
   @supports (text-box-trim: trim-both;) {
     text-box-trim: trim-both;
@@ -29,7 +29,7 @@ input[type='submit'][class] {
 
   &:hover,
   &:focus {
-    background-color: rgba(from var(--c-rich-black) r g b / 0.35);
+    background-color: rgba(from var(--wp--preset--color--default-fg) r g b / 0.35);
     cursor: pointer;
     text-decoration: none;
   }
@@ -37,17 +37,17 @@ input[type='submit'][class] {
 
 .btn__primary,
 .btn__secondary {
-  background-color: var(--fc-button-bg);
-  color: var(--fc-button-fg);
+  background-color: var(--wp--preset--color--primary-dk);
+  color: var(--wp--preset--color--default-bg);
 
   &:hover,
   &:focus {
-    background-color: var(--fc-button-hover-bg);
-    color: var(--fc-button-hover-fg);
+    background-color: var(--wp--preset--color--primary-dk);
+    color: var(--wp--preset--color--secondary);
   }
 }
 
 .btn__secondary {
-  background-color: var(--fc-button-second-bg);
-  color: var(--fc-button-second-fg);
+  background-color: var(--wp--preset--color--secondary);
+  color: var(--wp--preset--color--primary-dk);
 }

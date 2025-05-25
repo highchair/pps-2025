@@ -1,34 +1,34 @@
 .footer {
-  background-color: var(--fc-footer-bg);
-  color: var(--fc-footer-fg);
+  background-color: var(--wp--preset--color--primary);
+  color: var(--wp--preset--color--default-bg);
   display: flex;
   flex-flow: column;
   align-items: start;
   gap: 3em;
-  padding-block: var(--space-32-48) var(--space-48-64);
+  padding-block: var(--wp--preset--spacing--lg) var(--wp--preset--spacing--xl);
   padding-inline: var(--space-container-inline);
   width: 100%;
 
   a {
     border-bottom: 1px solid transparent;
-    color: var(--fc-footer-fg);
+    color: var(--wp--preset--color--default-bg);
 
     &:hover,
     &:focus {
       border-bottom: 1px solid currentColor;
-      color: var(--c-blue-jewel-tint-light);
+      color: var(--wp--preset--color--primary-tint-lt);
     }
   }
 
   a:focus,
   button:focus,
   input:focus {
-    outline: var(--focus-style) var(--fc-footer-accent);
+    outline: var(--focus-style) var(--wp--preset--color--secondary);
     outline-offset: 2px;
   }
 
   .brand {
-    color: var(--fc-footer-fg);
+    color: var(---wp--preset--color--default-bg);
   }
 
   .brand__logo {
@@ -56,7 +56,7 @@
 .footer__image {
   background: radial-gradient(
     ellipse at bottom,
-    rgba(from #72CCDA r g b / 1) 2%, rgba(from var(--fc-footer-bg) r g b / 1) 66%);
+    rgba(from #72CCDA r g b / 1) 2%, rgba(from var(--wp--preset--color--primary) r g b / 1) 66%);
   display: none;
 
   @media (min-width: 48em) {
@@ -116,8 +116,8 @@
 
 .newsletter {
 
-  .h1 {
-    color: var(--fc-footer-accent);
+  .has-h-2-font-size {
+    color: var(--wp--preset--color--secondary);
   }
 
   input {

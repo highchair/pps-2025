@@ -4,19 +4,19 @@
 .editor-styles-wrapper {
 
   > :where(:not(.alignwide):not(.alignfull)) {
-    max-width: var(--content-size);
+    max-width: var(--wp--style--global--content-size);
     margin-inline: auto !important;
     padding-inline: var(--space-container-inline);
   }
 
   > :where(.alignwide) {
-    max-width: var(--wide-size);
+    max-width: var(--wp--style--global--wide-size);
     margin-inline: auto !important;
     padding-inline: var(--space-container-inline);
   }
 
   > :where(.alignfull) {
-    max-width: var(--full-size);
+    max-width: var(--wp--style--global--full-size);
     margin-inline: auto !important;
     padding-inline: var(--space-container-inline);
   }

@@ -21,7 +21,7 @@
 /* Global styles */
 .header {
   backdrop-filter: blur(0.5em);
-  background-color: rgba(from var(--fc-default-bg) r g b / 0.92);
+  background-color: rgba(from var(--wp--preset--color--default-bg) r g b / 0.92);
   transition: box-shadow 500ms ease;
 
   .not-scrolled & {
@@ -48,7 +48,7 @@
   align-items: center;
   justify-content: space-between;
   margin-inline: auto;
-  max-width: var(--full-size);
+  max-width: var(--wp--style--global--full-size);
   padding-block: 0.5em;
   padding-inline: var(--space-container-inline);
 }
@@ -76,11 +76,11 @@
 }
 
 .brand {
-  color: var(--fc-default-fg);
+  color: var(--wp--preset--color--default-fg);
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  gap: var(--space-8-12);
+  gap: var(--wp--preset--spacing--x-sm);
 }
 
 .brand__logo {

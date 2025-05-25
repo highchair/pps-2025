@@ -51,7 +51,7 @@ select {
 /* Apply the browser default accent color to elements that accept it */
 input,
 progress {
-  accent-color: var(--fc-accent);
+  accent-color: var(--wp--preset--color--primary);
 }
 
 /* Make sure textareas without a rows attribute are not tiny */

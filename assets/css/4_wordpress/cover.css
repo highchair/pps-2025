@@ -1,0 +1,91 @@
+/* Cover */
+.wp-block-cover {
+
+  /* The overlay */
+  .wp-block-cover__background {
+    /* we hide this element but transfer its class definitions to the adjacent sibling */
+    display: none;
+  }
+
+  /* The content */
+  .wp-block-cover__inner-container {
+    border-radius: var(--brad-sm);
+    padding-block: var(--wp--preset--spacing--md);
+  }
+
+  /* Transferring background color */
+  &:has(.has-default-bg-background-color) .wp-block-cover__inner-container {
+    background-color: var(--wp--preset--color--default-bg);
+  }
+  &:has(.has-default-fg-background-color) .wp-block-cover__inner-container {
+    background-color: var(--wp--preset--color--default-fg);
+  }
+  &:has(.has-primary-background-color) .wp-block-cover__inner-container {
+    background-color: var(--wp--preset--color--primary);
+  }
+  &:has(.has-primary-dk-background-color) .wp-block-cover__inner-container {
+    background-color: var(--wp--preset--color--primary-dk);
+  }
+  &:has(.has-primary-tint-background-color) .wp-block-cover__inner-container {
+    background-color: var(--wp--preset--color--primary-tint);
+  }
+  &:has(.has-primary-lt-tint-background-color) .wp-block-cover__inner-container {
+    background-color: var(--wp--preset--color--primary-tint);
+  }
+  &:has(.has-secondary-background-color) .wp-block-cover__inner-container {
+    background-color: var(--wp--preset--color--secondary);
+  }
+  &:has(.has-secondary-tint-background-color) .wp-block-cover__inner-container {
+    background-color: var(--wp--preset--color--secondary-tint);
+  }
+  &:has(.has-border-background-color) .wp-block-cover__inner-container {
+    background-color: var(--wp--preset--color--border);
+  }
+  &:has(.has-border-lt-background-color) .wp-block-cover__inner-container {
+    background-color: var(--wp--preset--color--border-lt);
+  }
+  &:has(.has-gray-lt-background-color) .wp-block-cover__inner-container {
+    background-color: var(--wp--preset--color--gray-lt);
+  }
+  &:has(.has-gray-md-background-color) .wp-block-cover__inner-container {
+    background-color: var(--wp--preset--color--gray-md);
+  }
+
+  /* Transferring background dim */
+  &:has(.has-background-dim-100) .wp-block-cover__inner-container {
+    opacity: 1;
+  }
+  &:has(.has-background-dim-90) .wp-block-cover__inner-container {
+    opacity: 0.9;
+  }
+  &:has(.has-background-dim-80) .wp-block-cover__inner-container {
+    opacity: 0.8;
+  }
+  &:has(.has-background-dim-70) .wp-block-cover__inner-container {
+    opacity: 0.7;
+  }
+  &:has(.has-background-dim-60) .wp-block-cover__inner-container {
+    opacity: 0.6;
+  }
+  &:has(.has-background-dim-50) .wp-block-cover__inner-container {
+    opacity: 0.5;
+  }
+  &:has(.has-background-dim-40) .wp-block-cover__inner-container {
+    opacity: 0.4;
+  }
+  &:has(.has-background-dim-30) .wp-block-cover__inner-container {
+    opacity: 0.3;
+  }
+  &:has(.has-background-dim-20) .wp-block-cover__inner-container {
+    opacity: 0.2;
+  }
+  &:has(.has-background-dim-10) .wp-block-cover__inner-container {
+    opacity: 0.1;
+  }
+
+  &.has-custom-content-position {
+    .wp-block-cover__inner-container {
+      max-width: 50%;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+/* When a group has a background color, give it default padding */
+.wp-block-group {
+  &.has-background {
+    padding-block: var(--wp--preset--spacing--sm);
+    padding-inline: var(--wp--preset--spacing--sm-md);
+
+    /* If nested groups, remove the default bg color */
+    .wp-block-group:not(.has-background) {
+      background-color: transparent;
+    }
+  }
+}

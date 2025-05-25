@@ -1,6 +1,6 @@
 html {
   /* Sets the color of the overscroll area in some browsers */
-  background-color: var(--fc-footer-bg);
+  background-color: var(--wp--preset--color--primary);
 
   /* Prevent font size inflation */
   -moz-text-size-adjust: none;
@@ -27,10 +27,10 @@ body {
   font-kerning: normal;
 
   /* Supply fallback values for the most basic variable declarations */
-  background-color: var(--fc-default-bg, #fff);
-  color: var(--fc-default-fg, #242D2E);
-  font-family: var(--ff-default);
-  font-size: var(--fts-base, 100%);
+  background-color: var(--wp--preset--color--default-bg, #fff);
+  color: var(--wp--preset--color--default-fg, #242D2E);
+  font-family: var(--wp--preset--font-family--default);
+  font-size: var(--wp--preset--font-size--base, 100%);
   font-optical-sizing: auto;
   font-weight: var(--fw-default-normal);
   line-height: var(--lh-normal);
@@ -59,6 +59,6 @@ body {
 
 /* When a visitor selects text to copy */
 ::selection {
-  background-color: var(--fc-default-fg);
-  color: var(--fc-default-bg);
+  background-color: var(--wp--preset--color--default-fg);
+  color: var(--wp--preset--color--default-bg);
 }

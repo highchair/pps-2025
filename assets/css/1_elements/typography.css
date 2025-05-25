@@ -3,14 +3,15 @@ p, li, dl, dt, dd, figure, blockquote {
   text-wrap: pretty;
 }
 
-.ts-gigantic,
-.ts-huge,
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
+/* Set header line-height and anything with a header font size */
+.has-xxl-font-size,
+.has-xl-font-size,
+h1, .has-h-1-font-size,
+h2, .has-h-2-font-size,
+h3, .has-h-3-font-size,
+h4, .has-h-4-font-size,
+h5, .has-h-5-font-size,
+h6, .has-h-6-font-size {
   line-height: var(--lh-tight);
 }
 
@@ -18,49 +19,49 @@ h6, .h6 {
 /* Sizes for WP classes like ".has-h-6-font-size" are handled by inline styles  
  coming from the theme.json set up */
 /*.ts-gigantic {
-  font-family: var(--ff-accent);
-  font-size: var(--fts-xxl);
+  font-family: var(--wp--preset--font-family--accent);
+  font-size: var(--wp--preset--font-size--xxl);
   font-variation-settings: "wght" var(--fw-accent-light);
 }
 *.ts-huge {
-  font-family: var(--ff-accent);
-  font-size: var(--fts-xl);
+  font-family: var(--wp--preset--font-family--accent);
+  font-size: var(--wp--preset--font-size--xl);
   font-variation-settings: "wght" var(--fw-accent-normal);
 }*/
 
-h1, .h1, h1.wp-block-heading {
-  font-family: var(--ff-accent);
-  font-size: var(--fts-h1);
+h1, h1.wp-block-heading {
+  font-family: var(--wp--preset--font-family--accent);
+  font-size: var(--wp--preset--font-size--h-1);
   font-variation-settings: "wght" var(--fw-accent-semi);
 }
 
-h2, .h2, h2.wp-block-heading{
-  font-family: var(--ff-accent);
-  font-size: var(--fts-h2);
+h2, h2.wp-block-heading{
+  font-family: var(--wp--preset--font-family--accent);
+  font-size: var(--wp--preset--font-size--h-2);
   font-variation-settings: "wght" var(--fw-accent-bold);
 }
 
-h3, .h3, h3.wp-block-heading {
-  font-family: var(--ff-accent);
-  font-size: var(--fts-h3);
+h3, h3.wp-block-heading {
+  font-family: var(--wp--preset--font-family--accent);
+  font-size: var(--wp--preset--font-size--h-3);
   font-variation-settings: "wght" var(--fw-accent-bold);
 }
 
-h4, .h4, h4.wp-block-heading, blockquote:not(.is-style-plain) p, legend {
-  font-family: var(--ff-accent);
-  font-size: var(--fts-h4);
+h4, h4.wp-block-heading, blockquote:not(.is-style-plain) p, legend {
+  font-family: var(--wp--preset--font-family--accent);
+  font-size: var(--wp--preset--font-size--h-4);
   font-variation-settings: "wght" var(--fw-accent-semi);
 }
 
-h5, .h5, h5.wp-block-heading {
-  font-family: var(--ff-default);
-  font-size: var(--fts-h5);
+h5, h5.wp-block-heading {
+  font-family: var(--wp--preset--font-family--default);
+  font-size: var(--wp--preset--font-size--h-5);
   font-weight: var(--fw-default-bold);
 }
 
-h6, .h6, h6.wp-block-heading {
-  font-family: var(--ff-default);
-  font-size: var(--fts-h6);
+h6, h6.wp-block-heading {
+  font-family: var(--wp--preset--font-family--default);
+  font-size: var(--wp--preset--font-size--h-6);
   font-weight: var(--fw-default-bold);
   letter-spacing: var(--ls-normal);
   text-transform: uppercase;
@@ -69,18 +70,18 @@ h6, .h6, h6.wp-block-heading {
 /* Vertical Rhythm
 :is(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, figure, table, hr, pre) +
 :is(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, figure, table, hr, pre) { */
-.v__rhythm > * + * {
+/*.v__rhythm > * + * {
   @supports (margin-block-start: 1lh) {
     margin-block-start: 1lh;
   }
   @supports not (margin-block-start: 1lh) {
     margin-block-start: calc(var(--lh-normal) * 1rem);
   }
-}
+}*/
 
-/*p*/ .has-base-font-size {
-  font-size: var(--fts-base, 100%);
-}
+/*p .has-base-font-size {
+  font-size: var(--wp--preset--font-size--base, 100%);
+}*/
 
 ul,
 ol {
@@ -94,10 +95,10 @@ ol {
 
 blockquote,
 .wp-block-quote {
-  color: var(--fc-accent);
+  color: var(--wp--preset--color--primary);
   overflow: hidden;
-  padding-block: var(--space-16-24);
-  padding-inline-start: var(--space-32-48);
+  padding-block: var(--wp--preset--spacing--sm);
+  padding-inline-start: var(--wp--preset--spacing--lg);
   position: relative;
 
   &::after {
@@ -119,12 +120,12 @@ blockquote.is-style-plain,
 
 
 figure:has(blockquote) figcaption {
-  padding-inline-start: var(--space-32-48);
+  padding-inline-start: var(--wp--preset--spacing--lg);
 }
 
 figure figcaption,
 small {
-  font-size: var(--fts-small);
+  font-size: var(--wp--preset--font-size--small);
 }
 
 hr {

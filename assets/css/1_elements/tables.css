@@ -9,18 +9,18 @@ table {
   }
 
   caption {
-    font-family: var(--ff-accent);
-    font-size: var(--fts-h3);
+    font-family: var(--wp--preset--font-family--accent);
+    font-size: var(--wp--preset--font-size--h-3);
     font-variation-settings: "wght" var(--fw-accent-bold);
   }
 
   th {
-    border-bottom: 2px solid var(--fc-border-default);
+    border-bottom: 2px solid var(--wp--preset--color--border);
     padding-block: 0.25em;
   }
 
   td {
-    border-bottom: 1px solid var(--fc-border-light);
+    border-bottom: 1px solid var(--wp--preset--color--border-lt);
     padding-block: 0.25em;
   }
 
