@@ -5,7 +5,7 @@
     "appearanceTools": true,
     "border": {
       "color": true,
-      "radius": false,
+      "radius": true,
       "style": true,
       "width": true
     },
@@ -104,7 +104,8 @@
     },
     "layout": {
       "contentSize": "48rem",
-      "wideSize": "75rem"
+      "wideSize": "96rem",
+      "fullSize": "120rem"
     },
     "position": {
       "sticky": false
@@ -119,47 +120,47 @@
       "customSpacingSize": false,
       "spacingSizes": [
         {
-          "name": "Extra Small",
+          "name": "Extra Small (12px)",
           "size": "clamp(0.5rem, 0.35rem + 0.5vw, 0.75rem)",
           "slug": "x-sm"
         },
         {
-          "name": "Small",
+          "name": "Small (20px)",
           "size": "clamp(1rem, 0.7rem + 1vw, 1.5rem)",
           "slug": "sm"
         },
         {
-          "name": "Small to Medium",
+          "name": "Small to Medium (16 to 32px)",
           "size": "clamp(1rem, 0.4rem + 2vw, 2rem)",
           "slug": "sm-md"
         },
         {
-          "name": "Medium",
+          "name": "Medium (32px)",
           "size": "clamp(1.5rem, 1.2rem + 1vw, 2rem)",
           "slug": "md"
         },
         {
-          "name": "Medium to XLarge",
+          "name": "Medium to XLarge (24 to 64px)",
           "size": "clamp(1.5rem, 0rem + 5vw, 4rem)",
           "slug": "md-xl"
         },
         {
-          "name": "Large",
+          "name": "Large (48px)",
           "size": "clamp(2rem, 1.4rem + 2vw, 3rem)",
           "slug": "lg"
         },
         {
-          "name": "XLarge",
+          "name": "XLarge (64px)",
           "size": "clamp(3rem, 2.4rem + 2vw, 4rem)",
           "slug": "xl"
         },
         {
-          "name": "XL to Huge",
+          "name": "Large to Huge (48 to 80px)",
           "size": "clamp(3rem, 1.8rem + 4vw, 5rem)",
           "slug": "xl-xxl"
         },
         {
-          "name": "Huge",
+          "name": "Huge (80px)",
           "size": "clamp(4rem, 3.4rem + 2vw, 5rem)",
           "slug": "xxl"
         }
@@ -190,8 +191,8 @@
       "fluid": true,
       "fontSizes": [
         {
-          "name": "Small",
-          "size": "0.875rem",
+          "name": "Small (15px)",
+          "size": "0.9375rem",
           "slug": "sm",
           "fluid": {
             "min": "0.875rem",
@@ -199,8 +200,8 @@
           }
         },
         {
-          "name": "Normal",
-          "size": "1rem",
+          "name": "Normal (18px)",
+          "size": "1.125rem",
           "slug": "base",
           "fluid": {
             "min": "1rem",
@@ -208,26 +209,17 @@
           }
         },
         {
-          "name": "Header 6",
-          "size": "1.2656rem",
+          "name": "Header 6 (21px)",
+          "size": "1.3275rem",
           "slug": "h6",
           "fluid": {
-            "min": "1.2656rem",
-            "max": "1.5665rem"
+            "min": "1.125rem",
+            "max": "1.3275rem"
           }
         },
         {
-          "name": "Header 5",
-          "size": "1.4238rem",
-          "slug": "h5",
-          "fluid": {
-            "min": "1.4238rem",
-            "max": "1.8484rem"
-          }
-        },
-        {
-          "name": "Header 5",
-          "size": "1.2656rem",
+          "name": "Header 5 (25px)",
+          "size": "1.5665rem",
           "slug": "h5",
           "fluid": {
             "min": "1.2656rem",
@@ -235,8 +227,8 @@
           }
         },
         {
-          "name": "Header 4",
-          "size": "1.4238rem",
+          "name": "Header 4 (28px)",
+          "size": "1.8484rem",
           "slug": "h4",
           "fluid": {
             "min": "1.4238rem",
@@ -244,8 +236,8 @@
           }
         },
         {
-          "name": "Header 3",
-          "size": "1.6018rem",
+          "name": "Header 3 (34px)",
+          "size": "2.1811rem",
           "slug": "h3",
           "fluid": {
             "min": "1.6018rem",
@@ -253,8 +245,8 @@
           }
         },
         {
-          "name": "Header 2",
-          "size": "1.802rem",
+          "name": "Header 2 (40px)",
+          "size": "2.5737rem",
           "slug": "h2",
           "fluid": {
             "min": "1.802rem",
@@ -262,8 +254,8 @@
           }
         },
         {
-          "name": "Header 1",
-          "size": "2.0273rem",
+          "name": "Header 1 (48px)",
+          "size": "3.037rem",
           "slug": "h1",
           "fluid": {
             "min": "2.0273rem",
@@ -271,8 +263,8 @@
           }
         },
         {
-          "name": "Huge",
-          "size": "2.2807rem",
+          "name": "Huge (57px)",
+          "size": "3.5837rem",
           "slug": "xl",
           "fluid": {
             "min": "2.2807rem",
@@ -280,8 +272,8 @@
           }
         },
         {
-          "name": "Gigantic",
-          "size": "2.0273rem",
+          "name": "Gigantic (68px)",
+          "size": "4.2287rem",
           "slug": "xxl",
           "fluid": {
             "min": "2.5658rem",
