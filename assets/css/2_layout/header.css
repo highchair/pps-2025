@@ -22,7 +22,9 @@
 .header {
   backdrop-filter: blur(0.5em);
   background-color: rgba(from var(--wp--preset--color--default-bg) r g b / 0.92);
+  position: relative;
   transition: box-shadow 500ms ease;
+  z-index: var(--z-header);
 
   .not-scrolled & {
     box-shadow: 0 0 1rem rgba(0,0,0,0);
@@ -39,6 +41,7 @@
       and scrolling will be much smoother (no elements will jump around) */
     position: sticky;
     top: 0;
+    z-index: var(--z-header);
   }
 }
 

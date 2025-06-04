@@ -58,7 +58,7 @@
   > .menu-item {
     > a {
       font-family: var(--wp--preset--font-family--accent);
-      font-size: var(--wp--preset--font-size--h-6);
+      font-size: 112.5%;
     }
   }
 }
@@ -276,8 +276,8 @@
   .nav__utility {
     .menu-item a {
       font-size: var(--fts-small);
-      padding-block: 0.25rem;
-      padding-inline: 0.75rem;
+      padding-block: 0.25em;
+      padding-inline: 0.75em;
   
       &:hover,
       &:focus {
@@ -287,25 +287,29 @@
     }
   }
 
-  .menu-item.social a,
-  .menu-item.search a {
-    color: var(--fc-default-bg);
-    height: 2em;
-    overflow: hidden;
-    padding: 0;
-    white-space: nowrap;
-    width: 3.25em;
+  .menu-item.social,
+  .menu-item.search {
+    margin-inline-end: 0.5em;
+    
+    a {
+      color: var(--fc-default-bg);
+      height: 2em;
+      overflow: hidden;
+      padding: 0;
+      white-space: nowrap;
+      width: 3em;
 
-    &::before {
-      color: var(--wp--preset--color--gray-lt);
-      font-size: 150%;
-      margin: 0 0.5em;
+      &::before {
+        color: var(--wp--preset--color--gray-lt);
+        font-size: 150%;
+        margin: 0 0.5em;
+      }
+
+      &:hover::before,
+      &:focus::before {
+        color: var(--wp--preset--color--primary);
+      }
     }
-
-    &:hover::before,
-    &:focus::before {
-      color: var(--wp--preset--color--primary);
-    } 
   }
 }
 

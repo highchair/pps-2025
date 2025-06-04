@@ -20,8 +20,8 @@
 
   /* Max-width containers values */
   /* --wp--style--global--content-size: 48rem; 768px */
-  /* --wp--style--global--wide-size: 75rem;    1200px */
-  --wp--style--global--full-size: 100rem;   /* 1600px */
+  /* --wp--style--global--wide-size: 96rem;    1600px */
+  /* --wp--style--global--full-size: 120rem;   1920px */
 
   /* - - - - - - - - – */
   /* Semantic variables */
@@ -64,4 +64,7 @@
   --tran-default-timing: 250ms;
   --tran-default-function: ease;
   --tran-default: var(--tran-default-property) var(--tran-default-timing) var(--tran-default-function);
+
+  /* Z-indices */
+  --z-header: 1000;
 }

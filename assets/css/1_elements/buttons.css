@@ -4,7 +4,7 @@ input[type='submit'][class] {
   border: 0;
 }
 
-.btn,
+.wp-element-button,
 .btn__primary,
 .btn__secondary,
 .search-form .search-submit {
@@ -26,28 +26,32 @@ input[type='submit'][class] {
   @supports not (text-box-trim: trim-both;) {
     line-height: var(--lh-tight);
   }
-
-  &:hover,
-  &:focus {
-    background-color: rgba(from var(--wp--preset--color--default-fg) r g b / 0.35);
-    cursor: pointer;
-    text-decoration: none;
-  }
 }
 
-.btn__primary,
-.btn__secondary {
-  background-color: var(--wp--preset--color--primary-dk);
-  color: var(--wp--preset--color--default-bg);
+.wp-element-button:hover,
+.wp-element-button:focus,
+.search-form .search-submit:hover,
+.search-form .search-submit:focus {
+  background-color: rgba(from var(--wp--preset--color--default-fg) r g b / 0.35);
+  color: var(--wp--preset--color--default-fg);
+  cursor: pointer;
+  text-decoration: none;
+}
 
-  &:hover,
-  &:focus {
-    background-color: var(--wp--preset--color--primary-dk);
-    color: var(--wp--preset--color--secondary);
-  }
+.btn__primary {
+  background-color: var(--wp--preset--color--primary);
+  color: var(--wp--preset--color--default-bg);
 }
 
 .btn__secondary {
   background-color: var(--wp--preset--color--secondary);
   color: var(--wp--preset--color--primary-dk);
+}
+
+.btn__primary:hover,
+.btn__primary:focus,
+.btn__secondary:hover,
+.btn__secondary:focus {
+  background-color: var(--wp--preset--color--primary-dk);
+  color: var(--wp--preset--color--secondary);
 }
