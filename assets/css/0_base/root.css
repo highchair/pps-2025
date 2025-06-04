@@ -20,8 +20,8 @@
 
   /* Max-width containers values */
   /* --wp--style--global--content-size: 48rem; 768px */
-  /* --wp--style--global--wide-size: 96rem;    1600px */
-  /* --wp--style--global--full-size: 120rem;   1920px */
+  /* --wp--style--global--wide-size: 92rem;    1472px */
+  --wp--style--global--full-size: 106rem;  /* 1696px */
 
   /* - - - - - - - - – */
   /* Semantic variables */

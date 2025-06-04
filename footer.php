@@ -10,34 +10,36 @@
  */
 ?>
     <footer class="l__footer footer">
-      <div class="newsletter">
-        <h2 class="has-h-1-font-size">Subscribe</h2>
-        <p>Weekly alerts, news, and updates from PPS</p>
-        <form class="newsletter__form">
-          <label for="email" class="sr">Email</label>
-          <input type="email" id="email" name="email" spellcheck="false" placeholder="example@domain.com" />
-          <button href="#" class="btn__secondary">Get our E-News</button>
-        </form>
+      <div class="container footer__wrap">
+        <div class="newsletter">
+          <h2 class="has-h-1-font-size">Subscribe</h2>
+          <p>Weekly alerts, news, and updates from PPS</p>
+          <form class="newsletter__form">
+            <label for="email" class="sr">Email</label>
+            <input type="email" id="email" name="email" spellcheck="false" placeholder="example@domain.com" />
+            <button href="#" class="btn__secondary">Get our E-News</button>
+          </form>
+        </div>
+        <div class="footer__image">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pps-streetscape-illustration.png" alt="" />
+        </div>
+        <a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+          <img class="brand__logo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pps-logo-circle.svg" alt="" />
+          <svg class="brand__wordmark" viewBox="0 0 170 66">
+            <title>Providence Preservation Society</title>
+            <use xlink:href="#wordmark"></use>
+          </svg>
+        </a>
+        <?php if ( is_active_sidebar( 'footer-contact' ) ) : ?>
+          <?php dynamic_sidebar( 'footer-contact' ); ?>
+        <?php endif; ?>
+        <?php if ( is_active_sidebar( 'footer-links' ) ) : ?>
+          <?php dynamic_sidebar( 'footer-links' ); ?>
+        <?php endif; ?>
+        <?php if ( is_active_sidebar( 'footer-colophon' ) ) : ?>
+          <?php dynamic_sidebar( 'footer-colophon' ); ?>
+        <?php endif; ?>
       </div>
-      <div class="footer__image">
-        <img src="images/pps-streetscape-illustration.png" alt="" />
-      </div>
-      <a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-        <img class="brand__logo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pps-logo-circle.svg" alt="" />
-        <svg class="brand__wordmark" viewBox="0 0 170 66">
-          <title>Providence Preservation Society</title>
-          <use xlink:href="#wordmark"></use>
-        </svg>
-      </a>
-      <?php if ( is_active_sidebar( 'footer-contact' ) ) : ?>
-        <?php dynamic_sidebar( 'footer-contact' ); ?>
-      <?php endif; ?>
-      <?php if ( is_active_sidebar( 'footer-links' ) ) : ?>
-        <?php dynamic_sidebar( 'footer-links' ); ?>
-      <?php endif; ?>
-      <?php if ( is_active_sidebar( 'footer-colophon' ) ) : ?>
-        <?php dynamic_sidebar( 'footer-colophon' ); ?>
-      <?php endif; ?>
     </footer>
     <div hidden>
       <svg role="img" xmlns="http://www.w3.org/2000/svg">

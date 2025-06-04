@@ -35,7 +35,7 @@ h1, h1.wp-block-heading {
   font-variation-settings: "wght" var(--fw-accent-semi);
 }
 
-h2, h2.wp-block-heading{
+h2, h2.wp-block-heading {
   font-family: var(--wp--preset--font-family--accent);
   font-size: var(--wp--preset--font-size--h-2);
   font-variation-settings: "wght" var(--fw-accent-bold);

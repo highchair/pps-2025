@@ -1,12 +1,6 @@
 .footer {
   background-color: var(--wp--preset--color--primary);
   color: var(--wp--preset--color--default-bg);
-  display: flex;
-  flex-flow: column;
-  align-items: start;
-  gap: 3em;
-  padding-block: var(--wp--preset--spacing--lg) var(--wp--preset--spacing--xl);
-  padding-inline: var(--space-container-inline);
   width: 100%;
 
   a {
@@ -26,28 +20,73 @@
     outline: var(--focus-style) var(--wp--preset--color--secondary);
     outline-offset: 2px;
   }
+}
+
+.footer__wrap {
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  gap: 3em;
+  margin-inline: auto;
+  max-width: var(--wp--style--global--full-size);
+  padding-block: var(--wp--preset--spacing--md-xl) var(--wp--preset--spacing--xl-xxl);
+  padding-inline: var(--space-container-inline);
+  width: 100%;
 
   .brand {
     color: var(---wp--preset--color--default-bg);
   }
-
+  
   .brand__logo {
     height: 6em;
     width: 6em;
   }
-
+  
   .brand__wordmark {
     height: 4em;
   }
+
+  /* 1200px breakpoint */
+  @media (min-width: 75em) {
+    /* Switch from Flexbox to Grid */
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+      'newsletter newsletter newsletter newsletter newsletter'
+      'image image image image image'
+      'brand nav nav nav nav'
+      'address nav nav nav nav'
+      'legal legal legal legal legal';
+
+    .newsletter {
+      grid-area: newsletter;
+    }
+    .footer__image {
+      grid-area: image;
+    }
+    .brand {
+      grid-area: brand;
+    }
+    .footer__address {
+      grid-area: address;
+    }
+    .footer__nav {
+      grid-area: nav;
+    }
+    .footer__legal {
+      grid-area: legal;
+    }
+  }
 }
 
+/* 768px breakpoint */
 @media (min-width: 48em) {
   .footer {
     flex-flow: row wrap;
     gap: 3em 1.5rem;
   }
 
-  .brand,
+  .footer__wrap .brand,
   .footer__address {
     flex: 1 0 48%;
   }
@@ -59,6 +98,7 @@
     rgba(from #72CCDA r g b / 1) 2%, rgba(from var(--wp--preset--color--primary) r g b / 1) 66%);
   display: none;
 
+  /* 768px breakpoint */
   @media (min-width: 48em) {
     display: block;
   }
@@ -83,8 +123,13 @@
 .footer__col {
   flex: 1 0 calc(50% - 0.75rem);
 
+  /* 768px breakpoint */
   @media (min-width: 48em) {
     flex: 1 0 22%;
+  }
+
+  h3 {
+    margin-bottom: 0.5lh;
   }
 
   ul {
@@ -105,19 +150,11 @@
   font-size: var(--fts-small);
 }
 
-.newsletter,
-.newsletter__form {
-  display: flex;
-  flex-flow: column;
-  align-items: start;
-  gap: 1em;
-  width: 100%;
-}
-
 .newsletter {
 
-  .has-h-2-font-size {
+  h2 {
     color: var(--wp--preset--color--secondary);
+    line-height: 1;
   }
 
   input {
@@ -128,14 +165,35 @@
 
 .newsletter__form {
   width: 100%;
-  
+
+  /* 592px breakpoint */
   @media (min-width: 37em) {
-    display: flex;
     flex-flow: row nowrap;
-    align-items: start;
-    gap: 1em;
 
     .btn__secondary {
+      white-space: nowrap;
+    }
+  }
+}
+
+.newsletter,
+.newsletter__form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: start;
+  gap: 1em;
+  width: 100%;
+
+  /* 1200px breakpoint */
+  @media (min-width: 75em) {
+    flex-flow: row nowrap;
+
+    h2 {
+      margin-top: -0.25em;
+    }
+
+    p {
       white-space: nowrap;
     }
   }

@@ -104,8 +104,8 @@
     },
     "layout": {
       "contentSize": "48rem",
-      "wideSize": "96rem",
-      "fullSize": "120rem"
+      "wideSize": "92rem",
+      "fullSize": "106rem"
     },
     "position": {
       "sticky": false

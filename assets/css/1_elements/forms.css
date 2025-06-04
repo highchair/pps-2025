@@ -11,8 +11,8 @@ legend {
 label {
   font-size: var(--fts-small);
   font-weight: var(--fw-default-bold);
-  
-  + input {
+
+  &:not(.sr) + input {
     margin-block-start: 0.5em;
   }
 
