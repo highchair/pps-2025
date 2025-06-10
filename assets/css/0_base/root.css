@@ -30,10 +30,10 @@
   --focus-style: 0.125em dashed currentColor;
 
   /* Typography support */
-  //--wp--preset--font-family--default is set to 'poppins', sans-serif
+  /*--wp--preset--font-family--default is set to 'poppins', sans-serif */
   --fw-default-normal: 400;
   --fw-default-bold: 700;
-  //--wp--preset--font-family--accent is set to 'loretta variable', serif
+  /*--wp--preset--font-family--accent is set to 'loretta variable', serif */
   --fw-accent-light: 300;
   --fw-accent-normal: 450;
   --fw-accent-semi: 550;

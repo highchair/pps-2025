@@ -1,5 +1,6 @@
 a {
   color: var(--wp--preset--color--primary);
+  font-weight: var(--fw-default-bold);
   text-decoration: underline;
   text-decoration-skip-ink: auto; /* Reset */
   transition: var(--tran-default);

@@ -1,0 +1,101 @@
+.single__footer {
+  margin-inline: auto;
+  max-width: var(--wp--style--global--full-size);
+  padding-block: var(--wp--preset--spacing--lg);
+  padding-inline: var(--space-container-inline);
+}
+
+.single__category {
+  background: top center repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
+  padding-block: var(--wp--preset--spacing--lg);
+
+  & + .single__tags {
+    padding-block-start: 0;
+  }
+}
+
+.single__tags {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5em 1em;
+  padding-block: var(--wp--preset--spacing--lg);
+}
+
+.single__tags__label {}
+
+.single__tags__list {
+  display: contents;
+
+  li {}
+
+  a {
+    /* These elements use the `pps__tag` class */
+  }
+}
+
+/*
+<nav class="navigation post-navigation" aria-label="Posts">
+  <h2 class="screen-reader-text">Post navigation</h2>
+  <div class="nav-links">
+    <div class="nav-previous">
+      <a href="#" rel="prev">
+        <span class="nav-label">Older</span>
+        <span class="nav-title"> … </span>
+      </a>
+    </div>
+    <div class="nav-next">
+      <a href="#" rel="next">
+        <span class="nav-label">Newer</span>
+        <span class="nav-title"> … </span>
+      </a>
+    </div>
+  </div>
+</nav>
+*/
+.post-navigation {
+  background: top center repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
+  padding-block: var(--wp--preset--spacing--lg);
+
+  .nav-links {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: start;
+    gap: 1em;
+  }
+
+  .nav-previous,
+  .nav-next {
+
+    a,
+    span {
+      display: block;
+    }
+  }
+
+  .nav-previous {}
+
+  .nav-next {}
+
+  .nav-label {
+    color: var(--wp--preset--color--default-fg);
+    font-weight: var(--fw-default-normal);
+    padding-block-end: var(--wp--preset--spacing--x-sm);
+    text-decoration: none;
+  }
+
+  .nav-title {}
+
+  /* 768px breakpoint */
+  @media (min-width: 48em) {
+    .nav-previous {
+      text-align: left;
+    }
+
+    .nav-next {
+      text-align: right;
+    }
+  }
+}

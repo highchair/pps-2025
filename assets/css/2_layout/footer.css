@@ -180,8 +180,8 @@
 .newsletter__form {
   display: flex;
   flex-flow: column;
-  align-items: center;
-  justify-content: start;
+  align-items: start;
+  justify-content: center;
   gap: 1em;
   width: 100%;
 

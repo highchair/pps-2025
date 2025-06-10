@@ -25,10 +25,14 @@ nav ul {
   padding-inline-start: 0;
 }
 
-/* Make images easier to work with */
+/*
+  Make images easier to work with 
+  Images from WordPress come with dimensions, hence the need for height: auto
+*/
 img,
 picture {
   display: block;
+  height: auto;
   max-width: 100%;
 }
 

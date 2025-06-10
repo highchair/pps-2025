@@ -22,7 +22,11 @@
 
   > .menu-item {
     position: relative;
-    
+
+    a {
+      font-weight: var(--fw-default-normal);
+    }
+
     > a {
       background-color: rgba(from var(--wp--preset--color--primary-tint) r g b / 0);
       display: block;

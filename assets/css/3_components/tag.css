@@ -1,0 +1,17 @@
+.pps__tag {
+  background-color: var(--wp--preset--color--secondary);
+  border-radius: var(--brad-sm);
+  color: var(--wp--preset--color--default-fg);
+  display: inline-block;
+  line-height: 1;
+  padding-block: 0.5em 0.375em;
+  padding-inline: 1em;
+  text-decoration: none !important;
+  transition: var(--tran-default);
+
+  &:hover,
+  &:focus {
+    background-color: var(--wp--preset--color--primary-dk);
+    color: var(--wp--preset--color--secondary);
+  }
+}
