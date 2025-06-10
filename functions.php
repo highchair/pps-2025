@@ -9,20 +9,20 @@ if ( ! function_exists( 'pps_post_format_setup' ) ) :
     // Force HTML5 options when present in function output
     add_theme_support( 'html5', array( 'search-form' ) );
     
-    add_theme_support( 'post-formats', array( 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video' ) );
+    //add_theme_support( 'post-formats', array( 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video' ) );
   }
 endif;
 add_action( 'after_setup_theme', 'pps_post_format_setup' );
 
 // Enqueues editor-style.css in the editors.
-if ( ! function_exists( 'pps_editor_style' ) ) :
-  function pps_editor_style() {
-    add_theme_support( 'editor-style' );
-    add_editor_style( get_template_directory_uri() . '/assets/css/editor-style.css' );
-    add_editor_style( 'https://use.typekit.net/msx3awg.css' );
-  }
-endif;
-add_action( 'enqueue_block_editor_assets', 'pps_editor_style' );
+// if ( ! function_exists( 'pps_editor_style' ) ) :
+//   function pps_editor_style() {
+//     add_theme_support( 'editor-style' );
+//     add_editor_style( get_template_directory_uri() . '/assets/css/editor-style.css' );
+//     add_editor_style( 'https://use.typekit.net/msx3awg.css' );
+//   }
+// endif;
+// add_action( 'enqueue_block_editor_assets', 'pps_editor_style' );
 
 // Enqueues Theme CSS and JS
 if ( ! function_exists( 'pps_enqueue_theme' ) ) :
@@ -31,7 +31,8 @@ if ( ! function_exists( 'pps_enqueue_theme' ) ) :
       'pps-2025-style',
       get_parent_theme_file_uri( 'style.css' ),
       array(),
-      wp_get_theme()->get( 'Version' )
+      filemtime( get_template_directory() . '/assets/css/index.css' ), // Versioning (auto-busts cache)
+      //wp_get_theme()->get( 'Version' )
     );
     wp_enqueue_script(
       'pps-2025-scripts', // Handle (used for dependencies or deregistering)
