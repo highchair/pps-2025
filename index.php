@@ -12,20 +12,25 @@
  * @package PPS 2025
  */
 
-get_header();
+$pps_header_path = locate_template( 'template-parts/header.php', false, false );
+if ( $pps_header_path ) {
+  load_template( $pps_header_path, true );
+}
 ?>
 
   <main id="main" class="site-main">
     <article class="">
+      <pre>
+        This is the single-post.php template
+      </pre>
       <?php
       if ( have_posts() ) :
 
         if ( (is_home()) && (! is_paged()) ) :
           ?>
           <header class="page-header">
-            <?php
-            dynamic_sidebar( 'header-posts' );
-            ?>
+            <h1>Function is_home() is true!</h1>
+            <p>index.php file</p>
           </header>
           <?php
         endif;
@@ -56,4 +61,7 @@ get_header();
   </main>
 
 <?php
-get_footer();
+$pps_footer_path = locate_template( 'template-parts/footer.php', false, false );
+if ( $pps_footer_path ) {
+  load_template( $pps_footer_path, true );
+}
