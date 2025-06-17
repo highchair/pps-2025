@@ -16,7 +16,7 @@ input[type='submit'][class] {
   font-family: var(--wp--preset--font-family--accent);
   font-size: 1.125rem;
   font-variation-settings: "wght" var(--fw-accent-bold);
-  padding: 0.75rem 1.75rem;
+  padding: 0.75em 1.75em;
   text-decoration: none;
   transition: var(--tran-default);
 

@@ -6,11 +6,16 @@
 }
 
 .single__category {
-  background: top center repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
+  background: top left repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
   padding-block: var(--wp--preset--spacing--lg);
 
   & + .single__tags {
     padding-block-start: 0;
+  }
+
+  /* 768px breakpoint */
+  @media (min-width: 48em) {
+    text-align: center;
   }
 }
 
@@ -35,35 +40,17 @@
   }
 }
 
-/*
-<nav class="navigation post-navigation" aria-label="Posts">
-  <h2 class="screen-reader-text">Post navigation</h2>
-  <div class="nav-links">
-    <div class="nav-previous">
-      <a href="#" rel="prev">
-        <span class="nav-label">Older</span>
-        <span class="nav-title"> … </span>
-      </a>
-    </div>
-    <div class="nav-next">
-      <a href="#" rel="next">
-        <span class="nav-label">Newer</span>
-        <span class="nav-title"> … </span>
-      </a>
-    </div>
-  </div>
-</nav>
-*/
+/* <nav class="navigation post-navigation" aria-label="Posts"> … </nav> */
 .post-navigation {
-  background: top center repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
+  background: top left repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
   padding-block: var(--wp--preset--spacing--lg);
 
   .nav-links {
     display: flex;
     flex-flow: column;
-    align-items: center;
+    align-items: start;
     justify-content: start;
-    gap: 1em;
+    gap: var(--wp--preset--spacing--md);
   }
 
   .nav-previous,
@@ -90,6 +77,11 @@
 
   /* 768px breakpoint */
   @media (min-width: 48em) {
+    .nav-links {
+      flex-flow: row nowrap;
+      justify-content: space-between;
+    }
+
     .nav-previous {
       text-align: left;
     }

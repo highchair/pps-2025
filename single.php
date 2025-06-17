@@ -19,25 +19,24 @@ $pps_header_path = locate_template( 'template-parts/header.php', false, false );
 ?>
 
   <main id="main" class="site-main">
-    <article class="">
+    <article>
       <?php
         while ( have_posts() ) :
           the_post();
       ?>
-
-      <header class="">
-        <div class="">
-          <p>
+      <header class="single__header">
+        <div class="single__header__start">
+          <p class="single__header__meta">
             <?php
               $categories = get_the_category();
               if ( ! empty( $categories ) ) {
                 $category = $categories[0];
-                echo '<a class="pps__tag" href="' . esc_url( get_category_link( $category->term_id ) ) . '">'. esc_html( $category->name ) .'</a>';
+                echo '<a class="pps__tag--alt" href="' . esc_url( get_category_link( $category->term_id ) ) . '">'. esc_html( $category->name ) .'</a>';
               }
             ?>
           </p>
-          <h1><?php single_post_title(); ?></h1>
-          <p>
+          <h1 class="single__header__title has-xl-font-size"><?php single_post_title(); ?></h1>
+          <p class="single__header__author">
             By <a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php the_author(); ?></a>
             <span class="separator"></span>
             <?php
@@ -49,7 +48,7 @@ $pps_header_path = locate_template( 'template-parts/header.php', false, false );
             ?>
           </p>
         </div>
-        <div class="">
+        <div class="single__header__end">
         <?php
           if ( has_post_thumbnail() ) {
             $post_thumbnail_id = get_post_thumbnail_id( get_the_ID() );
@@ -73,7 +72,7 @@ $pps_header_path = locate_template( 'template-parts/header.php', false, false );
         ?>
         </div>
       </header>
-      <div class="">
+      <div class="editor-styles-wrapper">
 
         <?php the_content(); ?>
 
@@ -89,18 +88,16 @@ $pps_header_path = locate_template( 'template-parts/header.php', false, false );
             }
           ?>
         </div>
-        <div class="single__tags">
-          <?php
-            $tags = get_the_tags();
-            if ( ! empty( $tags ) ) {
-              echo '<p class="single__tags__label">Tags:</p><ul class="single__tags__list" role="list">';
-              foreach( $tags as $tag ) {
-                echo '<li><a class="pps__tag" href="'. esc_attr( get_tag_link( $tag->term_id ) ) .'">'. $tag->name .'</a></li>';
-              }
-              echo '</ul>';
+        <?php
+          $tags = get_the_tags();
+          if ( ! empty( $tags ) ) {
+            echo '<div class="single__tags"><p class="single__tags__label">Tags:</p><ul class="single__tags__list" role="list">';
+            foreach( $tags as $tag ) {
+              echo '<li><a class="pps__tag" href="'. esc_attr( get_tag_link( $tag->term_id ) ) .'">'. $tag->name .'</a></li>';
             }
-          ?>
-        </div>
+            echo '</ul></div>';
+          }
+        ?>
         <?php
           the_post_navigation(
             array(

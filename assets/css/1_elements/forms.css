@@ -27,7 +27,7 @@ input:not([type='checkbox']):not([type="radio"]):not([type="button"]):not([type=
   color: var(--wp--preset--color--default-fg);
   display: block;
   line-height: var(--lh-tight);
-  padding: 0.75rem 1rem 0.625rem;
+  padding: 0.625em 1em 0.5em;
 
   &::placeholder {
     font-style: italic;

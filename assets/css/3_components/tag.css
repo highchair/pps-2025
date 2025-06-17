@@ -1,4 +1,5 @@
-.pps__tag {
+.pps__tag,
+.pps__tag--alt {
   background-color: var(--wp--preset--color--secondary);
   border-radius: var(--brad-sm);
   color: var(--wp--preset--color--default-fg);
@@ -8,6 +9,17 @@
   padding-inline: 1em;
   text-decoration: none !important;
   transition: var(--tran-default);
+
+  &:hover,
+  &:focus {
+    background-color: var(--wp--preset--color--primary-dk);
+    color: var(--wp--preset--color--secondary);
+  }
+}
+
+.pps__tag--alt {
+  background-color: var(--wp--preset--color--primary);
+  color: var(--wp--preset--color--default-bg);
 
   &:hover,
   &:focus {

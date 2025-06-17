@@ -1,0 +1,54 @@
+.single__header {
+  background: var(--wp--preset--gradient--grad-primary);
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  justify-content: start;
+  gap: var(--wp--preset--spacing--lg);
+  margin-inline: auto;
+  max-width: var(--wp--style--global--full-size);
+  padding-block: var(--wp--preset--spacing--lg);
+  padding-inline: var(--space-container-inline);
+
+  + div {
+    padding-block: var(--wp--preset--spacing--xl);
+  }
+
+  /* 768px breakpoint */
+  @media (min-width: 48em) {
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+}
+
+.single__header__start {
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  justify-content: start;
+  gap: var(--wp--preset--spacing--md);
+}
+
+.single__header__meta {}
+
+.single__header__title {
+  font-variation-settings: "wght" var(--fw-accent-light);
+}
+
+.single__header__author {
+
+  .separator {
+    background: top left no-repeat url('../../images/yellow-hand-drawn-dots.svg') transparent;
+    display: inline-block;
+    height: 1rem;
+    margin-inline: var(--wp--preset--spacing--x-sm);
+    margin-block-end: -0.25rem;
+    width: 0.5rem;
+  }
+}
+
+.single__header__end {}
+
+.post-thumb {}
+
+.post-thumb--vertical {}

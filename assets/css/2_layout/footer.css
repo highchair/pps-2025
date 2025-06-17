@@ -3,17 +3,6 @@
   color: var(--wp--preset--color--default-bg);
   width: 100%;
 
-  a {
-    border-bottom: 1px solid transparent;
-    color: var(--wp--preset--color--default-bg);
-
-    &:hover,
-    &:focus {
-      border-bottom: 1px solid currentColor;
-      color: var(--wp--preset--color--primary-tint-lt);
-    }
-  }
-
   a:focus,
   button:focus,
   input:focus {
@@ -145,6 +134,25 @@
   }
 }
 
+.footer__address,
+.footer__col,
+.footer__legal {
+
+  a {
+    border-bottom: 1px solid transparent;
+    color: var(--wp--preset--color--default-bg);
+    display: inline-block;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      border-color: var(--wp--preset--color--secondary);
+      color: var(--wp--preset--color--primary-tint-lt);
+      text-decoration: none;
+    }
+  }
+}
+
 .footer__a11y,
 .footer__legal {
   font-size: var(--fts-small);
@@ -188,6 +196,7 @@
   /* 1200px breakpoint */
   @media (min-width: 75em) {
     flex-flow: row nowrap;
+    align-items: center;
 
     h2 {
       margin-top: -0.25em;

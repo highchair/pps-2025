@@ -2,18 +2,18 @@
 .wp-block-cover {
 
   /* The overlay */
-  .wp-block-cover__background {
-    /* we hide this element but transfer its class definitions to the adjacent sibling */
+  /* .wp-block-cover__background {
+   we hide this element but transfer its class definitions to the adjacent sibling
     display: none;
-  }
+  } */
 
-  /* The content */
+  /* The content
   .wp-block-cover__inner-container {
     border-radius: var(--brad-sm);
     padding-block: var(--wp--preset--spacing--md);
-  }
+  } */
 
-  /* Transferring background color */
+  /* Transferring background color
   &:has(.has-default-bg-background-color) .wp-block-cover__inner-container {
     background-color: var(--wp--preset--color--default-bg);
   }
@@ -49,9 +49,9 @@
   }
   &:has(.has-gray-md-background-color) .wp-block-cover__inner-container {
     background-color: var(--wp--preset--color--gray-md);
-  }
+  } */
 
-  /* Transferring background dim */
+  /* Transferring background dim
   &:has(.has-background-dim-100) .wp-block-cover__inner-container {
     opacity: 1;
   }
@@ -87,5 +87,5 @@
     .wp-block-cover__inner-container {
       max-width: 50%;
     }
-  }
+  } */
 }

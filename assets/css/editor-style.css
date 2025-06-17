@@ -1,7 +1,40 @@
 /* Main typography elements */
 
-/* Try .editor-styles-wrapper instead? */
+/*article*/
 .editor-styles-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  justify-content: start;
+
+  > :where(*) {
+    margin-inline: auto !important;
+    margin-block-end: 1lh;
+    padding-inline: var(--space-container-inline);
+ 
+    @supports not (margin-block-end: 1lh) {
+      margin-block-end: calc(var(--lh-normal) * 1em);
+    }
+  }
+
+  > :where(.alignfull) {
+    max-width: var(--wp--style--global--full-size);
+  }
+
+  > :where(.alignwide) {
+    max-width: var(--wp--style--global--wide-size);
+  }
+
+  > :where(:not(.alignwide):not(.alignfull)) {
+    max-width: var(--wp--style--global--content-size);
+  }
+
+  /* Remove vertical spacing from some elements */
+  > :where(.wp-block-cover) {
+    margin-block-end: 0;
+    padding: 0;
+  }
+
   .has-xxl-font-size {
     font-family: var(--wp--preset--font-family--accent);
     font-size: var(--wp--preset--font-size--xxl);

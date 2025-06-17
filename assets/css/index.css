@@ -14,6 +14,7 @@
 
 @import '3_components/navs.css';
 @import '3_components/tag.css';
+@import '3_components/post-header.css';
 @import '3_components/post-footer.css';
 
 @import '4_wordpress/general.css';

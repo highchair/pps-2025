@@ -2,22 +2,36 @@
 
 /*article*/
 .editor-styles-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  justify-content: start;
 
-  > :where(:not(.alignwide):not(.alignfull)) {
-    max-width: var(--wp--style--global--content-size);
+  > * {
     margin-inline: auto !important;
+    margin-block-end: calc(var(--lh-normal) * 0.75em);
     padding-inline: var(--space-container-inline);
-  }
-
-  > :where(.alignwide) {
-    max-width: var(--wp--style--global--wide-size);
-    margin-inline: auto !important;
-    padding-inline: var(--space-container-inline);
+    width: 100%;
   }
 
   > :where(.alignfull) {
     max-width: var(--wp--style--global--full-size);
-    margin-inline: auto !important;
-    padding-inline: var(--space-container-inline);
+  }
+
+  > :where(.alignwide) {
+    max-width: var(--wp--style--global--wide-size);
+  }
+
+  > :where(:not(.alignwide):not(.alignfull)) {
+    max-width: var(--wp--style--global--content-size);
+  }
+
+  /* Remove vertical spacing from some elements */
+  > :where(.wp-block-cover, .wp-block-spacer) {
+    margin-block-end: 0;
+  }
+
+  .wp-block-cover {
+    width: 100%;
   }
 }

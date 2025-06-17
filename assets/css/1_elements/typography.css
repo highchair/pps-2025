@@ -83,8 +83,9 @@ h6, h6.wp-block-heading {
   font-size: var(--wp--preset--font-size--base, 100%);
 }*/
 
-ul,
-ol {
+/* WP puts spacing on the UL, so we need to add inner spacing to the LI instead */
+ul li,
+ol li {
   @supports (margin-inline-start: 1lh) {
     margin-inline-start: 1lh;
   }
@@ -102,14 +103,20 @@ blockquote,
   position: relative;
 
   &::after {
-    background: center repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
+    background: top left repeat-y url('../../images/yellow-hand-drawn-dots-vert.svg') transparent;
     content: '';
     display: block;
-    height: 0.75rem;
     position: absolute;
-    left: calc(-50% + 0.75rem);
-    transform: rotate(90deg);
-    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0.75rem;
+  }
+
+  > cite {
+    color: var(--wp--preset--color--default-fg);
+    font-style: normal;
+    font-weight: var(--fw-default-bold);
   }
 }
 
@@ -118,7 +125,7 @@ blockquote.is-style-plain,
   /* The plain style allows the author to set the text color and the font size */
 }
 
-
+/* Are these used anywhere? */
 figure:has(blockquote) figcaption {
   padding-inline-start: var(--wp--preset--spacing--lg);
 }
