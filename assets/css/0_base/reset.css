@@ -44,7 +44,7 @@ picture {
 input,
 button,
 select {
-  line-height: var(--lh-tight);
+  line-height: var(--lh-tighter);
 }
 
 input,

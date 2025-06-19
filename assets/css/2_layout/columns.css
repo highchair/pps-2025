@@ -1,0 +1,18 @@
+/* Various column layouts */
+.cols-9-3 {
+  display: flex;
+  flex-flow: column;
+  gap: var(--space-gap-default);
+
+  /* 768px breakpoint */
+  @media (min-width: 48em) {
+    flex-flow: row nowrap;
+
+    & > *:first-child {
+      flex: 0 1 calc(75% - var(--space-gap-default));
+    }
+    & > *:nth-child(2) {
+      flex: 0 1 calc(25% - var(--space-gap-default));
+    }
+  }
+}

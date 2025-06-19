@@ -50,7 +50,7 @@
     flex-flow: column;
     align-items: start;
     justify-content: start;
-    gap: var(--wp--preset--spacing--md);
+    gap: var(--space-gap-default);
   }
 
   .nav-previous,

@@ -1,0 +1,13 @@
+/* Force accessible color combinations */
+.has-primary-dk-background-color {
+  color: var(--wp--preset--color--primary-tint);
+
+  a {
+    color: var(--wp--preset--color--default-bg);
+
+    &:hover,
+    &:focus {
+      color: var(--wp--preset--color--secondary);
+    }
+  }
+}

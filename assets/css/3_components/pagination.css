@@ -1,0 +1,57 @@
+/* <footer class="recent-posts__pagination" style="padding-block: var(--wp--preset--spacing--xl); padding-inline: var(--wp--preset--spacing--md);">
+  <nav class="navigation pagination" aria-label="Posts pagination">
+    <h2 class="screen-reader-text">Posts pagination</h2>
+    <div class="nav-links">
+      <span aria-current="page" class="page-numbers current">1</span>
+      <a class="page-numbers" href="/news/page/2/">2</a>
+      <a class="page-numbers" href="/news/page/3/">3</a>
+      <a class="page-numbers" href="/news/page/4/">4</a>
+      <span class="page-numbers dots">…</span>
+      <a class="page-numbers" href="/news/page/25/">25</a>
+      <a class="next page-numbers" href="/news/page/2/">Older</a></div>
+  </nav>
+</footer> */
+
+.pagination {
+  background: top left repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
+  padding-block-start: var(--wp--preset--spacing--lg);
+
+  .nav-links {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 0.25em;
+  }
+
+  .page-numbers {
+    background-color: transparent;
+    display: block;
+
+    @supports (text-box-trim: trim-both;) {
+      text-box-trim: trim-both;
+      padding: 0.75em;
+    }
+    @supports not (text-box-trim: trim-both;) {
+      line-height: var(--lh-tighter);
+      padding: 0.75em 0.75em 0.5em;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: var(--wp--preset--color--primary-tint);
+    }
+
+    &.current,
+    &.current:hover,
+    &.current:focus {
+      background-color: var(--wp--preset--color--secondary);
+      color: rgba(from var(--wp--preset--color--default-fg) r g b / 0.66);
+      font-weight: var(--fw-default-bold);
+    }
+
+    &.dots:hover,
+    &.dots:focus {
+      background-color: transparent;
+    }
+  }
+}

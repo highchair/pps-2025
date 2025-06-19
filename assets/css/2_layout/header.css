@@ -98,10 +98,13 @@
 
 /*
   Nav-switch: Min width, for larger screens - - - - - - - - -
+  Coordinate with media query in navs.css
 */
-@media (min-width: 50em) {
+/* 1024px breakpoint */
+@media (min-width: 64em) {
   .header__wrap {
     padding-block-end: 0;
+    margin-inline-end: -1rem;
   }
 
   .brand__logo {

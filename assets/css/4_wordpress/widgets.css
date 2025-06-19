@@ -1,0 +1,14 @@
+/* Widgets */
+
+/* <ul> */
+.wp-block-categories-list{
+  list-style-type: none;
+
+  li {
+    margin-inline-start: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

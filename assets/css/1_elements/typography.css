@@ -83,6 +83,30 @@ h6, h6.wp-block-heading {
   font-size: var(--wp--preset--font-size--base, 100%);
 }*/
 
+/* this is how WP does a drop-cap
+.has-drop-cap:not(:focus):first-letter {
+  float:left;
+  font-size:8.4em;
+  font-style:normal;
+  font-weight:100;
+  line-height:.68;
+  margin:.05em .1em 0 0;
+  text-transform:uppercase
+} */
+p.has-drop-cap:not(:focus):first-letter {
+  color: var(--wp--preset--color--primary);
+  font-family: var(--wp--preset--font-family--accent);
+  font-size: 6em;
+  font-variation-settings: 'wght' var(--fw-accent-light);
+  margin: 0 0.125em 0 0;
+
+  @supports (initial-letter: 3) {
+    font-size: auto;
+    float: none;
+    initial-letter: 3;
+  }
+}
+
 /* WP puts spacing on the UL, so we need to add inner spacing to the LI instead */
 ul li,
 ol li {
@@ -135,8 +159,8 @@ small {
   font-size: var(--wp--preset--font-size--small);
 }
 
-hr {
+hr.wp-block-separator {
   background: left center repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
-  border: none;
-  height: 0.75em;
+  border: none !important;
+  height: 1em;
 }

@@ -1,7 +1,73 @@
+/* Providence Post newsletter sign up */
+/* <header> */
+.prov-post {
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  gap: var(--space-gap-default);
+
+  img {
+    max-width: 26rem;
+  }
+
+  .newsletter {
+    grid-area: newsletter;
+    align-items: end;
+  }
+
+  h2 {
+    margin-bottom: var(--wp--preset--spacing--x-sm);
+  }
+}
+
+/* 768px breakpoint */
+@media (min-width: 48em) {
+  .prov-post {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-areas:
+      'img    newsletter'
+      'byline newsletter';
+    align-items: end;
+
+    img {
+      grid-area: img;
+      width: 100%;
+    }
+    .has-accent-font-family {
+      grid-area: byline;
+    }
+    .newsletter {
+      flex-flow: column;
+    }
+  }
+}
+
+/* 1200px breakpoint */
+@media (min-width: 75em) {
+  .prov-post {
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+      'img byline'
+      'img newsletter';
+
+    .newsletter {
+      flex-flow: row nowrap;
+
+      .newsletter__description,
+      .newsletter__form{
+        flex: 1 1 max-content;
+      }
+    }
+  }
+}
+
 /* Header with trailing dots */
+/* <h2> */
 .news-posts__title {
   overflow: hidden;
   position: relative;
+  flex: 1 0 auto;
 
   b {
     display: flex;
@@ -10,68 +76,137 @@
     position: relative;
 
     &::after {
-      background: center left no-repeat url('../../images/yellow-hand-drawn-dots.svg') transparent;
+      background: center left repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
       content: '';
       flex: 1 0 0px;
     }
   }
 }
 
-/* <section class="sticky-posts" style="padding-block: var(--wp--preset--spacing--xl); padding-inline: var(--wp--preset--spacing--md);">
-  <h2 class="news-posts__title sticky-posts__title has-default-font-family has-h-4-font-size">
-    <b>Featured Posts</b>
-  </h2>
-  <article class="sticky-posts__item post-9290 post type-post status-publish format-standard has-post-thumbnail sticky hentry category-creative-capital category-op-eds">
-    <div class="sticky-posts__thumb post-thumb" style="margin-block-end: var(--wp--preset--spacing--sm)">
-      <img width="2560" height="1703" src="…" />
-    </div>
-    <h3 class="sticky-posts__item__title" style="margin-block-end: var(--wp--preset--spacing--sm)">
-      <a href="https://stage.ppsri.org/history-on-repeat-atlantic-mills-is-the-new-fort-thunder/">History on Repeat: Atlantic Mills is the new Fort Thunder</a>
-    </h3>
-    <p class="sticky-posts__excerpt">… <i>By Katy Pickens</i></p>
-    </article> */
-.sticky-posts {
-  display: flex;
-  flex-flow: column;
-  gap: var(--wp--preset--spacing--lg);
-}
-
-.sticky-posts__title {}
-
-.sticky-posts__item {
+/* <article> */
+.news-posts__item {
   position: relative;
+  margin-block-end: var(--wp--preset--spacing--md);
 
-  .sticky-posts__thumb img {
+  .news-posts__item__thumb img {
     transform: scale(1,1);
     transition: var(--tran-default);
   }
 
-  &:hover .sticky-posts__thumb img {
+  &:hover .news-posts__item__thumb img {
     transform: scale(1.1,1.1);
     transform-origin: center;
   }
 }
 
-.sticky-posts__thumb {
+.news-posts__item__thumb {
+  border-radius: var(--brad-sm);
   position: relative;
   overflow: hidden;
 }
 
-.sticky-posts__item__title {
-  a {
-    text-decoration: none;
+.news-posts__item__content {}
 
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-    }
+/* <h3> */
+.news-posts__item__title {}
 
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
+/* <a> */
+.news-posts__item__link {
+  display: block;
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
   }
 }
 
-.sticky-posts__excerpt {}
+/* <p> */
+.news-posts__item__excerpt {
+
+  i {
+    display: block;
+    margin-block-start: var(--wp--preset--spacing--x-sm);
+  }
+}
+
+/* - - - - Sticky posts container - - - - */
+/* <section> */
+.sticky-posts {
+  display: flex;
+  flex-flow: column;
+  gap: var(--space-gap-default);
+}
+
+/* <h2> */
+.sticky-posts__title {}
+
+/* 768px breakpoint */
+@media (min-width: 48em) {
+  .sticky-posts {
+    flex-flow: row wrap;
+  }
+
+  .sticky-posts .news-posts__item {
+    flex: 1 0 48%;
+  }
+
+  .sticky-posts .news-posts__title,
+  .sticky-posts article:first-of-type {
+    flex: 1 0 100%;
+  }
+}
+
+/* 1024px breakpoint */
+@media (min-width: 64em) {
+  .sticky-posts .news-posts__item {
+    flex: 1 0 25%;
+  }
+
+  .sticky-posts .news-posts__title {
+    flex: 1 0 100%;
+  }
+
+  .sticky-posts article:first-of-type {
+    flex: 1 0 44%;
+  }
+
+  /* Make the headlines for the post teaser smaller */
+  .sticky-posts article:nth-of-type(2) .news-posts__item__title,
+  .sticky-posts article:nth-of-type(3) .news-posts__item__title {
+    font-size: var(--wp--preset--font-size--h-4);
+  }
+}
+
+/* - - - - Recent posts container - - - - */
+/* <section> */
+.recent-posts {
+  display: flex;
+  flex-flow: column;
+  gap: var(--space-gap-default);
+}
+
+/* <h2> */
+.recent-posts__title {}
+
+/* <footer> */
+.recent-posts__pagination {}
+
+/* 768px breakpoint */
+@media (min-width: 48em) {
+  .recent-posts .news-posts__item {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: var(--space-gap-default);
+  }
+
+  .recent-posts .news-posts__item__thumb {
+    flex: 1 0 calc(40% - var(--space-gap-default)/2);
+  }
+}

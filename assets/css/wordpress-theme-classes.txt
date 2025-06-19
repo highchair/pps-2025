@@ -1,0 +1,81 @@
+Patterns
+========
+
+## Text color classes
+
+Classes follow the theme.json slug patterns: 
+
+```
+.has-[theme-slug]-color {
+  color: var(--wp--preset--color--[theme-slug]) !important;
+}
+
+/* Example */
+.has-primary-color {
+  color: var(--wp--preset--color--primary) !important;
+}
+```
+
+## Background color classes
+
+Similar pattern as above.
+
+```
+.has-[theme-slug]-background-color {
+  background-color: var(--wp--preset--color--[theme-slug]) !important;
+}
+
+.has-[theme-slug]-gradient-background {
+  background: var(--wp--preset--gradient--[theme-slug]) !important;
+}
+```
+
+## Border color classes
+
+Similar pattern as above.
+
+```
+.has-[theme-slug]-border-color {
+  border-color: var(--wp--preset--color--[theme-slug]) !important;
+}
+```
+
+## Font size classes
+
+Built-in default classes map to default preset sizes. Not customizable or over-writeable.
+
+```
+.has-small-font-size {
+  font-size: var(--wp--preset--font-size--small) !important;
+}
+
+.has-medium-font-size {
+  font-size: var(--wp--preset--font-size--medium) !important;
+}
+
+.has-large-font-size {
+  font-size: var(--wp--preset--font-size--large) !important;
+}
+
+.has-x-large-font-size {
+  font-size: var(--wp--preset--font-size--x-large) !important;
+}
+```
+
+Custom sizes follow the theme.json slug pattern:
+
+```
+.has-[theme-slug]-font-size {
+  font-size: var(--wp--preset--font-size--[theme-slug]) !important;
+}
+```
+
+## Font family classes
+
+Custom font families follow the theme.json slug pattern:
+
+```
+.has-[theme-slug]-font-family {
+  font-family: var(--wp--preset--font-family--[theme-slug]) !important;
+}
+```

@@ -41,6 +41,7 @@
   --fw-accent-bold: 700;
 
   /* Line heights */
+  --lh-tighter: 1;
   --lh-tight: 1.25;
   --lh-normal: 1.6;
 
@@ -51,6 +52,7 @@
   /* Spacing */
   --space-container-inline: var(--wp--preset--spacing--sm-md);
   --space-container-block: var(--wp--preset--spacing--md-xl);
+  --space-gap-default: var(--wp--preset--spacing--md);
 
   /* Others */
   --b-color-default: var(--wp--preset--color--border);
