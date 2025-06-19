@@ -20,10 +20,28 @@ if ( $pps_header_path ) {
 
   <main id="main" class="site-main">
     <article class="">
+      <header class="prov-post has-grad-primary-gradient-background" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--wp--preset--spacing--md);">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/prov-post-masthead_transparent.png" alt="Providence Post" />
+        <p class="has-accent-font-family"><i>Preservation, planning and urban design across Providence’s communities and neighborhoods.</i></p>
+        <div class="newsletter">
+          <div class="newsletter__description">
+            <h2 class="has-h-3-font-size has-primary-color">Subscribe</h2>
+            <p>Weekly alerts, news, and updates from PPS</p>
+          </div>
+          <form class="newsletter__form" name="ccoptin" action="https://visitor.constantcontact.com/d.jsp" target="_blank" method="post">
+            <input type="hidden" name="m" value="1102165220207">
+            <input type="hidden" name="p" value="oi">
+            <label for="email" class="sr">Email</label>
+            <input type="email" id="email" name="ea" spellcheck="false" placeholder="email@domain.com">
+            <input type="submit" name="go" class="btn__secondary" value="Get our E-News">
+          </form>
+        </div>
+      </header>
     <?php
       $sticky = get_option( 'sticky_posts' );
+      $pps_post_teaser_path = locate_template( 'template-parts/post-teaser.php', false, false );
   
-      if ( ! empty( $sticky ) ) {
+      if ( ! empty( $sticky ) && !is_paged() ) {
         // Query the most recent 3 sticky posts
         $sticky_query = new WP_Query( array(
           'post__in'           => $sticky,
@@ -33,25 +51,17 @@ if ( $pps_header_path ) {
           'order'              => 'DESC'
         ) );
   
+        /* Check for Sticky and Start the Loop */
         if ( $sticky_query->have_posts() ) :
-          echo '<section class="sticky-posts" style="padding-block: var(--wp--preset--spacing--xl); padding-inline: var(--wp--preset--spacing--md);">';
+          echo '<section class="sticky-posts" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--wp--preset--spacing--md);">';
           echo '<h2 class="news-posts__title sticky-posts__title has-default-font-family has-h-4-font-size"><b>Featured Posts</b></h2>';
   
           while ( $sticky_query->have_posts() ) : $sticky_query->the_post();
-            echo '<article ';
-            post_class( 'sticky-posts__item' );
-            echo '>';
-            if ( has_post_thumbnail() ) {
-              echo '<div class="post-thumb sticky-posts__thumb" style="margin-block-end: var(--wp--preset--spacing--sm)">';
-              echo get_the_post_thumbnail();
-              echo '</div>';
+
+            if ( $pps_post_teaser_path ) {
+              load_template( $pps_post_teaser_path, false );
             }
-            echo '<h3 class="sticky-posts__item__title" style="margin-block-end: var(--wp--preset--spacing--sm)"><a href="'. get_permalink() .'">'. get_the_title() . '</a></h3>';
-            echo '<p class="sticky-posts__excerpt">';
-            echo get_the_excerpt();
-            echo '<i>By '. get_the_author() .'</i>';
-            echo '</p>';
-            echo '</article>';
+
           endwhile;
   
           echo '</section>';
@@ -59,18 +69,48 @@ if ( $pps_header_path ) {
         endif;
       }
 
-      if ( have_posts() ) :
+      $non_sticky_query = new WP_Query( array(
+        'post_type'           => 'post',
+        'ignore_sticky_posts' => 1,
+        'post__not_in'        => get_option( 'sticky_posts' ),
+        'orderby'            => 'date',
+        'order'              => 'DESC'
+      ) );
+
+      echo '<div class="cols-9-3">';
+
+      if ( $non_sticky_query->have_posts() ) :
+        echo '<section class="recent-posts" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--wp--preset--spacing--md);">';
+        echo '<h2 class="news-posts__title recent-posts__title has-default-font-family has-h-4-font-size"><b>More Stories';
+        if ( is_paged() ) {
+          $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+          echo ' (page ' . $paged .')'; 
+        }
+        echo '</b></h2>';
 
         /* Start the Loop */
-        while ( have_posts() ) :
-          the_post();
+        while ( $non_sticky_query->have_posts() ) : $non_sticky_query->the_post();
 
-          echo '<h3>'. the_title() .'</h3>';
+          if ( $pps_post_teaser_path ) {
+            load_template( $pps_post_teaser_path, false );
+          }
 
         endwhile;
 
-        //pps_pagination();
+        echo '</section>';
+        if ( is_active_sidebar( 'news-aside' ) ) {
+          dynamic_sidebar( 'news-aside' );
+        }
+        echo '</div>';
+        echo '<footer class="recent-posts__pagination" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--wp--preset--spacing--md);">';
+  
+        the_posts_pagination( array(
+          'mid_size'  => 4,
+          'prev_text' => 'Newer',
+          'next_text' => 'Older',
+        ) );
 
+        echo '</footer>';
       else :
 
         // A message in case there is no content to show
