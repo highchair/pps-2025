@@ -61,6 +61,12 @@ if ( ! function_exists( 'pps_body_classes' ) ) :
 endif;
 add_filter( 'body_class', 'pps_body_classes' );
 
+// Modify the Read More default […] text
+function pps_excerpt_more( $more ) {
+  return '… ';
+}
+add_filter( 'excerpt_more', 'pps_excerpt_more' );
+
 // Register menus
 if ( ! function_exists( 'pps_register_menus' ) ) :
 function pps_register_menus() {

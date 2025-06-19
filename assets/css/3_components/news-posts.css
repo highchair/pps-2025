@@ -1,0 +1,77 @@
+/* Header with trailing dots */
+.news-posts__title {
+  overflow: hidden;
+  position: relative;
+
+  b {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 0.5em;
+    position: relative;
+
+    &::after {
+      background: center left no-repeat url('../../images/yellow-hand-drawn-dots.svg') transparent;
+      content: '';
+      flex: 1 0 0px;
+    }
+  }
+}
+
+/* <section class="sticky-posts" style="padding-block: var(--wp--preset--spacing--xl); padding-inline: var(--wp--preset--spacing--md);">
+  <h2 class="news-posts__title sticky-posts__title has-default-font-family has-h-4-font-size">
+    <b>Featured Posts</b>
+  </h2>
+  <article class="sticky-posts__item post-9290 post type-post status-publish format-standard has-post-thumbnail sticky hentry category-creative-capital category-op-eds">
+    <div class="sticky-posts__thumb post-thumb" style="margin-block-end: var(--wp--preset--spacing--sm)">
+      <img width="2560" height="1703" src="…" />
+    </div>
+    <h3 class="sticky-posts__item__title" style="margin-block-end: var(--wp--preset--spacing--sm)">
+      <a href="https://stage.ppsri.org/history-on-repeat-atlantic-mills-is-the-new-fort-thunder/">History on Repeat: Atlantic Mills is the new Fort Thunder</a>
+    </h3>
+    <p class="sticky-posts__excerpt">… <i>By Katy Pickens</i></p>
+    </article> */
+.sticky-posts {
+  display: flex;
+  flex-flow: column;
+  gap: var(--wp--preset--spacing--lg);
+}
+
+.sticky-posts__title {}
+
+.sticky-posts__item {
+  position: relative;
+
+  .sticky-posts__thumb img {
+    transform: scale(1,1);
+    transition: var(--tran-default);
+  }
+
+  &:hover .sticky-posts__thumb img {
+    transform: scale(1.1,1.1);
+    transform-origin: center;
+  }
+}
+
+.sticky-posts__thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.sticky-posts__item__title {
+  a {
+    text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+.sticky-posts__excerpt {}

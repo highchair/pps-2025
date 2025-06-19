@@ -20,31 +20,52 @@ if ( $pps_header_path ) {
 
   <main id="main" class="site-main">
     <article class="">
-      <pre>
-        This is the single-post.php template
-      </pre>
-      <?php
-      if ( have_posts() ) :
-
-        if ( (is_home()) && (! is_paged()) ) :
-          ?>
-          <header class="page-header">
-            <h1>Function is_home() is true!</h1>
-            <p>index.php file</p>
-          </header>
-          <?php
+    <?php
+      $sticky = get_option( 'sticky_posts' );
+  
+      if ( ! empty( $sticky ) ) {
+        // Query the most recent 3 sticky posts
+        $sticky_query = new WP_Query( array(
+          'post__in'           => $sticky,
+          'posts_per_page'     => 3,
+          'ignore_sticky_posts'=> 1,
+          'orderby'            => 'date',
+          'order'              => 'DESC'
+        ) );
+  
+        if ( $sticky_query->have_posts() ) :
+          echo '<section class="sticky-posts" style="padding-block: var(--wp--preset--spacing--xl); padding-inline: var(--wp--preset--spacing--md);">';
+          echo '<h2 class="news-posts__title sticky-posts__title has-default-font-family has-h-4-font-size"><b>Featured Posts</b></h2>';
+  
+          while ( $sticky_query->have_posts() ) : $sticky_query->the_post();
+            echo '<article ';
+            post_class( 'sticky-posts__item' );
+            echo '>';
+            if ( has_post_thumbnail() ) {
+              echo '<div class="post-thumb sticky-posts__thumb" style="margin-block-end: var(--wp--preset--spacing--sm)">';
+              echo get_the_post_thumbnail();
+              echo '</div>';
+            }
+            echo '<h3 class="sticky-posts__item__title" style="margin-block-end: var(--wp--preset--spacing--sm)"><a href="'. get_permalink() .'">'. get_the_title() . '</a></h3>';
+            echo '<p class="sticky-posts__excerpt">';
+            echo get_the_excerpt();
+            echo '<i>By '. get_the_author() .'</i>';
+            echo '</p>';
+            echo '</article>';
+          endwhile;
+  
+          echo '</section>';
+          wp_reset_postdata();
         endif;
+      }
+
+      if ( have_posts() ) :
 
         /* Start the Loop */
         while ( have_posts() ) :
           the_post();
 
-          /*
-          * Include the Post-Type-specific template for the content.
-          * If you want to override this in a child theme, then include a file
-          * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-          */
-          get_template_part( 'template-parts/content', get_post_type() );
+          echo '<h3>'. the_title() .'</h3>';
 
         endwhile;
 
@@ -52,7 +73,7 @@ if ( $pps_header_path ) {
 
       else :
 
-        get_template_part( 'template-parts/content', 'none' );
+        // A message in case there is no content to show
 
       endif;
     ?>
