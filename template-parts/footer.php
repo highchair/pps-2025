@@ -10,14 +10,16 @@
  */
 ?>
     <footer class="l__footer footer">
-      <div class="container footer__wrap">
+      <div class="container footer__wrap" itemscope itemtype="http://schema.org/Organization">
         <div class="newsletter">
           <h2 class="has-h-1-font-size">Subscribe</h2>
           <p>Weekly alerts, news, and updates from PPS</p>
-          <form class="newsletter__form">
+          <form class="newsletter__form" name="ccoptin" action="https://visitor.constantcontact.com/d.jsp" target="_blank" method="post">
+            <input type="hidden" name="m" value="1102165220207">
+            <input type="hidden" name="p" value="oi">
             <label for="email" class="sr">Email</label>
-            <input type="email" id="email" name="email" spellcheck="false" placeholder="example@domain.com" />
-            <button href="#" class="btn__secondary">Get our E-News</button>
+            <input type="email" id="email" name="ea" spellcheck="false" placeholder="email@domain.com">
+            <input type="submit" name="go" class="btn__secondary" value="Get our E-News">
           </form>
         </div>
         <div class="footer__image">
@@ -26,7 +28,7 @@
         <a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
           <img class="brand__logo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pps-logo-circle.svg" alt="" />
           <svg class="brand__wordmark" viewBox="0 0 170 66">
-            <title>Providence Preservation Society</title>
+            <title itemprop="name"><?php bloginfo( 'name' ); ?></title>
             <use xlink:href="#wordmark"></use>
           </svg>
         </a>

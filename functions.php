@@ -62,10 +62,20 @@ endif;
 add_filter( 'body_class', 'pps_body_classes' );
 
 // Modify the Read More default […] text
-function pps_excerpt_more( $more ) {
-  return '… ';
-}
+if ( ! function_exists( 'pps_excerpt_more' ) ) :
+  function pps_excerpt_more( $more ) {
+    return '… ';
+  }
+endif;
 add_filter( 'excerpt_more', 'pps_excerpt_more' );
+
+// Modify the excerpt length
+if ( ! function_exists( 'pps_excerpt_length' ) ) :
+  function pps_excerpt_length( $length ) {
+    return 32; // length in words. Default is 55
+  }
+endif;
+add_filter( 'excerpt_length', 'pps_excerpt_length', 999 );
 
 // Register menus
 if ( ! function_exists( 'pps_register_menus' ) ) :
@@ -79,15 +89,27 @@ endif;
 add_action( 'after_setup_theme', 'pps_register_menus' );
 
 // Register Footer Widgets
-if ( ! function_exists( 'pps_register_footer_widgets' ) ) :
-  function pps_register_footer_widgets() {
+if ( ! function_exists( 'pps_register_widgets' ) ) :
+  function pps_register_widgets() {
+    register_sidebar( array(
+      'name'           => 'News Aside',
+      'id'             => 'news-aside',
+      'description'    => 'News landing page sidebar',
+      'before_widget'  => '',
+      'after_widget'   => '',
+      'before_sidebar' => '<aside class="news-posts__aside">',
+      'after_sidebar'  => '</aside>',
+      'before_title'   => '<h3 class="widget-title has-base-font-size has-secondary-color">',
+      'after_title'    => '</h3>',
+    ) );
+
     register_sidebar( array(
       'name'           => 'Footer Contact',
       'id'             => 'footer-contact',
       'description'    => 'Footer Contact widget',
       'before_widget'  => '',
       'after_widget'   => '',
-      'before_sidebar' => '<address class="footer__address">',
+      'before_sidebar' => '<address class="footer__address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">',
       'after_sidebar'  => '</address>',
       'before_title'   => '<h3 class="sr widget-title">',
       'after_title'    => '</h3>',
@@ -118,4 +140,4 @@ if ( ! function_exists( 'pps_register_footer_widgets' ) ) :
     ) );
   }
 endif;
-add_action( 'widgets_init', 'pps_register_footer_widgets' );
+add_action( 'widgets_init', 'pps_register_widgets' );
