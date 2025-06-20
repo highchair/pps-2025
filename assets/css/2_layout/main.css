@@ -27,7 +27,7 @@
   }
 
   /* Remove vertical spacing from some elements */
-  > :where(.wp-block-cover, .wp-block-spacer) {
+  > :where(.wp-block-cover, .wp-block-group, .wp-block-spacer) {
     margin-block-end: 0;
   }
 

@@ -1,3 +1,4 @@
+/* Not supported in all browsers, but nice when it is */
 p, li, dl, dt, dd, figure, blockquote {
   hanging-punctuation: first last;
   text-wrap: pretty;
@@ -15,19 +16,10 @@ h6, .has-h-6-font-size {
   line-height: var(--lh-tight);
 }
 
-/* We declare these style specifically so that we can apply an override — i.e. <h2 class="h3"> */
-/* Sizes for WP classes like ".has-h-6-font-size" are handled by inline styles  
- coming from the theme.json set up */
-/*.ts-gigantic {
-  font-family: var(--wp--preset--font-family--accent);
-  font-size: var(--wp--preset--font-size--xxl);
-  font-variation-settings: "wght" var(--fw-accent-light);
+.has-xxl-font-size,
+.has-xl-font-size {
+  font-variation-settings: 'wght' var(--fw-accent-light) !important;
 }
-*.ts-huge {
-  font-family: var(--wp--preset--font-family--accent);
-  font-size: var(--wp--preset--font-size--xl);
-  font-variation-settings: "wght" var(--fw-accent-normal);
-}*/
 
 h1, h1.wp-block-heading {
   font-family: var(--wp--preset--font-family--accent);
@@ -67,21 +59,21 @@ h6, h6.wp-block-heading {
   text-transform: uppercase;
 }
 
-/* Vertical Rhythm
-:is(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, figure, table, hr, pre) +
-:is(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, figure, table, hr, pre) { */
-/*.v__rhythm > * + * {
-  @supports (margin-block-start: 1lh) {
-    margin-block-start: 1lh;
-  }
-  @supports not (margin-block-start: 1lh) {
-    margin-block-start: calc(var(--lh-normal) * 1rem);
-  }
-}*/
+.has-accent-light-weight {
+  font-variation-settings: 'wght' var(--fw-accent-light);
+}
 
-/*p .has-base-font-size {
-  font-size: var(--wp--preset--font-size--base, 100%);
-}*/
+.has-accent-normal-weight {
+  font-variation-settings: 'wght' var(--fw-accent-normal);
+}
+
+.has-accent-semi-weight {
+  font-variation-settings: 'wght' var(--fw-accent-semi);
+}
+
+.has-accent-semi-bold {
+  font-variation-settings: 'wght' var(--fw-accent-bold);
+}
 
 /* this is how WP does a drop-cap
 .has-drop-cap:not(:focus):first-letter {

@@ -38,12 +38,14 @@ input[type='submit'][class] {
   text-decoration: none;
 }
 
-.btn__primary {
+.btn__primary,
+.is-style-primary .wp-element-button {
   background-color: var(--wp--preset--color--primary);
   color: var(--wp--preset--color--default-bg);
 }
 
-.btn__secondary {
+.btn__secondary,
+.is-style-secondary .wp-element-button {
   background-color: var(--wp--preset--color--secondary);
   color: var(--wp--preset--color--primary-dk);
 }
@@ -51,7 +53,11 @@ input[type='submit'][class] {
 .btn__primary:hover,
 .btn__primary:focus,
 .btn__secondary:hover,
-.btn__secondary:focus {
+.btn__secondary:focus,
+.is-style-primary .wp-element-button:hover,
+.is-style-primary .wp-element-button:focus,
+.is-style-secondary .wp-element-button:hover,
+.is-style-secondary .wp-element-button:focus {
   background-color: var(--wp--preset--color--primary-dk);
   color: var(--wp--preset--color--secondary);
 }
