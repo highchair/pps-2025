@@ -17,10 +17,9 @@ if ( $pps_header_path ) {
   load_template( $pps_header_path, true );
 }
 ?>
-
   <main id="main" class="site-main">
-    <article class="">
-      <header class="prov-post has-grad-primary-gradient-background" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--wp--preset--spacing--md);">
+    <article>
+      <header class="prov-post has-grad-primary-gradient-background" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--space-container-inline);">
         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/prov-post-masthead_transparent.png" alt="Providence Post" />
         <p class="has-accent-font-family"><i>Preservation, planning and urban design across Providence’s communities and neighborhoods.</i></p>
         <div class="newsletter">
@@ -53,7 +52,7 @@ if ( $pps_header_path ) {
   
         /* Check for Sticky and Start the Loop */
         if ( $sticky_query->have_posts() ) :
-          echo '<section class="sticky-posts" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--wp--preset--spacing--md);">';
+          echo '<section class="sticky-posts" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--space-container-inline);">';
           echo '<h2 class="news-posts__title sticky-posts__title has-default-font-family has-h-4-font-size"><b>Featured Posts</b></h2>';
   
           while ( $sticky_query->have_posts() ) : $sticky_query->the_post();
@@ -73,14 +72,15 @@ if ( $pps_header_path ) {
         'post_type'           => 'post',
         'ignore_sticky_posts' => 1,
         'post__not_in'        => get_option( 'sticky_posts' ),
-        'orderby'            => 'date',
-        'order'              => 'DESC'
+        'orderby'             => 'date',
+        'order'               => 'DESC',
+        'paged'               => $paged,
       ) );
 
       echo '<div class="cols-9-3">';
 
       if ( $non_sticky_query->have_posts() ) :
-        echo '<section class="recent-posts" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--wp--preset--spacing--md);">';
+        echo '<section class="recent-posts" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--space-container-inline);">';
         echo '<h2 class="news-posts__title recent-posts__title has-default-font-family has-h-4-font-size"><b>More Stories';
         if ( is_paged() ) {
           $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
@@ -102,7 +102,7 @@ if ( $pps_header_path ) {
           dynamic_sidebar( 'news-aside' );
         }
         echo '</div>';
-        echo '<footer class="recent-posts__pagination" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--wp--preset--spacing--md);">';
+        echo '<footer class="recent-posts__pagination" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--space-container-inline);">';
   
         the_posts_pagination( array(
           'mid_size'  => 4,
@@ -113,14 +113,13 @@ if ( $pps_header_path ) {
         echo '</footer>';
       else :
 
-        // A message in case there is no content to show
+        include 'template-parts/no-posts.php';
 
       endif;
     ?>
 
     </article>
   </main>
-
 <?php
 $pps_footer_path = locate_template( 'template-parts/footer.php', false, false );
 if ( $pps_footer_path ) {

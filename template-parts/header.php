@@ -13,7 +13,6 @@
 <html <?php language_attributes(); ?>>
   <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <link rel="stylesheet" href="https://use.typekit.net/msx3awg.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <?php wp_head(); ?>

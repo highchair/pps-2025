@@ -3,7 +3,7 @@
  * Providence Preservation Society 2025 functions and definitions.
  */
 
-// Adds theme support for post formats.
+// Adds theme supports
 if ( ! function_exists( 'pps_post_format_setup' ) ) :
   function pps_post_format_setup() {
     // Force HTML5 options when present in function output
@@ -14,15 +14,25 @@ if ( ! function_exists( 'pps_post_format_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'pps_post_format_setup' );
 
-// Enqueues editor-style.css in the editors.
-// if ( ! function_exists( 'pps_editor_style' ) ) :
-//   function pps_editor_style() {
-//     add_theme_support( 'editor-style' );
-//     add_editor_style( get_template_directory_uri() . '/assets/css/editor-style.css' );
-//     add_editor_style( 'https://use.typekit.net/msx3awg.css' );
-//   }
-// endif;
-// add_action( 'enqueue_block_editor_assets', 'pps_editor_style' );
+// Enqueues editor-specific JS and CSS in the admin
+function pps_gutenberg_scripts() {
+
+  wp_enqueue_style( 'pps-editor-style', get_template_directory_uri() . '/assets/css/editor-style.css' );
+
+  wp_enqueue_style(
+    'pps-2025-type',
+    'https://use.typekit.net/msx3awg.css',
+  );
+
+  wp_enqueue_script(
+    'pps-editor-script',
+    get_template_directory_uri() . '/assets/js/editor.js',
+    array( 'wp-blocks', 'wp-dom' ),
+    filemtime( get_template_directory() . '/assets/js/editor.js' ),
+    true
+  );
+}
+add_action( 'enqueue_block_editor_assets', 'pps_gutenberg_scripts' );
 
 // Enqueues Theme CSS and JS
 if ( ! function_exists( 'pps_enqueue_theme' ) ) :
@@ -34,6 +44,12 @@ if ( ! function_exists( 'pps_enqueue_theme' ) ) :
       filemtime( get_template_directory() . '/assets/css/index.css' ), // Versioning (auto-busts cache)
       //wp_get_theme()->get( 'Version' )
     );
+
+    wp_enqueue_style(
+      'pps-2025-type',
+      'https://use.typekit.net/msx3awg.css',
+    );
+
     wp_enqueue_script(
       'pps-2025-scripts', // Handle (used for dependencies or deregistering)
       get_template_directory_uri() . '/assets/js/general.js',
@@ -141,3 +157,11 @@ if ( ! function_exists( 'pps_register_widgets' ) ) :
   }
 endif;
 add_action( 'widgets_init', 'pps_register_widgets' );
+
+// Allow SVG uploads
+function pps_allow_svg( $mimes ) {
+  $mimes['svg'] = 'image/svg+xml';
+  $mimes['svgz'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter( 'upload_mimes', 'pps_allow_svg' );

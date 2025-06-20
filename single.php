@@ -17,7 +17,6 @@ $pps_header_path = locate_template( 'template-parts/header.php', false, false );
    load_template( $pps_header_path, true );
  }
 ?>
-
   <main id="main" class="site-main">
     <article>
       <?php
@@ -107,14 +106,12 @@ $pps_header_path = locate_template( 'template-parts/header.php', false, false );
           );
         ?>
       </footer>
-
       <?php
         endwhile;
       ?>
 
     </article>
   </main>
-
 <?php
 $pps_footer_path = locate_template( 'template-parts/footer.php', false, false );
 if ( $pps_footer_path ) {

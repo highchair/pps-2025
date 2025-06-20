@@ -15,9 +15,6 @@ if ( $pps_header_path ) {
 
     <main id="main" class="l__main">
       <article class="v__rhythm editor-styles-wrapper">
-        <pre>
-          This is the front-page.php template
-        </pre>
       <?php
         if ( have_posts() ) :
           while ( have_posts() ) : the_post();
@@ -28,7 +25,6 @@ if ( $pps_header_path ) {
   
       </article>
     </main>
-
 <?php
 $pps_footer_path = locate_template( 'template-parts/footer.php', false, false );
 if ( $pps_footer_path ) {
