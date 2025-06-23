@@ -3,19 +3,14 @@
  * The main template file
  *
  * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
  *
+ * For the PPS theme, this powers the News landing page and nothing else
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package PPS 2025
  */
 
-$pps_header_path = locate_template( 'template-parts/header.php', false, false );
-if ( $pps_header_path ) {
-  load_template( $pps_header_path, true );
-}
+  get_template_part( 'template-parts/header' );
 ?>
   <main id="main" class="site-main">
     <article>
@@ -38,7 +33,6 @@ if ( $pps_header_path ) {
       </header>
     <?php
       $sticky = get_option( 'sticky_posts' );
-      $pps_post_teaser_path = locate_template( 'template-parts/post-teaser.php', false, false );
   
       if ( ! empty( $sticky ) && !is_paged() ) {
         // Query the most recent 3 sticky posts
@@ -57,9 +51,7 @@ if ( $pps_header_path ) {
   
           while ( $sticky_query->have_posts() ) : $sticky_query->the_post();
 
-            if ( $pps_post_teaser_path ) {
-              load_template( $pps_post_teaser_path, false );
-            }
+            get_template_part( 'template-parts/post-teaser' );
 
           endwhile;
   
@@ -91,9 +83,7 @@ if ( $pps_header_path ) {
         /* Start the Loop */
         while ( $non_sticky_query->have_posts() ) : $non_sticky_query->the_post();
 
-          if ( $pps_post_teaser_path ) {
-            load_template( $pps_post_teaser_path, false );
-          }
+          get_template_part( 'template-parts/post-teaser' );
 
         endwhile;
 
@@ -113,7 +103,7 @@ if ( $pps_header_path ) {
         echo '</footer>';
       else :
 
-        include 'template-parts/no-posts.php';
+        get_template_part( 'template-parts/no-posts' );
 
       endif;
     ?>
@@ -121,7 +111,5 @@ if ( $pps_header_path ) {
     </article>
   </main>
 <?php
-$pps_footer_path = locate_template( 'template-parts/footer.php', false, false );
-if ( $pps_footer_path ) {
-  load_template( $pps_footer_path, true );
-}
+  get_template_part( 'template-parts/footer' );
+

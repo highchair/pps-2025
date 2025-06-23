@@ -12,10 +12,7 @@
  * @package PPS 2025
  */
 
-$pps_header_path = locate_template( 'template-parts/header.php', false, false );
- if ( $pps_header_path ) {
-   load_template( $pps_header_path, true );
- }
+  get_template_part( 'template-parts/header' );
 ?>
   <main id="main" class="site-main">
     <article>
@@ -113,7 +110,4 @@ $pps_header_path = locate_template( 'template-parts/header.php', false, false );
     </article>
   </main>
 <?php
-$pps_footer_path = locate_template( 'template-parts/footer.php', false, false );
-if ( $pps_footer_path ) {
-  load_template( $pps_footer_path, true );
-}
+  get_template_part( 'template-parts/footer' );

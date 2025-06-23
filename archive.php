@@ -5,18 +5,14 @@
  * @package PPS 2025
  */
 
-$pps_header_path = locate_template( 'template-parts/header.php', false, false );
-if ( $pps_header_path ) {
-  load_template( $pps_header_path, true );
-}
+  get_template_part( 'template-parts/header' );
 ?>
   <main id="main" class="site-main">
     <article>
     <?php
       $category = get_queried_object();
-      $pps_post_teaser_path = locate_template( 'template-parts/post-teaser.php', false, false );
 
-      $non_sticky_query = new WP_Query( array(
+      $category_query = new WP_Query( array(
         'post_type'           => 'post',
         'ignore_sticky_posts' => 1,
         'cat'                 => $category->term_id,
@@ -27,7 +23,7 @@ if ( $pps_header_path ) {
 
       echo '<div class="cols-9-3">';
 
-      if ( $non_sticky_query->have_posts() ) :
+      if ( $category_query->have_posts() ) :
         echo '<section class="recent-posts" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--space-container-inline);">';
         echo '<h2 class="news-posts__title recent-posts__title has-default-font-family has-h-4-font-size"><b>';
         // The name of the category
@@ -39,11 +35,9 @@ if ( $pps_header_path ) {
         echo '</b></h2>';
 
         /* Start the Loop */
-        while ( $non_sticky_query->have_posts() ) : $non_sticky_query->the_post();
+        while ( $category_query->have_posts() ) : $category_query->the_post();
 
-          if ( $pps_post_teaser_path ) {
-            load_template( $pps_post_teaser_path, false );
-          }
+          get_template_part( 'template-parts/post-teaser' );
 
         endwhile;
 
@@ -63,7 +57,7 @@ if ( $pps_header_path ) {
         echo '</footer>';
       else :
 
-        include 'template-parts/no-posts.php';
+        get_template_part( 'template-parts/no-posts' );
 
       endif;
     ?>
@@ -71,7 +65,4 @@ if ( $pps_header_path ) {
     </article>
   </main>
 <?php
-$pps_footer_path = locate_template( 'template-parts/footer.php', false, false );
-if ( $pps_footer_path ) {
-  load_template( $pps_footer_path, true );
-}
+  get_template_part( 'template-parts/footer' );
