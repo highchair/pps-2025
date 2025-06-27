@@ -1,0 +1,29 @@
+/*
+<nav class="breadcrumb">
+  <span property="itemListElement" typeof="ListItem">
+    <a property="item" typeof="WebPage" title="Go to Providence Preservation Society." href="https://stage.ppsri.org" class="home">
+      <span property="name">Home</span>
+    </a>
+    <meta property="position" content="1">
+  </span>
+  &gt;
+  <span property="itemListElement" typeof="ListItem">
+    <span property="name">Upcoming Events</span>
+    <meta property="position" content="2">
+  </span>
+</nav>
+*/
+
+/* <nav */
+.breadcrumb {
+  font-size: var(--wp--preset--font-size--sm);
+
+  a {
+    display: inline-block;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}

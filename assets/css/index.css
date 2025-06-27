@@ -16,6 +16,8 @@
 @import '3_components/navs.css';
 @import '3_components/tag.css';
 @import '3_components/news-posts.css';
+@import '3_components/events.css';
+@import '3_components/breadcrumbs.css';
 @import '3_components/pagination.css';
 @import '3_components/newsletter-signup.css';
 @import '3_components/post-header.css';

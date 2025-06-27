@@ -1,0 +1,16 @@
+.events-list {
+
+  article {
+    border-radius: var(--brad-md);
+    padding-block: var(--wp--preset--spacing--lg);
+    padding-inline: var(--space-container-inline);
+    
+    &.without-post-thumb {
+      box-shadow: var(--box-shad-default);
+    }
+  }
+}
+
+.event-date {
+  margin-block-end: var(--wp--preset--spacing--x-sm);
+}
