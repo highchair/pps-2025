@@ -47,8 +47,26 @@
   }
 }
 
-.single__header__end {}
+.single__header__end {
+  .post-thumb {
+    /* 768px breakpoint */
+    @media (min-width: 48em) {
+      width: 45vw;
+    }
+    /* 1200px breakpoint */
+    @media (min-width: 75em) {
+      width: 38vw;
+    }
+  }
 
-.post-thumb {}
-
-.post-thumb--vertical {}
+  .post-thumb--vertical {
+    /* 768px breakpoint */
+    @media (min-width: 48em) {
+      width: 35vw;
+    }
+    /* 1200px breakpoint */
+    @media (min-width: 75em) {
+      width: 28vw;
+    }
+  }
+}
