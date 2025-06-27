@@ -14,7 +14,7 @@
         <div class="newsletter">
           <h2 class="has-h-1-font-size">Subscribe</h2>
           <p>Weekly alerts, news, and updates from PPS</p>
-          <form class="newsletter__form" name="ccoptin" action="https://visitor.constantcontact.com/d.jsp" target="_blank" method="post">
+          <form class="newsletter__form" name="ccoptin" action="https://lp.constantcontactpages.com/sl/7HXon1T/providencepost" target="_blank" method="post">
             <input type="hidden" name="m" value="1102165220207">
             <input type="hidden" name="p" value="oi">
             <label for="email" class="sr">Email</label>

@@ -17,18 +17,22 @@ add_action( 'after_setup_theme', 'pps_post_format_setup' );
 // Enqueues editor-specific JS and CSS in the admin
 function pps_gutenberg_scripts() {
 
-  wp_enqueue_style( 'pps-editor-style', get_template_directory_uri() . '/assets/css/editor-style.css' );
-
   wp_enqueue_style(
     'pps-2025-type',
     'https://use.typekit.net/msx3awg.css',
+  );
+
+  wp_enqueue_style(
+    'pps-editor-style',
+    get_template_directory_uri() . '/assets/css/editor-style.css'
   );
 
   wp_enqueue_script(
     'pps-editor-script',
     get_template_directory_uri() . '/assets/js/editor.js',
     array( 'wp-blocks', 'wp-dom' ),
-    filemtime( get_template_directory() . '/assets/js/editor.js' ),
+    wp_get_theme()->get('Version'),
+    #filemtime( get_template_directory() . '/assets/js/editor.js' ),
     true
   );
 }
@@ -104,6 +108,29 @@ function pps_register_menus() {
 endif;
 add_action( 'after_setup_theme', 'pps_register_menus' );
 
+// Register custom post types
+if ( ! function_exists( 'pps_custom_post_types' ) ) :
+  function pps_custom_post_types() {
+    register_post_type('pps_press',
+      array(
+        'labels'        => array(
+        'name'          => 'In the Press',
+        'singular_name' => 'In the Press',
+      ),
+        'public'             => true,
+        'has_archive'        => false,
+        'publicly_queryable' => true,
+        'show_in_nav_menus'  => true,
+        'show_in_admin_bar'  => true,
+        'show_in_rest'       => true,
+        'menu_icon'          => 'dashicons-feedback',
+        'supports'           => array('title', 'editor', 'page-attributes', ),
+      )
+    );
+  }
+endif;
+add_action('init', 'pps_custom_post_types');
+
 // Register Footer Widgets
 if ( ! function_exists( 'pps_register_widgets' ) ) :
   function pps_register_widgets() {
@@ -159,9 +186,41 @@ endif;
 add_action( 'widgets_init', 'pps_register_widgets' );
 
 // Allow SVG uploads
-function pps_allow_svg( $mimes ) {
-  $mimes['svg'] = 'image/svg+xml';
-  $mimes['svgz'] = 'image/svg+xml';
-  return $mimes;
-}
+if ( ! function_exists( 'pps_allow_svg' ) ) :
+  function pps_allow_svg( $mimes ) {
+    $mimes['svg'] = 'image/svg+xml';
+    $mimes['svgz'] = 'image/svg+xml';
+    return $mimes;
+  }
+endif;
 add_filter( 'upload_mimes', 'pps_allow_svg' );
+
+// Switching GA tracking codes based on the site
+if ( ! function_exists( 'pps_GA_snippet' ) ) :
+  function pps_GA_snippet($current_id) {
+    $GA_UA = '';
+
+    if ( $current_id == 1) {
+      // This is the main PPS site
+      $GA_UA = 'G-HPSKNW241K';
+    }
+    if ( $current_id == 2) {
+      // This is the PPS Architectural Guide site
+      $GA_UA = 'G-CYJ3R9M540';
+    }
+    if ( $current_id == 3) {
+      // This is the Atlantic Mills site
+      $GA_UA = 'G-575H92CV3K';
+    }
+    return "<script async src=\"https://www.googletagmanager.com/gtag/js?id=" . $GA_UA . "\"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '" . $GA_UA . "');
+    </script>";
+  }
+endif;
+add_action( 'init', 'pps_GA_snippet' );
+add_action( 'wp', 'pps_GA_snippet' );
