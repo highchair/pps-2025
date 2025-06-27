@@ -21,6 +21,11 @@
          "text":true,
          "palette":[
             {
+               "color":"transparent",
+               "name":"Transparent",
+               "slug":"transparent"
+            },
+            {
                "color":"#fff",
                "name":"White",
                "slug":"default-bg"
@@ -93,7 +98,7 @@
          ],
          "gradients":[
             {
-               "gradient":"linear-gradient(45deg,rgba(from var(--wp--preset--color--primary-tint) r g b / 0.5) 5%, rgba(from var(--wp--preset--color--primary-tint) r g b / 1) 95%)",
+               "gradient":"linear-gradient(45deg,rgba(from var(--wp--preset--color--primary-tint) r g b / 0.3) 5%, rgba(from var(--wp--preset--color--primary-tint) r g b / 1) 95%)",
                "name":"Light Jewel",
                "slug":"grad-primary"
             }

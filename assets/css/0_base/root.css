@@ -61,6 +61,9 @@
   --b-size-default: 1.5px; 
   --b-size-thin: 0.5px; 
   --brad-sm: 4px;
+  --brad-md: 0.5em;
+  
+  --box-shad-default: 0 0 0.5em rgba(0,0,0,0.2);
 
   /* Transitions */
   --tran-default-property: all;
