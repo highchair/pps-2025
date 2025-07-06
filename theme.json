@@ -31,12 +31,12 @@
                "slug":"default-bg"
             },
             {
-               "color":"hsla(186 12% 16% 0.1)",
+               "color":"hsla(186, 12%, 16%, 0.1)",
                "name":"Border Gray Light",
                "slug":"border-lt"
             },
             {
-               "color":"hsla(186 12% 16% 0.2)",
+               "color":"hsla(186, 12%, 16%, 0.2)",
                "name":"Border Gray",
                "slug":"border"
             },
@@ -108,7 +108,7 @@
          "minHeight":false
       },
       "layout":{
-         "contentSize":"48rem",
+         "contentSize":"50rem",
          "wideSize":"92rem",
          "fullSize":"106rem"
       },
