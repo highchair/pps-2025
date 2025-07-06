@@ -10,3 +10,17 @@
     }
   }
 }
+
+.alignleft { float: left; }
+
+.alignright { float: right; }
+
+.alignleft,
+.alignright {
+  max-width: 42%;
+
+  /* 1200px breakpoint */
+  @media (min-width: 75em) {
+    max-width: 35%;
+  }
+}

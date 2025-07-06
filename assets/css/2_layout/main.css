@@ -2,10 +2,17 @@
 
 /*article*/
 .editor-styles-wrapper {
+  /* Can't do this because then images can not float within content
   display: flex;
   flex-flow: column;
   align-items: start;
-  justify-content: start;
+  justify-content: start;*/
+
+  /* If a Single Post, constrain the width */
+  .single-post & {
+    margin-inline: auto;
+    max-width: var(--wp--style--global--wide-size);
+  }
 
   > * {
     margin-inline: auto !important;

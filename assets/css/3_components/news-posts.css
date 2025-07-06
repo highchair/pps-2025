@@ -4,15 +4,18 @@
   display: flex;
   flex-flow: column;
   align-items: start;
-  gap: var(--space-gap-default);
+  gap: var(--wp--preset--spacing--sm);
 
   img {
-    max-width: 26rem;
+    /* 414px breakpoint */
+    @media (min-width: 25.875em) {
+      max-width: 23.625rem;
+    }
   }
 
   .newsletter {
     grid-area: newsletter;
-    align-items: end;
+    align-items: center;
   }
 
   h2 {
@@ -20,16 +23,31 @@
   }
 }
 
+.prov-post-nav {
+
+  ul {
+    display: flex;
+    align-content: center;
+    justify-items: center;
+    gap: 1em;
+  }
+}
+
 /* 768px breakpoint */
 @media (min-width: 48em) {
   .prov-post {
     display: grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      'img    newsletter'
-      'byline newsletter';
+      'img byline'
+      'img newsletter'
+      'nav newsletter';
     align-items: end;
 
+    nav {
+      grid-area: nav;
+      padding-block-end: 0.625em;
+    }
     img {
       grid-area: img;
       width: 100%;
@@ -49,7 +67,7 @@
     grid-template-columns: 1fr 2fr;
     grid-template-areas:
       'img byline'
-      'img newsletter';
+      'nav newsletter';
 
     .newsletter {
       flex-flow: row nowrap;

@@ -1,6 +1,6 @@
 .single__footer {
   margin-inline: auto;
-  max-width: var(--wp--style--global--full-size);
+  max-width: var(--wp--style--global--wide-size);
   padding-block: var(--wp--preset--spacing--lg);
   padding-inline: var(--space-container-inline);
 }
@@ -23,7 +23,7 @@
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   gap: 0.5em 1em;
   padding-block: var(--wp--preset--spacing--lg);
 }

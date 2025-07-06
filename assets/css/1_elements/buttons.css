@@ -6,8 +6,7 @@ input[type='submit'][class] {
 
 .wp-element-button,
 .btn__primary,
-.btn__secondary,
-.search-form .search-submit {
+.btn__secondary {
   /* A neutral default color */
   background-color: rgba(from var(--wp--preset--color--default-fg) r g b / 0.2);
   border-radius: 2rem;
@@ -29,9 +28,7 @@ input[type='submit'][class] {
 }
 
 .wp-element-button:hover,
-.wp-element-button:focus,
-.search-form .search-submit:hover,
-.search-form .search-submit:focus {
+.wp-element-button:focus {
   background-color: rgba(from var(--wp--preset--color--default-fg) r g b / 0.35);
   color: var(--wp--preset--color--default-fg);
   cursor: pointer;

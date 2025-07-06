@@ -22,7 +22,7 @@ label {
 }
 
 input:not([type='checkbox']):not([type="radio"]):not([type="button"]):not([type="submit"]):not([type="reset"]) {
-  border: 1.5px solid var(--wp--preset--color--border-lt);
+  border: 1.5px solid var(--wp--preset--color--border);
   border-radius: var(--brad-sm);
   color: var(--wp--preset--color--default-fg);
   display: block;
