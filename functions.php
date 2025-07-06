@@ -10,6 +10,13 @@ if ( ! function_exists( 'pps_post_format_setup' ) ) :
     add_theme_support( 'html5', array( 'search-form' ) );
     
     //add_theme_support( 'post-formats', array( 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video' ) );
+    
+    // Not sure why I need this, default posts are missing Featured Images
+    add_theme_support('post-thumbnails', array(
+      'post',
+      'page',
+      'events',
+    ));
   }
 endif;
 add_action( 'after_setup_theme', 'pps_post_format_setup' );
@@ -111,12 +118,12 @@ add_action( 'after_setup_theme', 'pps_register_menus' );
 // Register custom post types
 if ( ! function_exists( 'pps_custom_post_types' ) ) :
   function pps_custom_post_types() {
-    register_post_type('pps_press',
+    register_post_type('in-the-press',
       array(
-        'labels'        => array(
-        'name'          => 'In the Press',
-        'singular_name' => 'In the Press',
-      ),
+        'labels'          => array(
+          'name'          => 'In the Press',
+          'singular_name' => 'In the Press',
+        ),
         'public'             => true,
         'has_archive'        => false,
         'publicly_queryable' => true,
@@ -124,7 +131,7 @@ if ( ! function_exists( 'pps_custom_post_types' ) ) :
         'show_in_admin_bar'  => true,
         'show_in_rest'       => true,
         'menu_icon'          => 'dashicons-feedback',
-        'supports'           => array('title', 'editor', 'page-attributes', ),
+        'supports'           => array('title', 'editor', 'page-attributes'),
       )
     );
   }

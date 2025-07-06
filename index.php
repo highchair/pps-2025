@@ -14,23 +14,35 @@
 ?>
   <main id="main" class="site-main">
     <article>
-      <header class="prov-post has-grad-primary-gradient-background" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--space-container-inline);">
-        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/prov-post-masthead_transparent.png" alt="Providence Post" />
+      <header class="prov-post has-grad-primary-gradient-background" style="padding-block: var(--wp--preset--spacing--md); padding-inline: var(--space-container-inline);">
+        <h1 class="sr">The Providence Post</h1>
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/prov-post-masthead_transparent.png" alt="" />
+        <nav aria-label="Providence Post" class="prov-post-nav">
+          <ul role="list">
+            <li><a href="/news/about-the-providence-post/">About the Post</a></li>
+            <li><a href="/news/editorial-policies/">Editorial Policies</a></li>
+            <li><a href="/news/submit/">Submit</a></li>
+          </ul>
+        </nav>
         <p class="has-accent-font-family"><i>Preservation, planning and urban design across Providence’s communities and neighborhoods.</i></p>
         <div class="newsletter">
-          <div class="newsletter__description">
-            <h2 class="has-h-3-font-size has-primary-color">Subscribe</h2>
-            <p>Weekly alerts, news, and updates from PPS</p>
-          </div>
+          <p class="newsletter__description">Weekly alerts, news, and updates from PPS</p>
           <form class="newsletter__form" name="ccoptin" action="https://lp.constantcontactpages.com/sl/7HXon1T/providencepost" target="_blank" method="post">
             <input type="hidden" name="m" value="1102165220207">
             <input type="hidden" name="p" value="oi">
             <label for="email" class="sr">Email</label>
             <input type="email" id="email" name="ea" spellcheck="false" placeholder="email@domain.com">
-            <input type="submit" name="go" class="btn__secondary" value="Get our E-News">
+            <input type="submit" name="go" class="btn__secondary" value="Subscribe">
           </form>
         </div>
       </header>
+      <!-- <nav aria-label="Providence Post" class="prov-post-nav has-grad-primary-gradient-background" style="padding-block-end: var(--wp--preset--spacing--md); padding-inline: var(--space-container-inline);">
+        <ul role="list">
+          <li><a href="/news/about-the-providence-post/">About the Post</a></li>
+          <li><a href="/news/editorial-policies/">Editorial Policies</a></li>
+          <li><a href="/news/submit/">Submit</a></li>
+        </ul>
+      </nav> -->
     <?php
       $sticky = get_option( 'sticky_posts' );
   
