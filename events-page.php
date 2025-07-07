@@ -17,7 +17,7 @@
   <main id="main" class="l__main">
     <article>
       <header class="page__header has-grad-primary-gradient-background" style="padding-block: var(--wp--preset--spacing--md-xl); padding-inline: var(--space-container-inline);">
-        <nav class="breadcrumb">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
           <?php bcn_display(); ?>
         </nav>
         <h1 class="page__title has-primary-color has-accent-light-weight">Upcoming Events</h1>
