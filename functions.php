@@ -118,6 +118,7 @@ add_action( 'after_setup_theme', 'pps_register_menus' );
 // Register custom post types
 if ( ! function_exists( 'pps_custom_post_types' ) ) :
   function pps_custom_post_types() {
+
     register_post_type('in-the-press',
       array(
         'labels'          => array(
@@ -207,15 +208,15 @@ if ( ! function_exists( 'pps_GA_snippet' ) ) :
   function pps_GA_snippet($current_id) {
     $GA_UA = '';
 
-    if ( $current_id == 1) {
+    if ( $current_id == '1') {
       // This is the main PPS site
       $GA_UA = 'G-HPSKNW241K';
     }
-    if ( $current_id == 2) {
+    if ( $current_id == '2') {
       // This is the PPS Architectural Guide site
       $GA_UA = 'G-CYJ3R9M540';
     }
-    if ( $current_id == 3) {
+    if ( $current_id == '3') {
       // This is the Atlantic Mills site
       $GA_UA = 'G-575H92CV3K';
     }
