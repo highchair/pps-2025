@@ -25,7 +25,7 @@
       <h3 class="news-posts__item__title" style="margin-block-end: var(--wp--preset--spacing--sm)"><a class="news-posts__item__link" href="<?php the_permalink() ?>"><?php the_title() ?></a></h3>
       <p class="news-posts__item__excerpt">
         <?php echo get_the_excerpt() ?>
-      <?php if ( 'events' != get_post_type() ) { ?>
+      <?php if ( 'events' != get_post_type() && !is_author() ) { ?>
         <i class="has-accent-font-family">By <?php the_author() ?></i>
       <?php } ?>
       </p>
