@@ -115,7 +115,7 @@ function pps_register_menus() {
 endif;
 add_action( 'after_setup_theme', 'pps_register_menus' );
 
-// Register custom post types
+// Register custom post types and associated taxonomies
 if ( ! function_exists( 'pps_custom_post_types' ) ) :
   function pps_custom_post_types() {
 
@@ -135,6 +135,34 @@ if ( ! function_exists( 'pps_custom_post_types' ) ) :
         'supports'           => array('title', 'editor', 'page-attributes'),
       )
     );
+
+    register_post_type('advocacy', array(
+        'labels' => array(
+          'name'          => 'Advocacy',
+          'singular_name' => 'Advocacy',
+        ),
+        'public'             => true,
+        'has_archive'        => false,
+        'publicly_queryable' => true,
+        'show_in_nav_menus'  => true,
+        'show_in_admin_bar'  => true,
+        'show_in_rest'       => true,
+        'menu_icon'          => 'dashicons-megaphone',
+        'supports'           => array('title', 'editor', 'page-attributes'),
+      )
+    );
+
+    register_taxonomy('advocacy-project', 'advocacy', array(
+      'labels' => array(
+        'name'          => 'Advocacy Projects',
+        'singular_name' => 'Advocacy Project'
+      ),
+      'hierarchical'      => false,
+      'public'            => true,
+      'show_ui'           => true,
+      'show_admin_column' => true,
+      'query_var'         => true,
+    ));
   }
 endif;
 add_action('init', 'pps_custom_post_types');
