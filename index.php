@@ -36,13 +36,6 @@
           </form>
         </div>
       </header>
-      <!-- <nav aria-label="Providence Post" class="prov-post-nav has-grad-primary-gradient-background" style="padding-block-end: var(--wp--preset--spacing--md); padding-inline: var(--space-container-inline);">
-        <ul role="list">
-          <li><a href="/news/about-the-providence-post/">About the Post</a></li>
-          <li><a href="/news/editorial-policies/">Editorial Policies</a></li>
-          <li><a href="/news/submit/">Submit</a></li>
-        </ul>
-      </nav> -->
     <?php
       $sticky = get_option( 'sticky_posts' );
   
@@ -79,6 +72,7 @@
         'orderby'             => 'date',
         'order'               => 'DESC',
         'paged'               => $paged,
+        'category__not_in'   => array(3), // Hide announcements category
       ) );
 
       echo '<div class="cols-9-3">';
