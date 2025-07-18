@@ -2,11 +2,41 @@
 
   Theme Name: Providence Preservation Society 2025
   Theme URI: https://github.com/highchair/pps-2025
-  Author: J. Hogue @ Highchair designhaus and Kay Belardinelli
+  Author: J. Hogue @ Highchair designhaus with consulting from Kay Belardinelli
   Author URI: https://highchairdesign.com and http://kangabell.co
   Description: Custom designed and crafted theme for the Providence Preservation Society
   Version: 1.0.0
 
 */
 
-@import 'assets/css/index.css';
+@import 'assets/css/0_base/root.css';
+@import 'assets/css/0_base/reset.css';
+
+@import 'assets/css/1_elements/html-body.css';
+@import 'assets/css/1_elements/anchors.css';
+@import 'assets/css/1_elements/buttons.css';
+@import 'assets/css/1_elements/typography.css';
+@import 'assets/css/1_elements/forms.css';
+@import 'assets/css/1_elements/tables.css';
+
+@import 'assets/css/2_layout/header.css';
+@import 'assets/css/2_layout/main.css';
+@import 'assets/css/2_layout/columns.css';
+@import 'assets/css/2_layout/footer.css';
+
+@import 'assets/css/3_components/navs.css';
+@import 'assets/css/3_components/tag.css';
+@import 'assets/css/3_components/news-posts.css';
+@import 'assets/css/3_components/events.css';
+@import 'assets/css/3_components/breadcrumbs.css';
+@import 'assets/css/3_components/pagination.css';
+@import 'assets/css/3_components/newsletter-signup.css';
+@import 'assets/css/3_components/post-header.css';
+@import 'assets/css/3_components/post-footer.css';
+
+@import 'assets/css/4_wordpress/general.css';
+@import 'assets/css/4_wordpress/colors.css';
+@import 'assets/css/4_wordpress/cover.css';
+@import 'assets/css/4_wordpress/widgets.css';
+
+@import 'assets/css/5_utilities/a11y.css';

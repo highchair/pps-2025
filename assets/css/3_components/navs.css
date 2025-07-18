@@ -281,7 +281,7 @@
 
   .nav__utility {
     .menu-item a {
-      font-size: var(--fts-small);
+      font-size: 1rem;
       padding-block: 0.25em;
       padding-inline: 0.75em;
   
