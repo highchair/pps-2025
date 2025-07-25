@@ -37,9 +37,12 @@ function pps_gutenberg_scripts() {
   wp_enqueue_script(
     'pps-editor-script',
     get_template_directory_uri() . '/assets/js/editor.js',
-    array( 'wp-blocks', 'wp-dom' ),
+    array(
+      'wp-dom',
+      'wp-blocks'
+    ),
     wp_get_theme()->get('Version'),
-    #filemtime( get_template_directory() . '/assets/js/editor.js' ),
+    filemtime( get_template_directory() . '/assets/js/editor.js' ),
     true
   );
 }
@@ -52,7 +55,7 @@ if ( ! function_exists( 'pps_enqueue_theme' ) ) :
       'pps-2025-style',
       get_parent_theme_file_uri( 'style.css' ),
       array(),
-      filemtime( get_template_directory() . '/assets/css/index.css' ), // Versioning (auto-busts cache)
+      filemtime( get_parent_theme_file_uri( 'style.css' ) ), // Versioning (auto-busts cache)
       //wp_get_theme()->get( 'Version' )
     );
 
@@ -87,22 +90,6 @@ if ( ! function_exists( 'pps_body_classes' ) ) :
   }
 endif;
 add_filter( 'body_class', 'pps_body_classes' );
-
-// Modify the Read More default […] text
-if ( ! function_exists( 'pps_excerpt_more' ) ) :
-  function pps_excerpt_more( $more ) {
-    return '… ';
-  }
-endif;
-add_filter( 'excerpt_more', 'pps_excerpt_more' );
-
-// Modify the excerpt length
-if ( ! function_exists( 'pps_excerpt_length' ) ) :
-  function pps_excerpt_length( $length ) {
-    return 32; // length in words. Default is 55
-  }
-endif;
-add_filter( 'excerpt_length', 'pps_excerpt_length', 999 );
 
 // Register menus
 if ( ! function_exists( 'pps_register_menus' ) ) :
@@ -149,6 +136,7 @@ if ( ! function_exists( 'pps_custom_post_types' ) ) :
         'show_in_rest'       => true,
         'menu_icon'          => 'dashicons-megaphone',
         'supports'           => array('title', 'editor', 'page-attributes'),
+        'rewrite'            => array('slug' => 'active-advocacy', 'with_front' => false),
       )
     );
 
@@ -231,32 +219,18 @@ if ( ! function_exists( 'pps_allow_svg' ) ) :
 endif;
 add_filter( 'upload_mimes', 'pps_allow_svg' );
 
-// Switching GA tracking codes based on the site
-if ( ! function_exists( 'pps_GA_snippet' ) ) :
-  function pps_GA_snippet($current_id) {
-    $GA_UA = '';
-
-    if ( $current_id == '1') {
-      // This is the main PPS site
-      $GA_UA = 'G-HPSKNW241K';
-    }
-    if ( $current_id == '2') {
-      // This is the PPS Architectural Guide site
-      $GA_UA = 'G-CYJ3R9M540';
-    }
-    if ( $current_id == '3') {
-      // This is the Atlantic Mills site
-      $GA_UA = 'G-575H92CV3K';
-    }
-    return "<script async src=\"https://www.googletagmanager.com/gtag/js?id=" . $GA_UA . "\"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', '" . $GA_UA . "');
-    </script>";
+// Modify the Read More default […] text
+if ( ! function_exists( 'pps_excerpt_more' ) ) :
+  function pps_excerpt_more( $more ) {
+    return '… ';
   }
 endif;
-add_action( 'init', 'pps_GA_snippet' );
-add_action( 'wp', 'pps_GA_snippet' );
+add_filter( 'excerpt_more', 'pps_excerpt_more' );
+
+// Modify the excerpt length
+if ( ! function_exists( 'pps_excerpt_length' ) ) :
+  function pps_excerpt_length( $length ) {
+    return 32; // length in words. Default is 55
+  }
+endif;
+add_filter( 'excerpt_length', 'pps_excerpt_length', 999 );

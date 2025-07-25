@@ -14,8 +14,37 @@
   <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?php 
+    wp_head();
 
-    <?php wp_head(); ?>
+    function pps_GA_snippet($current_id) {
+      $GA_UA = null;
+
+      if ( $current_id == '1') {
+        // This is the main PPS site
+        $GA_UA = 'G-HPSKNW241K';
+      }
+      if ( $current_id == '2') {
+        // This is the PPS Architectural Guide site
+        $GA_UA = 'G-CYJ3R9M540';
+      }
+      if ( $current_id == '3') {
+        // This is the Atlantic Mills site
+        $GA_UA = 'G-575H92CV3K';
+      }
+      if ( $GA_UA ) {
+      echo "<script async src=\"https://www.googletagmanager.com/gtag/js?id=" . $GA_UA . "\"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+    
+          gtag('config', '" . $GA_UA . "');
+        </script>";
+      }
+    }
+    pps_GA_snippet( get_current_blog_id() );
+  ?>
 
   </head>
   <body <?php body_class(); ?>>
