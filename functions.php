@@ -39,7 +39,12 @@ function pps_gutenberg_scripts() {
     get_template_directory_uri() . '/assets/js/editor.js',
     array(
       'wp-dom',
-      'wp-blocks'
+      'wp-blocks',
+      'wp-element',
+      'wp-components',
+      'wp-data',
+      'wp-edit-post',
+      'wp-hooks'
     ),
     wp_get_theme()->get('Version'),
     filemtime( get_template_directory() . '/assets/js/editor.js' ),
@@ -55,7 +60,7 @@ if ( ! function_exists( 'pps_enqueue_theme' ) ) :
       'pps-2025-style',
       get_parent_theme_file_uri( 'style.css' ),
       array(),
-      filemtime( get_parent_theme_file_uri( 'style.css' ) ), // Versioning (auto-busts cache)
+      filemtime( get_template_directory() . '/style.css' ), // Versioning (auto-busts cache)
       //wp_get_theme()->get( 'Version' )
     );
 
@@ -135,7 +140,7 @@ if ( ! function_exists( 'pps_custom_post_types' ) ) :
         'show_in_admin_bar'  => true,
         'show_in_rest'       => true,
         'menu_icon'          => 'dashicons-megaphone',
-        'supports'           => array('title', 'editor', 'page-attributes'),
+        'supports'           => array('title', 'editor', 'author', 'page-attributes'),
         'rewrite'            => array('slug' => 'active-advocacy', 'with_front' => false),
       )
     );
@@ -148,8 +153,11 @@ if ( ! function_exists( 'pps_custom_post_types' ) ) :
       'hierarchical'      => false,
       'public'            => true,
       'show_ui'           => true,
+      'show_in_rest'      => true,
       'show_admin_column' => true,
       'query_var'         => true,
+      'rest_base'         => 'advocacy-project',
+      'rest_controller_class' => 'WP_REST_Terms_Controller',
     ));
   }
 endif;
