@@ -24,7 +24,7 @@
             <li><a href="/news/submit/">Submit</a></li>
           </ul>
         </nav>
-        <p class="has-accent-font-family"><i>Preservation, planning and urban design across Providence’s communities and neighborhoods.</i></p>
+        <p class="has-accent-font-family"><i>Community news about the people, places and policies that shape Providence.</i></p>
         <div class="newsletter">
           <p class="newsletter__description">Weekly alerts, news, and updates from PPS</p>
           <form class="newsletter__form" name="ccoptin" action="https://lp.constantcontactpages.com/sl/7HXon1T/providencepost" target="_blank" method="post">
