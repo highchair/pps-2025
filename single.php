@@ -1,11 +1,9 @@
 <?php
 /**
- * The main template file
+ * The single post template file
+ * The design features a 50/50 column split header for desktop with optional Featured image
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
+ * In this theme, the Single template is used by posts and events
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -16,33 +14,62 @@
 ?>
   <main id="main" class="site-main">
     <article>
-      <?php
-        while ( have_posts() ) :
-          the_post();
-      ?>
+      <?php while ( have_posts() ) : the_post(); ?>
       <header class="single__header">
         <div class="single__header__start">
-          <p class="single__header__meta">
-            <?php
-              $categories = get_the_category();
-              if ( ! empty( $categories ) ) {
-                $category = $categories[0];
-                echo '<a class="pps__tag--alt" href="' . esc_url( get_category_link( $category->term_id ) ) . '">'. esc_html( $category->name ) .'</a>';
+        <?php
+
+          // If an event single, show the breadcrumbs
+          if ( 'events' == get_post_type() ) {
+            echo '<nav class="breadcrumb" aria-label="Breadcrumb">';
+            bcn_display();
+            echo '</nav>';
+          } 
+
+          // If there are categories, display the first one in the array
+          $categories = get_the_category();
+          if ( ! empty( $categories ) ) {
+            echo '<p class="single__header__meta">';
+            $category = $categories[0];
+            echo '<a class="pps__tag--alt" href="' . esc_url( get_category_link( $category->term_id ) ) . '">'. esc_html( $category->name ) .'</a>';
+            echo '</p>';
+          }
+
+          // Display post title
+          echo '<h1 class="single__header__title has-xl-font-size">' . get_the_title() . '</h1>';
+
+          // If an event, show the start and/or end dates
+          if ( 'events' == get_post_type() ) {
+            //$startdate = $enddate = new datetime();
+            $startdate = strtotime( get_post_meta( get_the_ID(), '_event_start_date', true ) );
+            $enddate = strtotime( get_post_meta( get_the_ID(), '_event_end_date', true ) );
+            if ( !empty( $startdate ) ) {
+              echo '<p class="single__header__event">';
+              echo '<time class="event__start" datetime="'. date( 'Y-m-d', $startdate ) .'">'. date( 'l jS \of F\, Y', $startdate ) .'</time>';
+              if ( !empty( $enddate ) ) {
+                echo '<span class="event__join"> through </span>';
+                echo '<time class="event__start" datetime="'. date( 'Y-m-d', $enddate ) .'">'. date( 'l jS \of F\, Y', $enddate ) .'</time>';
               }
-            ?>
-          </p>
-          <h1 class="single__header__title has-xl-font-size"><?php single_post_title(); ?></h1>
-          <p class="single__header__author">
-            By <a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php the_author(); ?></a>
-            <span class="separator"></span>
-            <?php
-              $jobtitle = get_the_author_meta( 'user_description' );
-              if ($jobtitle) {
-                echo $jobtitle . '<span class="separator"></span>';
-              }
-              echo '<a href="mailto:'. get_the_author_meta( 'user_email' ) .'">'. get_the_author_meta( 'user_email' ) .'</a>';
-            ?>
-          </p>
+              echo '</p>';
+            }
+          } else { 
+
+            // Only show an author on a single post, not an event
+            $jobtitle = get_the_author_meta( 'user_description' ); 
+          ?>
+            <p class="single__header__author">
+              By <a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php the_author(); ?></a>
+              <span class="separator"></span>
+              <?php
+                if ($jobtitle) {
+                  echo $jobtitle . '<span class="separator"></span>';
+                }
+                echo '<a href="mailto:'. get_the_author_meta( 'user_email' ) .'">'. get_the_author_meta( 'user_email' ) .'</a>';
+              ?>
+            </p>
+        <?php
+          }
+        ?>
         </div>
         <div class="single__header__end">
         <?php
