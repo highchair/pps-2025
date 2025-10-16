@@ -54,20 +54,8 @@
             }
           } else { 
 
-            // Only show an author on a single post, not an event
-            $jobtitle = get_the_author_meta( 'user_description' ); 
-          ?>
-            <p class="single__header__author">
-              By <a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php the_author(); ?></a>
-              <span class="separator"></span>
-              <?php
-                if ($jobtitle) {
-                  echo $jobtitle . '<span class="separator"></span>';
-                }
-                echo '<a href="mailto:'. get_the_author_meta( 'user_email' ) .'">'. get_the_author_meta( 'user_email' ) .'</a>';
-              ?>
-            </p>
-        <?php
+            pps_display_post_authors( 'long' );
+
           }
         ?>
         </div>

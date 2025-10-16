@@ -91,3 +91,4 @@
   include_once get_theme_file_path('inc/menus.php');
   include_once get_theme_file_path('inc/post-types.php');
   include_once get_theme_file_path('inc/widgets.php');
+  include_once get_theme_file_path('inc/multiple-authors.php');
