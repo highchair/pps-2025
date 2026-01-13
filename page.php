@@ -1,5 +1,7 @@
 <?php
 /**
+ *
+ * Template Name: Basic Page with Header
  * The template file for a Page
  *
  * @package PPS 2025
@@ -12,11 +14,9 @@
   <?php if ( is_front_page() ) { ?>
     <article class="editor-styles-wrapper">
     <?php
-      if ( have_posts() ) :
-        while ( have_posts() ) : the_post();
-          the_content();
-        endwhile;
-      endif;
+      if ( have_posts() ) : while ( have_posts() ) : the_post();
+        the_content();
+      endwhile; endif;
     ?>
     </article>
 
