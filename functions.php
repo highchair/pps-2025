@@ -85,6 +85,10 @@
   endif;
   add_action( 'wp_enqueue_scripts', 'pps_enqueue_theme' );
 
+  /**
+   * Include the custom Lightbox Gallery plugin
+   */
+  require get_template_directory() . '/blocks/hcd-lightbox-gallery/hcd-lightbox-gallery-functions.php';
 
   // Include external files
   include_once get_theme_file_path('inc/extras.php');

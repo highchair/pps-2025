@@ -1,0 +1,176 @@
+/* Section element */
+.hcd-lightbox-gallery {
+  --unit: 1rem;
+  --spacing-sm: 0.25;
+  --spacing-lg: 1;
+  --max-img-width: 50; /* 800px */
+  --max-img-height: 32; /* 512px */
+  --accent-color: #2e3740;
+
+  display: flex;
+  flex-flow: column;
+  gap: calc( var(--spacing-sm) * var(--unit) );
+  padding-block: calc( var(--spacing-lg) * var(--unit) );
+}
+
+.hcd-lightbox-gallery * {
+  box-sizing: border-box;
+}
+
+/* Container of large images: radio buttons and adjacent anchors around an image */
+.hcd-lightbox-gallery__items {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: calc( var(--max-img-width) * var(--unit) );
+  margin-inline: auto;
+  overflow-x: auto;
+  position: relative;
+  width: 100%;
+}
+
+/* Shared aspect ratio measurements */
+.hcd-lightbox-gallery__img,
+.hcd-lightbox-gallery__img img,
+.hcd-lightbox-gallery__placeholder {
+  aspect-ratio: var(--max-img-width) / var(--max-img-height);
+}
+
+/* Responsive size placeholder */
+.hcd-lightbox-gallery__placeholder {
+  flex: 0 0 100%;
+  background: rgba(0,0,0,0.25);
+  margin-block-end: calc( var(--spacing-lg) * var(--unit) );
+}
+
+/* Anchor container */
+.hcd-lightbox-gallery__img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX( -50% );
+  width: 100%;
+
+  img {
+    border: none !important;
+    display: block;
+    height: auto;
+    object-fit: contain;
+    width: 100%;
+  }
+}
+
+/* Input type="radio" */
+.hcd-lightbox-gallery__selector {
+  appearance: none;
+  background-color: transparent;
+  border: 0px;
+  border-radius: 50%;
+  margin: 0;
+  /*padding: calc( var(--spacing-lg) * var(--unit) );*/
+  position: relative;
+}
+
+/*.hcd-lightbox-gallery__selector::after {
+  content: "";
+  display: block;
+  width: calc( var(--spacing-lg) * var(--unit) );
+  height: calc( var(--spacing-lg) * var(--unit) );
+  margin: calc( var(--spacing-sm) * var(--unit) );
+  background-color: var(--wp--preset--color--custom-color-8);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.hcd-lightbox-gallery__selector:checked {
+  outline: 2px solid var(--accent-color);
+  outline-offset: -4px;
+}*/
+
+.hcd-lightbox-gallery__selector + .hcd-lightbox-gallery__img {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out 0ms, visibility 0ms linear 500ms;
+  visibility: hidden;
+}
+
+/*.hcd-lightbox-gallery__selector:checked::after {
+  outline-offset: 2px;
+  background-color: var(--accent-color);
+  outline: 2px solid rgba(255, 255, 255, 0.1);
+}*/
+
+/*html.fslightbox-open .hcd-lightbox-gallery__img,*/
+.hcd-lightbox-gallery__selector:checked + .hcd-lightbox-gallery__img {
+  opacity: 1;
+  transition: opacity 500ms ease-in-out 0ms, visibility 0ms linear 0ms;
+  visibility: visible;
+}
+
+/* Nav element for thumbnails */
+.hcd-lightbox-gallery__nav {
+  display: flex;
+  justify-content: start;
+  gap: calc( var(--spacing-sm) * var(--unit) );
+  flex-wrap: nowrap;
+  margin-inline: calc( var(--wp--preset--spacing--30) * -1);
+  margin-block-start: calc( var(--spacing-lg) * var(--unit) );
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.hcd-lightbox-gallery__nav::-webkit-scrollbar {
+  height: calc( var(--spacing-sm) * var(--unit) );
+}
+
+.hcd-lightbox-gallery__nav::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: calc( (var(--spacing-sm)/2) * var(--unit) );
+}
+
+.hcd-lightbox-gallery__nav::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: calc( (var(--spacing-sm)/2) * var(--unit) );
+}
+
+/* Labels */
+.hcd-lightbox-gallery__thumb {
+  border: 5px solid transparent;
+  border-radius: calc( var(--spacing-sm) * var(--unit) );
+  cursor: pointer;
+  display: block;
+  flex: 0 0 auto;
+  overflow: hidden;
+  scroll-snap-align: start;
+  width: calc( 18% - ( var(--spacing-lg) * var(--unit) ) );
+
+  img {
+    aspect-ratio: 1 / 1;
+    border-radius: calc( var(--spacing-sm) * var(--unit) );
+    display: block;
+    object-fit: cover;
+    opacity: 1;
+    transition: border-color 250ms ease-in-out, opacity 250ms ease-in-out;
+    width: 100%;
+  }
+
+  &:hover img,
+  &:focus img {
+    opacity: 0.25;
+  }
+}
+
+@media (min-width: 48em) {
+  .hcd-lightbox-gallery__thumb {
+    width: calc( 12% - ( var(--spacing-sm) * var(--unit) ) );
+  }
+}
+
+.hcd-lightbox-gallery__thumb.checked {
+  outline: 2px solid var(--accent-color);
+  outline-offset: -2px;
+
+  img {
+    opacity: 0.25;
+  }
+}

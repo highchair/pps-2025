@@ -1,0 +1,11 @@
+.hcd-lightbox-gallery-editor {
+  border: 1px dashed #ccc;
+  padding: 0.5em;
+}
+
+.hcd-gallery-preview img {
+  width: 10em;
+  height: auto;
+  margin: 0.25em;
+  border-radius: 3px;
+}
