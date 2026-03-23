@@ -2,17 +2,26 @@
 .cols-9-3 {
   display: flex;
   flex-flow: column;
-  gap: var(--space-gap-default);
+  gap: 0;
+
+  & > *:last-child {
+    padding-inline: var(--space-container-inline);
+  }
 
   /* 768px breakpoint */
   @media (min-width: 48em) {
     flex-flow: row nowrap;
+    gap: var(--wp--preset--spacing--xl);
+    padding-inline: var(--space-gap-default);
 
     & > *:first-child {
-      flex: 0 1 calc(75% - var(--space-gap-default));
+      flex: 0 1 70%;
+      padding-inline: 0 !important;
     }
-    & > *:nth-child(2) {
-      flex: 0 1 calc(25% - var(--space-gap-default));
+    & > *:last-child {
+      flex: 0 1 30%;
+      max-width: 30rem; /* 480px */
+      padding-inline: 0;
     }
   }
 }

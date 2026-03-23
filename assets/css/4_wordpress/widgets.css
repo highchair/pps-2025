@@ -1,7 +1,7 @@
 /* Widgets */
 
 /* <ul> */
-.wp-block-categories-list{
+.wp-block-categories-list {
   list-style-type: none;
 
   li {
@@ -10,5 +10,12 @@
 
   a {
     text-decoration: none;
+  }
+}
+
+.wp-block-search {
+  
+  .wp-block-search__input {
+    max-width: 16rem; /* 256px */
   }
 }

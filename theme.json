@@ -84,6 +84,16 @@
                "color":"#EABA6B",
                "name":"Pencil Yellow",
                "slug":"secondary"
+            },
+            {
+               "color":"#570757",
+               "name":"Eggplant",
+               "slug":"accent"
+            },
+            {
+               "color":"#3D013d",
+               "name":"Deep Eggplant",
+               "slug":"accent-dark"
             }
          ],
          "duotone":[

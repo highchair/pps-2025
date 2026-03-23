@@ -1,17 +1,3 @@
-/* <footer class="recent-posts__pagination" style="padding-block: var(--wp--preset--spacing--xl); padding-inline: var(--wp--preset--spacing--md);">
-  <nav class="navigation pagination" aria-label="Posts pagination">
-    <h2 class="screen-reader-text">Posts pagination</h2>
-    <div class="nav-links">
-      <span aria-current="page" class="page-numbers current">1</span>
-      <a class="page-numbers" href="/news/page/2/">2</a>
-      <a class="page-numbers" href="/news/page/3/">3</a>
-      <a class="page-numbers" href="/news/page/4/">4</a>
-      <span class="page-numbers dots">…</span>
-      <a class="page-numbers" href="/news/page/25/">25</a>
-      <a class="next page-numbers" href="/news/page/2/">Older</a></div>
-  </nav>
-</footer> */
-
 .pagination {
   background: top left repeat-x url('../../images/yellow-hand-drawn-dots.svg') transparent;
   padding-block-start: var(--wp--preset--spacing--lg);
@@ -54,4 +40,9 @@
       background-color: transparent;
     }
   }
+}
+
+.in-the-press__pagination {
+  margin-inline: auto;
+  max-width: var(--wp--style--global--wide-size);
 }

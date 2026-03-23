@@ -156,3 +156,11 @@ hr.wp-block-separator {
   border: none !important;
   height: 1em;
 }
+
+/* For search results, mostly */
+mark {
+  background-color: var(--wp--preset--color--secondary);
+  color: var(--wp--preset--color--default-fg);
+  display: inline-block;
+  padding-inline: 0.25em;
+}
