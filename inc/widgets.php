@@ -11,7 +11,7 @@
         'description'    => 'News landing page sidebar',
         'before_widget'  => '',
         'after_widget'   => '',
-        'before_sidebar' => '<aside class="news-posts__aside">',
+        'before_sidebar' => '<aside class="news-posts__aside" style="padding-block: var(--wp--preset--spacing--lg);">',
         'after_sidebar'  => '</aside>',
         'before_title'   => '<h3 class="widget-title has-base-font-size has-secondary-color">',
         'after_title'    => '</h3>',

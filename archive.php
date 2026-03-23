@@ -12,7 +12,7 @@
       <div class="cols-9-3">
         <section class="recent-posts" style="padding-block: var(--wp--preset--spacing--lg); padding-inline: var(--space-container-inline);">
     <?php
-      echo '<h2 class="news-posts__title recent-posts__title has-default-font-family has-h-4-font-size"><b>';
+      echo '<h1 class="news-posts__title recent-posts__title has-default-font-family has-h-4-font-size"><b>';
 
       // Start the title
       if (is_category()) { 
@@ -41,7 +41,7 @@
         $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
         echo ' (page ' . $paged .')'; 
       }
-      echo '</b></h2>';
+      echo '</b></h1>';
 
       // Now the Loop
       if ( have_posts() ) { 
