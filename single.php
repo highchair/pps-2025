@@ -36,7 +36,7 @@
           }
 
           // Display post title
-          echo '<h1 class="single__header__title has-xl-font-size">' . get_the_title() . '</h1>';
+          echo '<h1 class="single__header__title has-lg-font-size">' . get_the_title() . '</h1>';
 
           // If an event, show the start and/or end dates
           if ( 'events' == get_post_type() ) {
@@ -55,6 +55,7 @@
           } else { 
 
             pps_display_post_authors( 'long' );
+            echo '<p class="single__header__time">Published <time datetime="' . esc_attr( get_the_date( DATE_W3C ) ) . '">' . esc_html( get_the_date() ) . '</time></p>';
 
           }
         ?>

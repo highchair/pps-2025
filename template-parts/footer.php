@@ -14,13 +14,7 @@
         <div class="newsletter">
           <h2 class="has-h-1-font-size">Subscribe</h2>
           <p>Weekly alerts, news, and updates from PPS</p>
-          <form class="newsletter__form" name="ccoptin" action="https://lp.constantcontactpages.com/sl/7HXon1T/providencepost" target="_blank" method="post">
-            <input type="hidden" name="m" value="1102165220207">
-            <input type="hidden" name="p" value="oi">
-            <label for="email" class="sr">Email</label>
-            <input type="email" id="email" name="ea" spellcheck="false" placeholder="email@domain.com">
-            <input type="submit" name="go" class="btn__secondary" value="Get our E-News">
-          </form>
+          <p class="newsletter__form" style="width: auto;"><a class="btn__secondary" href="https://lp.constantcontactpages.com/sl/7HXon1T/providencepost" target="_blank">Subscribe to our weekly newsletter</a></p>
         </div>
         <div class="footer__image">
           <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pps-streetscape-illustration.png" alt="" />

@@ -27,13 +27,14 @@
         <p class="has-accent-font-family"><i>Community news about the people, places and policies that shape Providence.</i></p>
         <div class="newsletter">
           <p class="newsletter__description">Weekly alerts, news, and updates from PPS</p>
-          <form class="newsletter__form" name="ccoptin" action="https://lp.constantcontactpages.com/sl/7HXon1T/providencepost" target="_blank" method="post">
+          <p class="newsletter__form"><a class="btn__secondary" href="https://lp.constantcontactpages.com/sl/7HXon1T/providencepost" target="_blank">Subscribe to our weekly newsletter</a></p>
+          <!--<form class="newsletter__form" name="ccoptin" action="https://lp.constantcontactpages.com/sl/7HXon1T/providencepost" target="_blank" method="post">
             <input type="hidden" name="m" value="1102165220207">
             <input type="hidden" name="p" value="oi">
             <label for="email" class="sr">Email</label>
             <input type="email" id="email" name="ea" spellcheck="false" placeholder="email@domain.com">
             <input type="submit" name="go" class="btn__secondary" value="Subscribe">
-          </form>
+          </form>-->
         </div>
       </header>
     <?php
