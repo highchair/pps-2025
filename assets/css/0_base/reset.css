@@ -78,6 +78,13 @@ address {
   scroll-margin-block: 5ex;
 }
 
+// Opt in to upcoming browser-based view transitions
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
