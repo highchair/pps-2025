@@ -9,9 +9,12 @@
     function pps_post_format_setup() {
       // Force HTML5 options when present in function output
       add_theme_support( 'html5', array( 'search-form' ) );
-    
+
       //add_theme_support( 'post-formats', array( 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video' ) );
-    
+
+      // Need to opt into WordPress <title> tag handling
+      add_theme_support( 'title-tag' );
+
       // Not sure why I need this, default posts are missing Featured Images
       add_theme_support('post-thumbnails', array(
         'post',
